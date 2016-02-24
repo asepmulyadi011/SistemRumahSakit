@@ -15,14 +15,19 @@ class RICPendaftaran extends CI_Controller {
 		$this->load->view('RIVLink');
 		$this->load->view('RIVHeader');
 		$this->load->view('RIVMenu', $data);
+		
+		$this->load->model('RIMReservasi');
 	}
-	public function index(){	
+	public function index(){
 		$this->load->view('RIVPendaftaran');
+		
+		$this->load->view('RIVFooter');
 	}
 	public function insert_pendaftaran(){
-		$this->session->set_flashdata('pesan_pendaftaran',
-		"<div class='alert bg-success alert-success' role='alert'>
-			<svg class='glyph stroked checkmark'><use xlink:href='#stroked-checkmark'></use></svg> Data tersimpan! <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+		$this->session->set_flashdata('pesan',
+		"<div class='alert alert-success alert-dismissable'>
+			<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+			<i class='icon fa fa-check'></i> Data telah tersimpan!
 		</div>");
 		
 		redirect('RICPendaftaran');

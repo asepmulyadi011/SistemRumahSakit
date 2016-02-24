@@ -1,148 +1,265 @@
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-	
-	<!-- Menu -->
-	<div class="row">
-		<ol class="breadcrumb">
-			<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-			<li class="active">Mutasi</li>
-		</ol>
-	</div>
-	<!-- /Menu -->
-	
-	<!-- Title -->
-	<div class="row">
-		<div class="col-lg-8">
-			<?php echo $this->session->flashdata('pesan_mutasi');?>
-			<h3 class="page-header page-title-big">MUTASI RUANGAN</h3>
-		</div>
-	</div>
-	<!-- /Title -->
-	
-	<!-- Content -->
-	<div class="row grid-content">
-		<form action="<?php echo site_url('CMutasi/insert_mutasi'); ?>">
-			
-			<!-- Form -->
-			<div class="col-md-9">
-				<div class="row form-input">
-					<div class="col-md-3 name-form">Cari No. IPD</div>
-					<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="No. IPD"></div>
-				</div>
-				<div class="row form-input">
-					<div class="col-md-3 name-form">No. Register IPD</div>
-					<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="No. Register IPD"></div>
-				</div>
-				<div class="row form-input">
-					<div class="col-md-3 name-form">No. CM</div>
-					<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="No. CM"></div>
-				</div>
-				<div class="row form-input">
-					<div class="col-md-3 name-form">Penjamin</div>
-					<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Penjamin"></div>
-				</div>
-				<div class="row form-input">
-					<div class="col-md-3 name-form">No. Peserta</div>
-					<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="No. Peserta"></div>
-				</div>
-				<div class="row form-input">
-					<div class="col-md-3 name-form">Ruang</div>
-					<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Ruang"></div>
-				</div>
-				<div class="row form-input">
-					<div class="col-md-3 name-form">Kelas</div>
-					<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Kelas"></div>
-				</div>
-				<div class="row form-input">
-					<div class="col-md-3 name-form">Nama</div>
-					<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Nama"></div>
-				</div>
-				<div class="row form-input">
-					<div class="col-md-3 name-form">Alamat</div>
-					<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Alamat"></div>
-				</div>
-				<div class="row form-input">
-					<div class="col-md-3 name-form">Tanggal</div>
-					<div class="col-md-9"><input type="text" class="form-control input-sm" id="calendar-tanggal" placeholder="03/18/2013"></div>
-				</div>
-				<div class="row form-input">
-					<div class="col-md-3 name-form">Jatah Kelas</div>
-					<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Jatah Kelas"></div>
-				</div>
-			</div>
-			<!-- /Pencarian -->
-			
-			<!-- Button -->
-			<div class="col-md-9 grid-button-top">
-				<div class="form-inline">
-					<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-mutasi">Simpan</button>
-					<button type="button" class="btn btn-primary btn-sm">Data Pasien</button>
-					<button type="button" class="btn btn-primary btn-sm">Data Sebelumnya</button>
-					<button type="button" class="btn btn-primary btn-sm">Data Berikutnya</button>
-					<button type="button" class="btn btn-warning btn-sm">Tombol Penting</button>
-					<button type="button" class="btn btn-danger btn-sm">Keluar</button>
-				</div>
-			</div>
-			<!-- /Button -->
-			
-			<!-- Modal -->
-			<div class="modal fade bs-example-modal-sm" id="modal-mutasi" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-sm">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel">Konfirmasi</h4>
-						</div>
-						<div class="modal-body">
-							Apakah kamu yakin?
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Tidak</button>
-							<button type="submit" class="btn btn-primary btn-sm">Ya</button>
+<div class="wrapper">
+	<div class="content-wrapper">
+		
+		<!-- Keterangan page -->
+		<section class="content-header">
+			<h1>MUTASI RUANGAN</h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li><a href="#">Mutasi</a></li>
+			</ol>
+		</section>
+		<!-- /Keterangan page -->
+
+        <!-- Main content -->
+        <section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<?php echo $this->session->flashdata('pesan');?>
+					<div class="box box-success">
+						<br/>
+						
+						<!-- Form Mutasi -->
+						<form class="form-horizontal" action="<?php echo site_url('RICMutasi/insert_mutasi'); ?>">
+							<div class="box-body">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="box-body">
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Cari No. IPD</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">No. Register IPD</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">No. CM</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Penjamin</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">No. Peserta</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6 form-right">
+										<div class="box-body">
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Ruang</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Kelas</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Nama</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Alamat</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Tanggal</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm" id="calendar-tgl">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Jatah Kelas</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-8">
+										<div class="button-reservasi">
+											<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-mutasi">Simpan</button>
+										</div>
+									</div>
+								</div>
+								
+								<!-- Modal -->
+								<div class="modal fade bs-example-modal-sm" id="modal-mutasi" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-sm">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												<h4 class="modal-title" id="myModalLabel">Konfirmasi</h4>
+											</div>
+											<div class="modal-body">
+												Apakah kamu yakin dengan data tersebut?
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Tidak</button>
+												<button type="submit" class="btn btn-primary btn-sm">Ya</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /Modal -->
+							</div>
+						</form>
+						<!-- /Form Mutasi -->
+						
+					</div>
+					
+					<!-- Table -->
+					<div class="box box-success">
+						<br/>
+						<div class="box-body">
+							<table id="example1" class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>Rendering engine</th>
+										<th>Browser</th>
+										<th>Platform(s)</th>
+										<th>Engine version</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Trident</td>
+										<td>Internet Explorer 4.0</td>
+										<td>Win 95+</td>
+										<td>4</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Trident</td>
+										<td>Internet Explorer 5.0</td>
+										<td>Win 95+</td>
+										<td>5</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Trident</td>
+										<td>Internet Explorer 5.5</td>
+										<td>Win 95+</td>
+										<td>5.5</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Trident</td>
+										<td>Internet Explorer 6</td>
+										<td>Win 98+</td>
+										<td>6</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Trident</td>
+										<td>Internet Explorer 7</td>
+										<td>Win XP SP2+</td>
+										<td>7</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Trident</td>
+										<td>AOL browser (AOL desktop)</td>
+										<td>Win XP</td>
+										<td>6</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Firefox 1.0</td>
+										<td>Win 98+ / OSX.2+</td>
+										<td>1.7</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Firefox 1.5</td>
+										<td>Win 98+ / OSX.2+</td>
+										<td>1.8</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Firefox 2.0</td>
+										<td>Win 98+ / OSX.2+</td>
+										<td>1.8</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Firefox 3.0</td>
+										<td>Win 2k+ / OSX.3+</td>
+										<td>1.9</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Camino 1.0</td>
+										<td>OSX.2+</td>
+										<td>1.8</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Camino 1.5</td>
+										<td>OSX.3+</td>
+										<td>1.8</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Netscape 7.2</td>
+										<td>Win 95+ / Mac OS 8.6-9.2</td>
+										<td>1.7</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Netscape Browser 8</td>
+										<td>Win 98SE+</td>
+										<td>1.7</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
+					<!-- /Table -->
+					
 				</div>
 			</div>
-			<!-- /Modal -->
+		</section>
+		<!-- /Main content -->
 		
-		</form>
 	</div>
-	<!-- /Content -->
-	
-	<!-- Content -->
-	<div class="row grid-content">
-		
-		<!-- Table -->
-		<div class="col-md-12">
-			<table data-toggle="table" data-url="<?php echo base_url('plugin/tables/data2.json'); ?>"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-				<thead>
-				<tr>
-					<th data-field="id" data-sortable="true">Tgl. Masuk</th>
-					<th data-field="name"  data-sortable="true">No. Register</th>
-					<th data-field="price" data-sortable="true">Nama</th>
-					<th data-field="price" data-sortable="true">Kelas</th>
-					<th data-field="price" data-sortable="true">No. Bed</th>
-					<th data-field="price" data-sortable="true">Penjamin</th>
-					<th data-field="name" data-sortable="true">Kode Dokter</th>
-					<th data-field="name" data-sortable="true">Dokter Yang Merawat</th>
-					<th data-field="name" data-sortable="true">LOS</th>
-					<th data-field="name" data-sortable="true">Total Biaya</th>
-					<th data-field="action" data-sortable="true">Action</th>
-				</tr>
-				</thead>
-			</table>		
-		</div>
-		<!-- /Table -->
-
-	</div>
-	<!-- /Content -->
-	
-	<!-- /Distance -->
-	<div class="page-distance"></div>
-	<!-- /Distance -->
-	
 </div>
 <script>
-	$('#calendar-tanggal').datepicker({
-		
+	$(function () {
+		$("#example1").DataTable();
 	});
+	$('#calendar-tgl').datepicker();
 </script>

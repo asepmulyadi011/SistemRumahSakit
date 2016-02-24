@@ -15,8 +15,12 @@ class RICPasien extends CI_Controller {
 		$this->load->view('RIVLink');
 		$this->load->view('RIVHeader');
 		$this->load->view('RIVMenu', $data);
+		
+		$this->load->model('RIMReservasi');
 	}
-	public function index(){	
+	public function index(){
 		$this->load->view('RIVPasien');
+		
+		$this->load->view('RIVFooter');
 	}
 }

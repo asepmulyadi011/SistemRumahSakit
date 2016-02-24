@@ -18,7 +18,9 @@ class RICDaftar extends CI_Controller {
 		
 		$this->load->model('RIMReservasi');
 	}
-	public function index(){		
+	public function index(){
 		$this->load->view('RIVDaftar');
+		
+		$this->load->view('RIVFooter');
 	}
 }

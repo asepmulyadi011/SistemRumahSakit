@@ -1,2 +1,0 @@
-# SistemRumahSakit
-Sistem Rumah Sakit

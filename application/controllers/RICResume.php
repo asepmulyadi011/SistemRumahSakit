@@ -18,7 +18,9 @@ class RICResume extends CI_Controller {
 		
 		$this->load->model('RIMReservasi');
 	}
-	public function index(){		
+	public function index(){
 		$this->load->view('RIVResume');
+		
+		$this->load->view('RIVFooter');
 	}
 }

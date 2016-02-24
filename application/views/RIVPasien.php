@@ -1,136 +1,193 @@
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-	
-	<!-- Menu -->
-	<div class="row">
-		<ol class="breadcrumb">
-			<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-			<li class="active">Pasien</li>
-		</ol>
-	</div>
-	<!-- /Menu -->
-	
-	<!-- Title -->
-	<div class="row">
-		<div class="col-lg-8">
-			<h3 class="page-header page-title-big">DATA PASIEN</h3>
-		</div>
-	</div>
-	<!-- /Title -->
-	
-	<!-- Content -->
-	<div class="row grid-content">
+<div class="wrapper">
+	<div class="content-wrapper">
 		
-		<!-- Pencarian -->
-		<div class="col-md-9">
-			<div class="row form-input">
-				<div class="col-md-3 name-form">Tanggal</div>
-				<div class="col-md-9"><input type="text" class="form-control input-sm" id="calendar-tanggal" placeholder="03/18/2013"></div>
-			</div>
-			<div class="row form-input">
-				<div class="col-md-3 name-form">Kode</div>
-				<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Kode"></div>
-			</div>
-			<div class="row form-input">
-				<div class="col-md-3 name-form">No. Register</div>
-				<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="No. Register"></div>
-			</div>
-			<div class="row form-input">
-				<div class="col-md-3 name-form">Ruangan</div>
-				<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Ruangan"></div>
-			</div>
-		</div>
-		<!-- /Pencarian -->
-		
-		<!-- Button -->
-		<div class="col-md-9 grid-button-top">
-			<div class="form-inline">
-				<button type="button" class="btn btn-warning btn-sm">Tombol Penting</button>
-				<button type="button" class="btn btn-primary btn-sm">Cari</button>
-				<button type="button" class="btn btn-primary btn-sm">Batal</button>
-				<button type="button" class="btn btn-danger btn-sm">Keluar</button>
-			</div>
-		</div>
-		<!-- /Button -->
+		<!-- Keterangan page -->
+		<section class="content-header">
+			<h1>PASIEN DALAM PERAWATAN</h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li><a href="#">Pasien</a></li>
+			</ol>
+		</section>
+		<!-- /Keterangan page -->
 
-	</div>
-	<!-- /Content -->
-	
-	<!-- Title -->
-	<div class="row">
-		<div class="col-lg-8">
-			<h3 class="page-header page-title-big">PASIEN DALAM PERAWATAN</h3>
-		</div>
-	</div>
-	<!-- /Title -->
-	
-	<!-- Content -->
-	<div class="row grid-content">
+        <!-- Main content -->
+        <section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="box box-success">
+						<br/>
+						
+						<!-- Form Pencarian Pasien -->
+						<form class="form-horizontal" action="<?php echo site_url('RICPasien'); ?>">
+							<div class="box-body">
+								<div class="col-sm-8">
+									<div class="form-group">
+										<div class="col-sm-3 control-label">Tanggal</div>
+										<div class="col-sm-9">
+											<input type="text" class="form-control input-sm" id="calendar-tgl">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-3 control-label">Kode</div>
+										<div class="col-sm-9">
+											<input type="text" class="form-control input-sm">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-3 control-label">No. Register</div>
+										<div class="col-sm-9">
+											<input type="text" class="form-control input-sm">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-3 control-label">Ruangan</div>
+										<div class="col-sm-9">
+											<input type="text" class="form-control input-sm">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-3 control-label"></div>
+										<div class="col-sm-9">
+											<button type="submit" class="btn btn-primary btn-sm" >Cari</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+						<!-- /Form Pencarian Pasien -->
+						
+					</div>
+					
+					<!-- Table -->
+					<div class="box box-success">
+						<br/>
+						<div class="box-body">
+							<table id="example1" class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>Rendering engine</th>
+										<th>Browser</th>
+										<th>Platform(s)</th>
+										<th>Engine version</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Trident</td>
+										<td>Internet Explorer 4.0</td>
+										<td>Win 95+</td>
+										<td>4</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Trident</td>
+										<td>Internet Explorer 5.0</td>
+										<td>Win 95+</td>
+										<td>5</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Trident</td>
+										<td>Internet Explorer 5.5</td>
+										<td>Win 95+</td>
+										<td>5.5</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Trident</td>
+										<td>Internet Explorer 6</td>
+										<td>Win 98+</td>
+										<td>6</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Trident</td>
+										<td>Internet Explorer 7</td>
+										<td>Win XP SP2+</td>
+										<td>7</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Trident</td>
+										<td>AOL browser (AOL desktop)</td>
+										<td>Win XP</td>
+										<td>6</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Firefox 1.0</td>
+										<td>Win 98+ / OSX.2+</td>
+										<td>1.7</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Firefox 1.5</td>
+										<td>Win 98+ / OSX.2+</td>
+										<td>1.8</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Firefox 2.0</td>
+										<td>Win 98+ / OSX.2+</td>
+										<td>1.8</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Firefox 3.0</td>
+										<td>Win 2k+ / OSX.3+</td>
+										<td>1.9</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Camino 1.0</td>
+										<td>OSX.2+</td>
+										<td>1.8</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Camino 1.5</td>
+										<td>OSX.3+</td>
+										<td>1.8</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Netscape 7.2</td>
+										<td>Win 95+ / Mac OS 8.6-9.2</td>
+										<td>1.7</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+									<tr>
+										<td>Gecko</td>
+										<td>Netscape Browser 8</td>
+										<td>Win 98SE+</td>
+										<td>1.7</td>
+										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- /Table -->
+					
+				</div>
+			</div>
+		</section>
+		<!-- /Main content -->
 		
-		<!-- Form -->
-		<div class="col-md-9">
-			<div class="row form-input">
-				<div class="col-md-3 name-form">Tanggal</div>
-				<div class="col-md-9"><input type="text" class="form-control input-sm" id="calendar-tanggal" placeholder="03/18/2013"></div>
-			</div>
-			<div class="row form-input">
-				<div class="col-md-3 name-form">Kode</div>
-				<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Kode"></div>
-			</div>
-			<div class="row form-input">
-				<div class="col-md-3 name-form">No. Register</div>
-				<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="No. Register"></div>
-			</div>
-			<div class="row form-input">
-				<div class="col-md-3 name-form">Ruangan</div>
-				<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Ruangan"></div>
-			</div>
-		</div>
-		<!-- /Form -->
-		
-		<!-- Button -->
-		<div class="col-md-9 grid-button-top">
-			<div class="form-inline">
-				<button type="button" class="btn btn-primary btn-sm">Mutasi Ruangan</button>
-				<button type="button" class="btn btn-primary btn-sm">Rekalkulasi</button>
-				<button type="button" class="btn btn-primary btn-sm">Slip Tindakan</button>
-				<button type="button" class="btn btn-primary btn-sm">Slip Dari Ruang Lain</button>
-				<button type="button" class="btn btn-primary btn-sm">Rekap Pelayanan</button>
-			</div>
-		</div>
-		<!-- /Button -->
-		
-		<!-- Table -->
-		<div class="col-md-12">
-			<table data-toggle="table" data-url="<?php echo base_url('plugin/tables/data2.json'); ?>"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-				<thead>
-				<tr>
-					<th data-field="id" data-sortable="true">Tgl. Masuk</th>
-					<th data-field="name"  data-sortable="true">No. Register</th>
-					<th data-field="price" data-sortable="true">Nama</th>
-					<th data-field="price" data-sortable="true">Kelas</th>
-					<th data-field="price" data-sortable="true">No. Bed</th>
-					<th data-field="price" data-sortable="true">Penjamin</th>
-					<th data-field="name" data-sortable="true">Kode Dokter</th>
-					<th data-field="name" data-sortable="true">Dokter Yang Merawat</th>
-					<th data-field="name" data-sortable="true">LOS</th>
-					<th data-field="name" data-sortable="true">Total Biaya</th>
-					<th data-field="action" data-sortable="true">Action</th>
-				</tr>
-				</thead>
-			</table>		
-		</div>
-		<!-- /Table -->
-
 	</div>
-	<!-- /Content -->
-	
-	<!-- /Distance -->
-	<div class="page-distance"></div>
-	<!-- /Distance -->
-	
 </div>
 <script>
-	$('#calendar-tanggal').datepicker({
-		
+	$(function () {
+		$("#example1").DataTable();
 	});
+	$('#calendar-tgl').datepicker();
 </script>

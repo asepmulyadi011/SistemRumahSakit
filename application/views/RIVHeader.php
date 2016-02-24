@@ -1,25 +1,42 @@
 <!-- Header -->
-<nav class="navbar navbar-inverse navbar-fixed-top navbar-menu" role="navigation">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#"><span>I-SMART</span>HEALTH</a>
-			<ul class="user-menu">
-				<li class="dropdown pull-right">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
-						<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Settings</a></li>
-						<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
+<header class="main-header">
+	<a href="#" class="logo">
+		<span class="logo-mini"><b>S</b>RS</span>
+		<span class="logo-lg"><b>Sistem </b>Rumah Sakit</span>
+	</a>
+	<nav class="navbar navbar-static-top" role="navigation">
+		<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+			<span class="sr-only">Toggle navigation</span>
+		</a>
+		<div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+				<!-- User Account: style can be found in dropdown.less -->
+				<li class="dropdown user user-menu">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					  <img src="<?php echo site_url('plugin/dist/img/user2-160x160.jpg'); ?>" class="user-image" alt="User Image">
+					  <span class="hidden-xs">Asep Mulyadi</span>
+					</a>
+					<ul class="dropdown-menu">
+						<!-- User image -->
+						<li class="user-header">
+							<img src="<?php echo site_url('plugin/dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
+							<p>
+								Asep Mulyadi
+							</p>
+						</li>
+						<!-- Menu Footer-->
+						<li class="user-footer">
+							<div class="pull-left">
+								<a href="#" class="btn btn-default btn-flat">Profile</a>
+							</div>
+							<div class="pull-right">
+								<a href="#" class="btn btn-default btn-flat">Sign out</a>
+							</div>
+						</li>
 					</ul>
 				</li>
 			</ul>
-		</div>			
-	</div>
-</nav>
+		</div>
+	</nav>
+</header>
 <!-- /Header -->

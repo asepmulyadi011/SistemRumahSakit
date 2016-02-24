@@ -1,329 +1,327 @@
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-	
-	<!-- Menu -->
-	<div class="row">
-		<ol class="breadcrumb">
-			<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-			<li class="active">Reservasi</li>
-		</ol>
-	</div>
-	<!-- /Menu -->
-	
-	<!-- Title -->
-	<div class="row">
-		<div class="col-lg-8">
-			<?php echo $this->session->flashdata('pesan');?>
-			<h3 class="page-header page-title-big">RESERVASI ANTRIAN PASIEN RAWAT INAP</h3>
-		</div>
-	</div>
-	<!-- /Title -->
-	
-	<!-- Tabs -->
-	<div class="row grid-content content-tabs">
-		<div class="col-md-12">
-			<div class="panel panel-default">
-				<div class="panel-body tabs">
-					<ul class="nav nav-tabs">
-						<li class="active"><a href="#reservasi" data-toggle="tab">Reservasi</a></li>
-						<li><a href="#rencana-masuk" data-toggle="tab">Rencana Masuk</a></li>
-						<li><a href="#belum-approve" data-toggle="tab">Belum Approve</a></li>
-					</ul>
-					<div class="tab-content">
-						<div class="tab-pane fade in active" id="reservasi">
-							
-							<!-- Content -->
-							<div class="row">
+<div class="wrapper">
+	<div class="content-wrapper">
+		
+		<!-- Keterangan page -->
+		<section class="content-header">
+			<h1>RESERVASI ANTRIAN PASIEN RAWAT INAP</h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li><a href="#">Reservasi</a></li>
+			</ol>
+		</section>
+		<!-- /Keterangan page -->
+
+        <!-- Main content -->
+        <section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<?php echo $this->session->flashdata('pesan');?>
+					
+					<!-- Tabs -->
+					<div class="nav-tabs-custom">
+						<ul class="nav nav-tabs">
+							<li class="<?php echo $tab_reservasi; ?>"><a href="#reservasi" data-toggle="tab">Reservasi</a></li>
+							<li class="<?php echo $tab_rencana_masuk; ?>"><a href="#rencana-masuk" data-toggle="tab">Rencana Masuk</a></li>
+							<li class="<?php echo $tab_belum_approve; ?>"><a href="#belum-approve" data-toggle="tab">Belum Approve</a></li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane <?php echo $tab_reservasi; ?>" id="reservasi">
 								
-								<!-- Form -->
-								<div class="col-md-9">
-									
-									<!-- Reservasi -->
-									<form action="<?php echo site_url('CReservasi/insert_reservasi'); ?>">
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Asal</div>
-											<div class="col-md-9">
-												<select class="form-control input-sm" name="asal">
-													<option value="Baru" <?php echo $stasal1; ?> >Baru</option>
-													<option value="Rawat Jalan" <?php echo $stasal2; ?> >Rawat Jalan</option>
-													<option value="Rawat Darurat" <?php echo $stasal3; ?> >Rawat Darurat</option>
-												</select>
-											</div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">No. Antrian</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="No Antrian" value="<?php echo $noantrian; ?>" readonly></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Rujukan</div>
-											<div class="col-md-9">
-												<select class="form-control input-sm" name="rujukan">
-													<option value="Rujukan" <?php echo $strujukan1; ?> >Rujukan</option>
-												</select>
-											</div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">No CM</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="No CM"></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Reg. Asal</div>
-											<div class="col-md-9">
-												<div class="row">
-													<div class="col-md-3"><input type="text" class="form-control input-sm" placeholder="Kode"></div>
-													<div class="col-md-9 form-right"><input type="text" class="form-control input-sm" placeholder="Nama" readonly ></div>
-												</div>
-											</div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Jenis Kelamin</div>
-											<div class="col-md-9">
-												<select class="form-control input-sm">
-													<option>Laki-Laki</option>
-													<option>Perempuan</option>
-												</select>
-											</div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Tanggal Lahir</div>
-											<div class="col-md-9 name-form"><input type="text" class="form-control input-sm" id="calendar-tgl-lahir" placeholder="03/18/2013"></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Telp</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Telp"></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">HP</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="HP"></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3"></div>
-											<div class="col-md-9"><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-reservasi">Simpan</button></div>
-										</div>
-										
-										<!-- Modal -->
-										<div class="modal fade bs-example-modal-sm" id="modal-reservasi" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-											<div class="modal-dialog modal-sm">
-												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-														<h4 class="modal-title" id="myModalLabel">Konfirmasi</h4>
-													</div>
-													<div class="modal-body">
-														Apakah kamu yakin?
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Tidak</button>
-														<button type="submit" class="btn btn-primary btn-sm">Ya</button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- /Modal -->
-										
-									</form>
-									<!-- /Reservasi -->
-									
-									<!-- Asal Pasien -->
-									<h4 class="page-header page-title">ASAL PASIEN</h4>
-									<div class="row form-input">
-										<div class="col-md-3 name-form">Poli / Ruang Asal</div>
-										<div class="col-md-9">
-											<div class="row">
-												<div class="col-md-3"><input type="text" class="form-control input-sm" placeholder="Kode" readonly ></div>
-												<div class="col-md-9 form-right"><input type="text" class="form-control input-sm" placeholder="Nama" readonly ></div>
-											</div>
-										</div>
-									</div>
-									<div class="row form-input">
-										<div class="col-md-3 name-form">Dokter</div>
-										<div class="col-md-9">
-											<div class="row">
-												<div class="col-md-3"><input type="text" class="form-control input-sm" placeholder="Kode" readonly ></div>
-												<div class="col-md-9 form-right"><input type="text" class="form-control input-sm" placeholder="Nama" readonly ></div>
-											</div>
-										</div>
-									</div>
-									<div class="row form-input">
-										<div class="col-md-3 name-form">Diagnosa</div>
-										<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Diagnosa" readonly ></div>
-									</div>
-									<!-- /Asal Pasien -->			
-								
-								</div>
-								<!-- /Form -->
-								
-							</div>
-							<!-- /Content -->
-							
-						</div>
-						<div class="tab-pane fade" id="rencana-masuk">
-							
-							<!-- Content -->
-							<div class="row grid-content">
-										
-								<!-- Form -->
-								<div class="col-md-9">
-									
-									<!-- Rencana Masuk -->
-									<form action="<?php echo site_url('CReservasi/insert_rencana_masuk'); ?>">
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Rencana Masuk</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Rencana Masuk" ></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Tgl SP. Rawat</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Tgl SP. Rawat" ></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Ruang Pilih</div>
-											<div class="col-md-9">
-												<div class="row">
-													<div class="col-md-3"><input type="text" class="form-control input-sm" placeholder="Kode" ></div>
-													<div class="col-md-9 form-right"><input type="text" class="form-control input-sm" placeholder="Nama" readonly ></div>
-												</div>
-											</div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Kelas</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Kelas" ></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Prioritas</div>
-											<div class="col-md-9">
-												<div class="row">
-													<div class="col-md-6">
-														<select class="form-control input-sm">
-															<option>Prioritas</option>
+								<!-- Reservasi -->
+								<form class="form-horizontal" action="<?php echo site_url('RICReservasi/insert_reservasi'); ?>" method="POST">
+									<div class="row">
+										<div class="col-sm-6 form-left">
+											<div class="box-body">
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Asal</div>
+													<div class="col-sm-4">
+														<select class="form-control input-sm" name="asal">
+															<option value="baru" <?php echo $st_asal1; ?>>Baru</option>
+															<option value="rawat_jalan" <?php echo $st_asal2; ?>>Rawat Jalan</option>
+															<option value="rawat_darurat" <?php echo $st_asal3; ?>>Rawat Darurat</option>
 														</select>
 													</div>
-													<div class="col-md-6 form-right"><input type="checkbox"> Infeksi</label></div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">No. Antrian</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" name="no_antrian" value="<?php echo $no_antrian; ?>">
+														<font color="red"><?php echo form_error('no_antrian'); ?></font>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Rujukan</div>
+													<div class="col-sm-4">
+														<select class="form-control input-sm" name="rujukan">
+															<option value="rujukan" <?php echo $st_rujukan1; ?>>Rujukan</option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">No. CM</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" name="no_cm" value="<?php echo $no_cm; ?>">
+														<font color="red"><?php echo form_error('no_cm'); ?></font>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Reg. Asal</div>
+													<div class="col-sm-9" align="left">
+														<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="kode_reg_asal" value="<?php echo $kode_reg_asal; ?>"></div>
+														<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" name="name_reg_asal" value="<?php echo $name_reg_asal; ?>" readonly></div>
+														<font color="red"><?php echo form_error('kode_reg_asal'); ?></font>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Jenis Kelamin</div>
+													<div class="col-sm-4">
+														<select class="form-control input-sm" name="jenis_kelamin">
+															<option value="laki-laki" <?php echo $st_jenis_kelamin1; ?>>Laki-Laki</option>
+															<option value="perempuan" <?php echo $st_jenis_kelamin2; ?>>Perempuan</option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Tanggal Lahir</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" id="calendar-tgl-lahir" name="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>">
+														<font color="red"><?php echo form_error('tanggal_lahir'); ?></font>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Telp</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" name="telp" value="<?php echo $telp; ?>">
+														<font color="red"><?php echo form_error('telp'); ?></font>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">HP</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" name="hp" value="<?php echo $hp; ?>">
+														<font color="red"><?php echo form_error('hp'); ?></font>
+													</div>
 												</div>
 											</div>
 										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Keterangan</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Keterangan" ></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3"></div>
-											<div class="col-md-9"><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-rencana-masuk">Simpan</button></div>
-										</div>
-										
-										<!-- Modal -->
-										<div class="modal fade bs-example-modal-sm" id="modal-rencana-masuk" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-											<div class="modal-dialog modal-sm">
-												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-														<h4 class="modal-title" id="myModalLabel">Konfirmasi</h4>
+										<div class="col-sm-6">
+											<div class="box-body">
+												<h4 class="title-form">ASAL PASIEN</h4>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Reg. Asal</div>
+													<div class="col-sm-9" align="left">
+														<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" readonly></div>
+														<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" readonly></div>
 													</div>
-													<div class="modal-body">
-														Apakah kamu yakin?
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Dokter</div>
+													<div class="col-sm-9" align="left">
+														<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" readonly></div>
+														<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" readonly></div>
 													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Tidak</button>
-														<button type="submit" class="btn btn-primary btn-sm">Ya</button>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Diagnosa</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" readonly>
 													</div>
 												</div>
 											</div>
 										</div>
-										<!-- /Modal -->
-										
-									</form>
-									<!-- /Rencana Masuk -->
+									</div>
+									<div class="row">
+										<div class="col-sm-8">
+											<div class="button-reservasi">
+												<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-reservasi">Simpan</button>
+											</div>							
+										</div>
+									</div>
 									
-								</div>
-								<!-- /Form -->
+									<!-- Modal -->
+									<div class="modal fade bs-example-modal-sm" id="modal-reservasi" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+										<div class="modal-dialog modal-sm">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+													<h4 class="modal-title" id="myModalLabel">Konfirmasi</h4>
+												</div>
+												<div class="modal-body">
+													Apakah kamu yakin dengan data tersebut?
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Tidak</button>
+													<button type="submit" class="btn btn-primary btn-sm">Ya</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /Modal -->
+									
+								</form>
+								<!-- /Reservasi -->
 								
 							</div>
-							<!-- /Content -->
-							
-						</div>
-						<div class="tab-pane fade" id="belum-approve">
-							
-							<!-- Content -->
-							<form action="<?php echo site_url('CReservasi/insert_belum_approve'); ?>">
-								<div class="row grid-content">
-									
-									<!-- Right -->
-									<div class="col-md-9">
-										
-										<!-- Belum Approve -->
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Tgl Approve</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="01/01/2016" readonly ></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Jam Approve</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="20:00" readonly ></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Bed</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Bed" ></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Kelas</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Kelas" ></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">Ruang</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="Ruang" ></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">User Approve</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="User Approve" ></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3 name-form">No. Register</div>
-											<div class="col-md-9"><input type="text" class="form-control input-sm" placeholder="No Register" ></div>
-										</div>
-										<div class="row form-input">
-											<div class="col-md-3"></div>
-											<div class="col-md-9"><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-belum-approve">Simpan</button></div>
-										</div>
-										
-										<!-- Modal -->
-										<div class="modal fade bs-example-modal-sm" id="modal-belum-approve" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-											<div class="modal-dialog modal-sm">
-												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-														<h4 class="modal-title" id="myModalLabel">Konfirmasi</h4>
+							<div class="tab-pane <?php echo $tab_rencana_masuk; ?>" id="rencana-masuk">
+								
+								<!-- Rencana Masuk -->
+								<form class="form-horizontal" action="<?php echo site_url('RICReservasi/insert_rencana_masuk'); ?>" method="POST">
+									<div class="row">
+										<div class="col-sm-8">
+											<div class="box-body">
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Rencana Masuk</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" name="rencana_masuk" value="<?php echo $rencana_masuk; ?>">
+														<font color="red"><?php echo form_error('rencana_masuk'); ?></font>
 													</div>
-													<div class="modal-body">
-														Apakah kamu yakin?
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Tgl. SP. Rawat</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" id="calendar-tgl-sp-rawat" name="tgl_sp_rawat" value="<?php echo $tgl_sp_rawat; ?>">
+														<font color="red"><?php echo form_error('tgl_sp_rawat'); ?></font>
 													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Tidak</button>
-														<button type="submit" class="btn btn-primary btn-sm">Ya</button>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Ruang Pilih</div>
+													<div class="col-sm-9" align="left">
+														<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="kode_ruang_pilih" value="<?php echo $kode_ruang_pilih; ?>"></div>
+														<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" name="name_ruang_pilih" value="<?php echo $name_ruang_pilih; ?>" readonly></div>
+														<font color="red"><?php echo form_error('kode_ruang_pilih'); ?></font>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Kelas</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" name="kelas" value="<?php echo $kelas; ?>">
+														<font color="red"><?php echo form_error('kelas'); ?></font>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Prioritas</div>
+													<div class="col-sm-2">
+														<select class="form-control input-sm" name="prioritas">
+															<option value="1" <?php echo $st_prioritas1; ?>>1</option>
+															<option value="2" <?php echo $st_prioritas2; ?>>2</option>
+															<option value="3" <?php echo $st_prioritas3; ?>>3</option>
+														</select>
+													</div>
+													<div class="col-sm-7">
+														<input type="checkbox" value="ya" name="infeksi"> Infeksi
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Keterangan</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" name="keterangan" value="<?php echo $keterangan; ?>">
+														<font color="red"><?php echo form_error('keterangan'); ?></font>
 													</div>
 												</div>
 											</div>
 										</div>
-										<!-- /Modal -->
-													
 									</div>
-									<!-- /Right -->
+									<div class="row">
+										<div class="col-sm-8">
+											<div class="button-reservasi">
+												<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-rencana-masuk">Simpan</button>
+											</div>							
+										</div>
+									</div>
 									
+									<!-- Modal -->
+									<div class="modal fade bs-example-modal-sm" id="modal-rencana-masuk" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+										<div class="modal-dialog modal-sm">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+													<h4 class="modal-title" id="myModalLabel">Konfirmasi</h4>
+												</div>
+												<div class="modal-body">
+													Apakah kamu yakin dengan data tersebut?
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Tidak</button>
+													<button type="submit" class="btn btn-primary btn-sm">Ya</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /Modal -->
+								
+								</form>
+								<!-- /Rencana Masuk -->
+								
+							</div>
+							<div class="tab-pane <?php echo $tab_belum_approve; ?>" id="belum-approve">
+								<div class="row">
+									<div class="col-sm-8">
+								
+										<!-- Rencana Masuk -->
+										<div class="form-horizontal">
+											<div class="box-body">
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Tgl. Approve</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" readonly>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Jam Approve</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" readonly>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Bed</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" readonly>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Kelas</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" readonly>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">Ruang</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" readonly>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">User Approve</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" readonly>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-3 control-label">No. Register</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control input-sm" readonly>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+										<!-- /Belum Approve -->
+									
+									</div>
 								</div>
-							</form>
-							<!-- /Content -->
-							
+							</div>
 						</div>
 					</div>
+					<!-- /Tabs -->
+					
 				</div>
 			</div>
-		</div>
+		</section>
+		<!-- /Main content -->
+		
 	</div>
-	<!-- /Tabs -->
-	
-	<!-- /Distance -->
-	<div class="page-distance"></div>
-	<!-- /Distance -->
-	
 </div>
 <script>
-	$('#calendar-tgl-lahir').datepicker({
-		
-	});
+	$('#calendar-tgl-lahir').datepicker();
+	$('#calendar-tgl-sp-rawat').datepicker();
 </script>
