@@ -1,8 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class RICStatus extends CI_Controller {
+class ricstatus extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		
+		$this->load->model('mrawatinap/rimreservasi');
+	}
+	public function index(){
 		$data['reservasi']='';
 		$data['daftar']='';
 		$data['pendaftaran']='';
@@ -12,16 +15,11 @@ class RICStatus extends CI_Controller {
 		$data['resume']='';
 		$data['kontrol']='';
 		
-		$this->load->view('RIVLink');
-		$this->load->view('RIVHeader');
-		$this->load->view('RIVMenu', $data);
-		
-		$this->load->model('RIMReservasi');
-	}
-	public function index(){
-		$this->load->view('RIVStatus');
-		
-		$this->load->view('RIVFooter');
+		$this->load->view('vrawatinap/rivlink');
+		$this->load->view('vrawatinap/rivheader');
+		$this->load->view('vrawatinap/rivmenu', $data);
+		$this->load->view('vrawatinap/rivstatus');
+		$this->load->view('vrawatinap/rivfooter');
 	}
 	public function insert_status(){
 		$this->session->set_flashdata('pesan',
@@ -30,6 +28,6 @@ class RICStatus extends CI_Controller {
 			<i class='icon fa fa-check'></i> Data telah tersimpan!
 		</div>");
 		
-		redirect('RICStatus');
+		redirect('crawatinap/ricstatus');
 	}
 }

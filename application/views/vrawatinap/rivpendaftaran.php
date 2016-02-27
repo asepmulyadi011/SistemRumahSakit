@@ -5,7 +5,7 @@
 		<section class="content-header">
 			<h1>PENDAFTARAN RAWAT INAP</h1>
 			<ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
 				<li><a href="#">Pendaftaran</a></li>
 			</ol>
 		</section>
@@ -20,7 +20,7 @@
 						<br/>
 						
 						<!-- Form Pendaftaran -->
-						<form class="form-horizontal" action="<?php echo site_url('RICPendaftaran/insert_pendaftaran'); ?>">
+						<form class="form-horizontal" action="<?php echo site_url('crawatinap/ricpendaftaran/insert_pendaftaran'); ?>">
 							<div class="box-body">
 								<div class="row">
 									<div class="col-sm-6">
@@ -137,26 +137,6 @@
 								</div>
 							</div>
 							
-							<!-- Modal -->
-							<div class="modal fade bs-example-modal-sm" id="modal-pendaftaran" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-								<div class="modal-dialog modal-sm">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-											<h4 class="modal-title" id="myModalLabel">Konfirmasi</h4>
-										</div>
-										<div class="modal-body">
-											Apakah kamu yakin dengan data tersebut?
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Tidak</button>
-											<button type="submit" class="btn btn-primary btn-sm">Ya</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- /Modal -->
-							
 							<!-- Tabs -->
 							<div class="nav-tabs-custom">
 								<ul class="nav nav-tabs">
@@ -214,13 +194,35 @@
 							</div>
 							<!-- /Tabs -->
 							
+							<!-- Button -->
 							<div class="row">
 								<div class="col-sm-8">
 									<div class="button-pendaftaran">
-										<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-pendaftaran">Simpan</button>
+										<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-pendaftaran"><i class="fa fa-save"></i> Simpan</button>
 									</div>							
 								</div>
-							</div>	
+							</div>
+							<!-- /Button -->
+							
+							<!-- Modal -->
+							<div class="modal fade bs-example-modal-sm" id="modal-pendaftaran" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+											<h4 class="modal-title" id="myModalLabel">Konfirmasi</h4>
+										</div>
+										<div class="modal-body">
+											Apakah kamu yakin dengan data tersebut?
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-remove"></i> Tidak</button>
+											<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check"></i> Ya</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /Modal -->
 						</form>
 						<!-- /Form Pendaftaran -->
 						

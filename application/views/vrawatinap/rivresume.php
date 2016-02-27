@@ -5,7 +5,7 @@
 		<section class="content-header">
 			<h1>RESUME MEDIK</h1>
 			<ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
 				<li><a href="#">Resume</a></li>
 			</ol>
 		</section>
@@ -20,7 +20,7 @@
 						<br/>
 						
 						<!-- Form Resume Medik -->
-						<form class="form-horizontal" action="<?php echo site_url('RICResume'); ?>">
+						<form class="form-horizontal" action="<?php echo site_url('crawatinap/ricresume'); ?>">
 							<div class="box-body">
 								<div class="row">
 									<div class="col-sm-6 form-left">
@@ -171,7 +171,7 @@
 								<div class="row">
 									<div class="col-sm-8">
 										<div class="button-reservasi">
-											<button type="button" class="btn btn-primary btn-sm">Cetak Resume Medik</button>
+											<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-print"></i> Cetak Resume Medik</button>
 										</div>
 									</div>
 								</div>

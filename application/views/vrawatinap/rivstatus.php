@@ -5,7 +5,7 @@
 		<section class="content-header">
 			<h1>STATUS PASIEN DI RUANGAN</h1>
 			<ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
 				<li><a href="#">Status</a></li>
 			</ol>
 		</section>
@@ -20,7 +20,7 @@
 						<br/>
 						
 						<!-- Form Status -->
-						<form class="form-horizontal" action="<?php echo site_url('RICStatus/insert_status'); ?>">
+						<form class="form-horizontal" action="<?php echo site_url('crawatinap/ricstatus/insert_status'); ?>">
 							<div class="box-body">
 								<div class="row">
 									<div class="col-sm-6">
@@ -129,14 +129,14 @@
 								<div class="row">
 									<div class="col-sm-8">
 										<div class="button-reservasi">
-											<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-mutasi">Simpan</button>
+											<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-mutasi"><i class="fa fa-save"></i> Simpan</button>
 										</div>						
 									</div>
 								</div>
 								
 								<!-- Modal -->
 								<div class="modal fade bs-example-modal-sm" id="modal-mutasi" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-									<div class="modal-dialog modal-sm">
+									<div class="modal-dialog">
 										<div class="modal-content">
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -146,8 +146,8 @@
 												Apakah kamu yakin dengan data tersebut?
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Tidak</button>
-												<button type="submit" class="btn btn-primary btn-sm">Ya</button>
+												<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-remove"></i> Tidak</button>
+												<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check"></i> Ya</button>
 											</div>
 										</div>
 									</div>
