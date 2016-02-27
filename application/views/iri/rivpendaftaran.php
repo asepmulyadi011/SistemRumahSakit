@@ -20,7 +20,7 @@
 						<br/>
 						
 						<!-- Form Pendaftaran -->
-						<form class="form-horizontal" action="<?php echo site_url('crawatinap/ricpendaftaran/insert_pendaftaran'); ?>">
+						<form class="form-horizontal" action="<?php echo site_url('iri/ricpendaftaran/insert_pendaftaran'); ?>">
 							<div class="box-body">
 								<div class="row">
 									<div class="col-sm-6">

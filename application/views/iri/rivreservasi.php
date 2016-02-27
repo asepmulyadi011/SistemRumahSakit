@@ -2,7 +2,7 @@
 var site = "<?php echo site_url(); ?>";
 $(function(){
 	$('.auto-ruang').autocomplete({
-		serviceUrl: site+'crawatinap/ricreservasi/data_ruang',
+		serviceUrl: site+'/iri/ricreservasi/data_ruang',
 		onSelect: function (suggestion) {
 			$('#kode-ruang-pilih').val(''+suggestion.idrg);
 			$('#nama-ruang-pilih').val(''+suggestion.nmruang);
@@ -13,7 +13,7 @@ $(function(){
 var site = "<?php echo site_url(); ?>";
 $(function(){
 	$('.auto-no-cm-rawat-jalan').autocomplete({
-		serviceUrl: site+'/crawatinap/ricreservasi/data_pasien_irj',
+		serviceUrl: site+'/iri/ricreservasi/data_pasien_irj',
 		onSelect: function (suggestion) {
 			$('#kode-reg').val(''+suggestion.no_reg);
 			$('#name-reg').val(''+suggestion.nama);
@@ -44,7 +44,7 @@ $(function(){
 
 $(document).ready(function() {
 	$('.auto_ruang').autocomplete({
-		serviceUrl: site+'/crawatinap/ricreservasi/data_ruang',
+		serviceUrl: site+'/iri/ricreservasi/data_ruang',
 		onSelect: function (suggestion) {
 			$('#kode-ruang-pilih').val(''+suggestion.idrg);
 			$('#nama-ruang-pilih').val(''+suggestion.nmruang);
@@ -126,7 +126,7 @@ $(document).ready(function() {
 							<div class="tab-pane active" id="reservasi">
 								
 								<!-- Reservasi -->
-								<form class="form-horizontal" action="<?php echo site_url('crawatinap/ricreservasi/insert_reservasi'); ?>" method="POST" id="form-reservasi">
+								<form class="form-horizontal" action="<?php echo site_url('iri/ricreservasi/insert_reservasi'); ?>" method="POST" id="form-reservasi">
 									<div class="row">
 										<div class="col-sm-6 form-left">
 											<div class="box-body">

@@ -20,7 +20,7 @@
 						<br/>
 						
 						<!-- Form Mutasi -->
-						<form class="form-horizontal" action="<?php echo site_url('crawatinap/ricmutasi/insert_mutasi'); ?>">
+						<form class="form-horizontal" action="<?php echo site_url('iri/ricmutasi/insert_mutasi'); ?>">
 							<div class="box-body">
 								<div class="row">
 									<div class="col-sm-6">

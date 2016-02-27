@@ -4,6 +4,6 @@ class gerbang extends CI_Controller {
 		parent::__construct();
 	}
 	public function rawatinap(){
-		redirect('crawatinap/ricreservasi');
+		redirect('iri/ricreservasi');
 	}
 }

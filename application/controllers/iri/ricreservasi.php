@@ -3,7 +3,7 @@ class ricreservasi extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		
-		$this->load->model('mrawatinap/rimreservasi');
+		$this->load->model('iri/rimreservasi');
 	}
 	public function index(){
 		// MENU
@@ -19,11 +19,11 @@ class ricreservasi extends CI_Controller {
 		$no_antrian=count($this->rimreservasi->select_irna_antrian());
 		$data['no_antrian']='RI'.sprintf("%08d", $no_antrian+1);
 		
-		$this->load->view('vrawatinap/rivlink');
-		$this->load->view('vrawatinap/rivheader');
-		$this->load->view('vrawatinap/rivmenu', $data);
-		$this->load->view('vrawatinap/rivreservasi', $data);
-		$this->load->view('vrawatinap/rivfooter');
+		$this->load->view('iri/rivlink');
+		$this->load->view('iri/rivheader');
+		$this->load->view('iri/rivmenu', $data);
+		$this->load->view('iri/rivreservasi', $data);
+		$this->load->view('iri/rivfooter');
 	}
 	public function insert_reservasi(){
 		// RESRVASI
@@ -79,11 +79,11 @@ class ricreservasi extends CI_Controller {
 				<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
 				<i class='icon fa fa-check'></i> Data gagal tersimpan!
 			</div>");
-			$this->load->view('vrawatinap/rivlink');
-			$this->load->view('vrawatinap/rivheader');
-			$this->load->view('vrawatinap/rivmenu', $data);
-			$this->load->view('vrawatinap/rivreservasi');
-			$this->load->view('vrawatinap/rivfooter');
+			$this->load->view('iri/rivlink');
+			$this->load->view('iri/rivheader');
+			$this->load->view('iri/rivmenu', $data);
+			$this->load->view('iri/rivreservasi');
+			$this->load->view('iri/rivfooter');
 		}else{
 			$this->session->set_flashdata('pesan',
 			"<div class='alert alert-success alert-dismissable'>
@@ -91,7 +91,7 @@ class ricreservasi extends CI_Controller {
 				<i class='icon fa fa-check'></i> Data telah tersimpan!
 			</div>");
 			$this->rimreservasi->insert_reservasi($data_reservasi);
-			redirect('crawatinap/ricreservasi');
+			redirect('iri/ricreservasi');
 		}
 	}
 	public function validation_reservasi($asal){ // Form validasi untuk reservasi

@@ -19,7 +19,7 @@
 						<br/>
 						
 						<!-- Form Pencarian Pasien -->
-						<form class="form-horizontal" action="<?php echo site_url('crawatinap/ricpasien'); ?>">
+						<form class="form-horizontal" action="<?php echo site_url('iri/ricpasien'); ?>">
 							<div class="box-body">
 								<div class="col-sm-8">
 									<div class="form-group">

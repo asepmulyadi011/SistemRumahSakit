@@ -20,7 +20,7 @@
 						<br/>
 						
 						<!-- Form Status -->
-						<form class="form-horizontal" action="<?php echo site_url('crawatinap/ricstatus/insert_status'); ?>">
+						<form class="form-horizontal" action="<?php echo site_url('iri/ricstatus/insert_status'); ?>">
 							<div class="box-body">
 								<div class="row">
 									<div class="col-sm-6">

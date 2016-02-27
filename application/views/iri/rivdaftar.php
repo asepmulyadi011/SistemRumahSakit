@@ -80,7 +80,7 @@ $(document).ready(function() {
 		"bInfo": true,
 		"bAutoWidth": true,
 		"ajax":{
-			url :"<?php echo site_url('crawatinap/ricdaftar/get_irna_antrian/'); ?>", // json datasource
+			url :"<?php echo site_url('iri/ricdaftar/get_irna_antrian/'); ?>", // json datasource
 			type: "post",
 			error: function(){  // error handling
 				$(".employee-grid-error").html("");

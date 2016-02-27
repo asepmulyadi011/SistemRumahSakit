@@ -20,7 +20,7 @@
 						<br/>
 						
 						<!-- Form Resume Medik -->
-						<form class="form-horizontal" action="<?php echo site_url('crawatinap/ricresume'); ?>">
+						<form class="form-horizontal" action="<?php echo site_url('iri/ricresume'); ?>">
 							<div class="box-body">
 								<div class="row">
 									<div class="col-sm-6 form-left">
