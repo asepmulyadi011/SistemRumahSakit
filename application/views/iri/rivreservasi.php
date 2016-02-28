@@ -36,6 +36,32 @@ $(function(){
 	});
 });
 
+var site = "<?php echo site_url(); ?>";
+$(function(){
+	$('.auto-no-cm-rawat-darurat').autocomplete({
+		serviceUrl: site+'/iri/ricreservasi/data_pasien_ird',
+		onSelect: function (suggestion) {
+			$('#kode-reg').val(''+suggestion.no_reg);
+			$('#name-reg').val(''+suggestion.nama);
+			$('.tanggal-lahir').val(''+suggestion.tanggal_lahir);
+			if(suggestion.jenis_kelamin=='L'){
+				$('#laki-laki').attr('selected', 'selected');
+				$('#perempuan').removeAttr('selected', 'selected');
+			}else{
+				$('#laki-laki').removeAttr('selected', 'selected');
+				$('#perempuan').attr('selected', 'selected');
+			}
+			$('#telp').val(''+suggestion.telp);
+			$('#hp').val(''+suggestion.hp);
+			$('#kode-reg-asal').val(''+suggestion.no_reg);
+			$('#name-reg-asal').val(''+suggestion.nama);
+			$('#kode-dokter').val(''+suggestion.kode_dok);
+			$('#name-dokter').val(''+suggestion.nama_dok);
+			$('#diagnosa').val(''+suggestion.diagnosa);
+		}
+	});
+});
+
 $(function(){
 	$('#no-cm-rawat-jalan').show();
 	$('#no-cm-ruang-rawat').hide();
@@ -116,6 +142,7 @@ $(document).ready(function() {
 			<div class="row">
 				<div class="col-sm-12">
 					<?php echo $this->session->flashdata('pesan');?>
+					
 					<!-- Tabs -->
 					<div class="nav-tabs-custom">
 						<ul class="nav nav-tabs">
@@ -143,7 +170,7 @@ $(document).ready(function() {
 												<div class="form-group">
 													<div class="col-sm-3 control-label">No. Antrian *</div>
 													<div class="col-sm-9">
-														<input type="text" class="form-control input-sm" name="no_antrian" value="<?php echo $no_antrian; ?>" readonly>
+														<input type="text" class="form-control input-sm" name="no_reservasi" value="<?php echo $no_reservasi; ?>" readonly>
 													</div>
 												</div>
 												<div class="form-group">
@@ -290,7 +317,7 @@ $(document).ready(function() {
 														</select>
 													</div>
 													<div class="col-sm-6">
-														<input type="checkbox" value="1" name="infeksi"> Infeksi
+														<input type="checkbox" value="Y" name="infeksi"> Infeksi
 													</div>
 												</div>
 												<div class="form-group">
@@ -406,12 +433,12 @@ $(document).ready(function() {
 </div>
 <script>
 	$('#calendar-tgl-lahir').datepicker({
-		format: 'dd/mm/yyyy'
+		format: 'yyyy-mm-dd'
 	});
 	$('#calendar-tgl-sp-rawat').datepicker({
-		format: 'dd/mm/yyyy'
+		format: 'yyyy-mm-dd'
 	});
 	$('#calendar-tgl-rencana-masuk').datepicker({
-		format: 'dd/mm/yyyy'
+		format: 'yyyy-mm-dd'
 	});
 </script>

@@ -116,14 +116,8 @@
 														<option>AB</option>
 													</select>
 												</div>
-											</div>
-											<div class="form-group">
-												<div class="col-sm-3 control-label">Bayi Baru Lahir</div>
-												<div class="col-sm-9">
-													<div class="form-inline">
-														<input type="radio" name="optionsRadios"> Ya
-														<input type="radio" name="optionsRadios"> Tidak
-													</div>
+												<div class="col-sm-5">
+													<input type="checkbox" value="Y" name="infeksi"> Bayi Baru Lahir
 												</div>
 											</div>
 											<div class="form-group">
@@ -140,18 +134,18 @@
 							<!-- Tabs -->
 							<div class="nav-tabs-custom">
 								<ul class="nav nav-tabs">
-									<li class=""><a href="#biodata" data-toggle="tab">Biodata</a></li>
+									<li class="active"><a href="#biodata" data-toggle="tab">Biodata</a></li>
 									<li class=""><a href="#penanggung-jawab" data-toggle="tab">Penanggung Jawab</a></li>
-									<li class="active"><a href="#ruangan" data-toggle="tab">Ruangan</a></li>
+									<li class=""><a href="#ruangan" data-toggle="tab">Ruangan</a></li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane" id="biodata">
+									<div class="tab-pane active" id="biodata">
 									
 									</div>
 									<div class="tab-pane" id="penanggung-jawab">
 									
 									</div>
-									<div class="tab-pane active" id="ruangan">
+									<div class="tab-pane" id="ruangan">
 										<div class="row">
 											<div class="col-sm-8">
 												<div class="box-body">

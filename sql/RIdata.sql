@@ -54,6 +54,22 @@ insert into pasien_irj values('0000000001', 'RJ00000001', 'Asep Mulyadi', 'L', '
 insert into pasien_irj values('0000000002', 'RJ00000002', 'Aksan Maulana', 'L', '1993-03-24', '(021)234568', '085624652536', 'DK00000002', 'Ahmad Ramdani', 'Penyakit Kulit!');
 insert into pasien_irj values('0000000003', 'RJ00000003', 'Iip', 'L', '1993-05-24', '(021)234569', '085624652547', 'DK00000003', 'Tommy Putra', 'Penyakit Flu!');
 
+create table pasien_ird(
+	no_cm					varchar(11),
+	no_reg					varchar(11),
+	nama					varchar(30),
+	jenis_kelamin			char(1),
+	tanggal_lahir			date,
+	telp					varchar(15),
+	hp						varchar(15),
+	kode_dok				varchar(11),
+	nama_dok				varchar(30),
+	diagnosa				varchar(50)
+);
+insert into pasien_ird values('0000000001', 'RD00000001', 'Asep Mulyadi', 'L', '1993-08-24', '(021)234567', '085624652525', 'DK00000001', 'Mila Pradini', 'Penyakit Maag!');
+insert into pasien_ird values('0000000002', 'RD00000002', 'Aksan Maulana', 'L', '1993-03-24', '(021)234568', '085624652536', 'DK00000002', 'Ahmad Ramdani', 'Penyakit Kulit!');
+insert into pasien_ird values('0000000003', 'RD00000003', 'Iip', 'L', '1993-05-24', '(021)234569', '085624652547', 'DK00000003', 'Tommy Putra', 'Penyakit Flu!');
+
 $coba=strtotime('02/15/2016');
 $date=date('d/m/Y', $coba);
 echo $date;

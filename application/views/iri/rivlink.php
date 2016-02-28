@@ -7,43 +7,40 @@
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 		<!-- Bootstrap 3.3.5 -->
-		<link rel="stylesheet" href="<?php echo base_url('plugin/bootstrap/css/bootstrap.min.css'); ?>">
+		<link rel="stylesheet" href="<?php echo base_url('asset/bootstrap/css/bootstrap.min.css'); ?>">
 		<!-- Font Awesome -->
-		<link rel="stylesheet" href="<?php echo base_url('plugin/plugins/font-awesome/css/font-awesome.min.css'); ?>">
+		<link rel="stylesheet" href="<?php echo base_url('asset/bootstrap/font-awesome/css/font-awesome.min.css'); ?>">
 		<!-- DataTables -->
-		<link rel="stylesheet" href="<?php echo base_url('plugin/plugins/datatables/dataTables.bootstrap.css'); ?>">
+		<link rel="stylesheet" href="<?php echo base_url('asset/datatables/dataTables.bootstrap.css'); ?>">
 		<!-- Theme style -->
-		<link rel="stylesheet" href="<?php echo base_url('plugin/dist/css/AdminLTE.min.css'); ?>">
+		<link rel="stylesheet" href="<?php echo base_url('asset/bootstrap/css/AdminLTE.min.css'); ?>">
 		<!-- AdminLTE Skins -->
-		<link rel="stylesheet" href="<?php echo base_url('plugin/dist/css/skins/_all-skins.min.css'); ?>">
+		<link rel="stylesheet" href="<?php echo base_url('asset/bootstrap/css/skins/_all-skins.min.css'); ?>">
 		<!-- iCheck -->
-		<link rel="stylesheet" href="<?php echo base_url('plugin/plugins/iCheck/flat/blue.css'); ?>">
+		<link rel="stylesheet" href="<?php echo base_url('asset/iCheck/flat/blue.css'); ?>">
 		<!-- Date Picker -->
-		<link rel="stylesheet" href="<?php echo base_url('plugin/plugins/datepicker/datepicker3.css'); ?>">
+		<link rel="stylesheet" href="<?php echo base_url('asset/datepicker/datepicker3.css'); ?>">
 		<!-- Autocomplete -->
-		<link rel="stylesheet" href="<?php echo base_url('plugin/plugins/jquery-autocomplete/js/jquery.autocomplete.css');?>">
+		<link rel="stylesheet" href="<?php echo base_url('asset/jquery/jquery.autocomplete.css');?>">
 		<!-- Custom -->
-		<link rel="stylesheet" href="<?php echo base_url('plugin/custom/RICustom.css'); ?>">
+		<link rel="stylesheet" href="<?php echo base_url('asset/custom/RICustom.css'); ?>">
 	</head>
 	<body class="hold-transition skin-blue sidebar-mini">
 		<!-- jQuery 2.1.4 -->
-		<script src="<?php echo base_url('plugin/plugins/jQuery/jQuery-2.1.4.min.js'); ?>"></script>
+		<script src="<?php echo base_url('asset/bootstrap/js/jQuery-2.1.4.min.js'); ?>"></script>
 		<!-- Form Validate -->
-		<script src="<?php echo base_url('plugin/validate/jquery-latest.js'); ?>"></script>
-		<script src="<?php echo base_url('plugin/validate/jquery.validate.js'); ?>"></script>
+		<script src="<?php echo base_url('asset/validate/jquery-latest.js'); ?>"></script>
+		<script src="<?php echo base_url('asset/validate/jquery.validate.js'); ?>"></script>
 		<!-- Autocomplete -->
-		<script src="<?php echo base_url('plugin/plugins/jquery-autocomplete/js/jquery.autocomplete.js');?>"></script>
-		<!-- daterangepicker -->
-		<script src="<?php echo base_url('plugin/plugins/daterangepicker/moment.min.js'); ?>"></script>
-		<script src="<?php echo base_url('plugin/plugins/daterangepicker/daterangepicker.js'); ?>"></script>
+		<script src="<?php echo base_url('asset/jquery/jquery.autocomplete.js');?>"></script>
 		<!-- datepicker -->
-		<script src="<?php echo base_url('plugin/plugins/datepicker/bootstrap-datepicker.js'); ?>"></script>
+		<script src="<?php echo base_url('asset/datepicker/bootstrap-datepicker.js'); ?>"></script>
 		<!-- Bootstrap 3.3.5 -->
-		<script src="<?php echo base_url('plugin/bootstrap/js/bootstrap.min.js'); ?>"></script>
+		<script src="<?php echo base_url('asset/bootstrap/js/bootstrap.min.js'); ?>"></script>
 		<!-- DataTables -->
-		<script src="<?php echo base_url('plugin/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
-		<script src="<?php echo base_url('plugin/plugins/datatables/dataTables.bootstrap.min.js'); ?>"></script>
+		<script src="<?php echo base_url('asset/datatables/jquery.dataTables.min.js'); ?>"></script>
+		<script src="<?php echo base_url('asset/datatables/dataTables.bootstrap.min.js'); ?>"></script>
 		<!-- AdminLTE App -->
-		<script src="<?php echo base_url('plugin/dist/js/app.min.js'); ?>"></script>
+		<script src="<?php echo base_url('asset/bootstrap/js/app.min.js'); ?>"></script>
 	</body>
 </html>

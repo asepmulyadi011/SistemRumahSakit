@@ -3,9 +3,9 @@ class ricpendaftaran extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		
-		$this->load->model('iri/rimreservasi');
+		$this->load->model('iri/rimpendaftaran');
 	}
-	public function index(){
+	public function index($noreservasi=''){
 		$data['reservasi']='';
 		$data['daftar']='';
 		$data['pendaftaran']='active';
