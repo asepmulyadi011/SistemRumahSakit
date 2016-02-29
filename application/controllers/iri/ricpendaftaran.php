@@ -15,10 +15,12 @@ class ricpendaftaran extends CI_Controller {
 		$data['resume']='';
 		$data['kontrol']='';
 		
+		$data_reservasi['irna_reservasi']=$this->rimpendaftaran->select_irna_antrian_by_noreservasi($noreservasi);
+		
 		$this->load->view('iri/rivlink');
 		$this->load->view('iri/rivheader');
 		$this->load->view('iri/rivmenu', $data);
-		$this->load->view('iri/rivpendaftaran');
+		$this->load->view('iri/rivpendaftaran', $data_reservasi);
 		$this->load->view('iri/rivfooter');
 	}
 	public function insert_pendaftaran(){

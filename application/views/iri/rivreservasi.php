@@ -196,7 +196,7 @@ $(document).ready(function() {
 													<div class="col-sm-3 control-label">Reg. Asal</div>
 													<div class="col-sm-9" align="left">
 														<span class="label-form-validation"></span>
-														<div class="col-sm-4 input-left"><input type="text" class="form-control input-sm" name="kode_reg" id="kode-reg"></div>
+														<div class="col-sm-4 input-left"><input type="text" class="form-control input-sm" name="kode_reg" id="kode-reg" readonly></div>
 														<div class="col-sm-8 input-right"><input type="text" class="form-control input-sm" name="name_reg" id="name-reg" readonly></div>
 													</div>
 												</div>

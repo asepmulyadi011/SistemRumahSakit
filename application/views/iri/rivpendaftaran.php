@@ -28,19 +28,19 @@
 											<div class="form-group">
 												<div class="col-sm-3 control-label">No. Reg. IRJ/IRD</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" value="<?php echo $irna_reservasi[0]['noreservasi']; ?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">No. CM</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" value="<?php echo $irna_reservasi[0]['no_cm']; ?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Tgl. Daftar</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm" id="calendar-tgl-daftar">
+													<input type="text" class="form-control input-sm" value="<?php echo $irna_reservasi[0]['tglreserv']; ?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
@@ -140,26 +140,221 @@
 								</ul>
 								<div class="tab-content">
 									<div class="tab-pane active" id="biodata">
-									
-									</div>
-									<div class="tab-pane" id="penanggung-jawab">
-									
-									</div>
-									<div class="tab-pane" id="ruangan">
 										<div class="row">
-											<div class="col-sm-8">
+											<div class="col-sm-6 form-left">
 												<div class="box-body">
 													<div class="form-group">
-														<div class="col-sm-3 control-label">Ruang</div>
+														<div class="col-sm-3 control-label">Alamat</div>
+														<div class="col-sm-9">
+															<input type="text" class="form-control input-sm">
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-3 control-label">Kelurahan</div>
+														<div class="col-sm-9">
+															<input type="text" class="form-control input-sm">
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-3 control-label">Kecamatan</div>
+														<div class="col-sm-9">
+															<input type="text" class="form-control input-sm">
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-3 control-label">RT/RW</div>
+														<div class="col-sm-9" align="left">
+															<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm"></div>
+															<div class="col-sm-3 input-right"><input type="text" class="form-control input-sm"></div>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-3 control-label">Daerah</div>
 														<div class="col-sm-9" align="left">
 															<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm"></div>
 															<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm"></div>
 														</div>
 													</div>
 													<div class="form-group">
-														<div class="col-sm-3 control-label">Tgl. Masuk</div>
+														<div class="col-sm-3 control-label">No. Telp</div>
+														<div class="col-sm-3">
+															<input type="text" class="form-control input-sm">
+														</div>
+														<div class="col-sm-2 control-label">No. HP</div>
+														<div class="col-sm-3">
+															<input type="text" class="form-control input-sm">
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-3 control-label">Status</div>
+														<div class="col-sm-3">
+															<input type="text" class="form-control input-sm">
+														</div>
+														<div class="col-sm-2 control-label">Agama</div>
+														<div class="col-sm-4">
+															<input type="text" class="form-control input-sm">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-6">
+												<div class="box-body">
+													<div class="form-group">
+														<div class="col-sm-3 control-label">Pendidikan</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm" id="calendar-tgl-masuk">
+															<input type="text" class="form-control input-sm">
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-3 control-label">Pekerjaan</div>
+														<div class="col-sm-9">
+															<input type="text" class="form-control input-sm">
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-3 control-label">Warga Negara</div>
+														<div class="col-sm-9">
+															<input type="text" class="form-control input-sm">
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-3 control-label">Suku Bangsa</div>
+														<div class="col-sm-9" align="left">
+															<input type="text" class="form-control input-sm">
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-3 control-label">Bahasa</div>
+														<div class="col-sm-9" align="left">
+															<input type="text" class="form-control input-sm">
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-3 control-label">Nama Ibu/Istri</div>
+														<div class="col-sm-9">
+															<input type="text" class="form-control input-sm">
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-3 control-label">Nama Ayah/Suami</div>
+														<div class="col-sm-9">
+															<input type="text" class="form-control input-sm">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="tab-pane" id="penanggung-jawab">
+										<div class="row">
+											<div class="col-sm-6">
+												<div class="box box-success">
+													<div class="box-header with-border">
+														<h3 class="box-title">Penjamin</h3>
+													</div>
+													<div class="box-body">
+														<div class="form-group">
+															<div class="col-sm-3 control-label">No.SJP / No.Surat</div>
+															<div class="col-sm-9" align="left">
+																<input type="text" class="form-control input-sm">
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-sm-3 control-label">No.Askes / No.Peserta</div>
+															<div class="col-sm-9" align="left">
+																<input type="text" class="form-control input-sm">
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-sm-3 control-label">Perusahaan</div>
+															<div class="col-sm-9" align="left">
+																<input type="text" class="form-control input-sm">
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-sm-3 control-label">P/I/S/A</div>
+															<div class="col-sm-9" align="left">
+																<input type="text" class="form-control input-sm">
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-sm-3 control-label">Golongan</div>
+															<div class="col-sm-9" align="left">
+																<input type="text" class="form-control input-sm">
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-sm-3 control-label">Jatah Kelas</div>
+															<div class="col-sm-9" align="left">
+																<input type="text" class="form-control input-sm">
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-6">
+												<div class="box box-success">
+													<div class="box-header with-border">
+														<h3 class="box-title">Keluarga</h3>
+													</div>
+													<div class="box-body">
+														<div class="form-group">
+															<div class="col-sm-3 control-label">Nama</div>
+															<div class="col-sm-9" align="left">
+																<input type="text" class="form-control input-sm">
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-sm-3 control-label">Alamat</div>
+															<div class="col-sm-9" align="left">
+																<input type="text" class="form-control input-sm">
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-sm-3 control-label">No.Telp / HP</div>
+															<div class="col-sm-9" align="left">
+																<input type="text" class="form-control input-sm">
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-sm-3 control-label">Kartu Identitas</div>
+															<div class="col-sm-9" align="left">
+																<div class="col-sm-4 input-left">
+																	<select class="form-control input-sm" name="kartu_identitas">
+																		<option value="identitas">Identitas</option>
+																	</select>
+																</div>
+																<div class="col-sm-8 input-right"><input type="text" class="form-control input-sm"></div>
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-sm-3 control-label">Hub.Keluarga</div>
+															<div class="col-sm-3" align="left">
+																<select class="form-control input-sm" name="hub_keluarga">
+																	<option value="hubungan">Hubungan</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="tab-pane" id="ruangan">
+										<div class="row">
+											<div class="col-sm-6">
+												<div class="box-body">
+													<div class="form-group">
+														<div class="col-sm-3 control-label">Bed</div>
+														<div class="col-sm-9">
+															<input type="text" class="form-control input-sm">
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-3 control-label">Ruang</div>
+														<div class="col-sm-9" align="left">
+															<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm"></div>
+															<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm"></div>
 														</div>
 													</div>
 													<div class="form-group">
@@ -169,9 +364,9 @@
 														</div>
 													</div>
 													<div class="form-group">
-														<div class="col-sm-3 control-label">Bed</div>
+														<div class="col-sm-3 control-label">Tgl. Masuk</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" id="calendar-tgl-masuk">
 														</div>
 													</div>
 													<div class="form-group">

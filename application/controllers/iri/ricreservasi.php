@@ -39,6 +39,7 @@ class ricreservasi extends CI_Controller {
 			$data_reservasi['no_cm']=$this->input->post('no_cm_rawat_darurat'); // No. CM
 		}
 		$data_reservasi['no_register_asal']=$this->input->post('kode_reg_asal'); // Kode Reg. Asal
+		$data_reservasi['tglreserv']=date('Y-m-d'); // Tanggal Reservasi
 		$data_reservasi['telp']=$this->input->post('telp'); // Telp
 		$data_reservasi['hp']=$this->input->post('hp'); // HP
 		
