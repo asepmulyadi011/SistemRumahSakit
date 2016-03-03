@@ -7,7 +7,7 @@ create table irna_antrian (
 	batal					char(1),
 	noreservasi				varchar(20),
 	kelas					varchar(7),
-	poliasal				varchar(10),
+	poliasal				varchar(50),
 	dokter					varchar(10),
 	diagnosa				varchar(100),
 	tglrencanamasuk			date,
@@ -46,13 +46,15 @@ create table pasien_irj(
 	tanggal_lahir			date,
 	telp					varchar(15),
 	hp						varchar(15),
-	kode_dok				varchar(11),
-	nama_dok				varchar(30),
-	diagnosa				varchar(50)
+	id_dokter				varchar(11),
+	dokter				varchar(30),
+	diagnosa				varchar(50),
+	id_poli				varchar(10),
+	poliasal				varchar(50)
 );
-insert into pasien_irj values('0000000001', 'RJ00000001', 'Asep Mulyadi', 'L', '1993-08-24', '(021)234567', '085624652525', 'DK00000001', 'Mila Pradini', 'Penyakit Maag!');
-insert into pasien_irj values('0000000002', 'RJ00000002', 'Aksan Maulana', 'L', '1993-03-24', '(021)234568', '085624652536', 'DK00000002', 'Ahmad Ramdani', 'Penyakit Kulit!');
-insert into pasien_irj values('0000000003', 'RJ00000003', 'Iip', 'L', '1993-05-24', '(021)234569', '085624652547', 'DK00000003', 'Tommy Putra', 'Penyakit Flu!');
+insert into pasien_irj values('0000000001', 'RJ00000001', 'Asep Mulyadi', 'L', '1993-08-24', '(021) 234567', '085624652525', 'DK00000001', 'Mila Pradini', 'Penyakit Maag!', 'BH01', 'Klinik Mata Terpadu');
+insert into pasien_irj values('0000000002', 'RJ00000002', 'Aksan Maulana', 'L', '1993-03-24', '(021) 234568', '085624652536', 'DK00000002', 'Ahmad Ramdani', 'Penyakit Kulit!', 'BH02', 'Klini Kaki Terpadu');
+insert into pasien_irj values('0000000003', 'RJ00000003', 'Iip', 'L', '1993-05-24', '(021) 234569', '085624652547', 'DK00000003', 'Tommy Putra', 'Penyakit Flu!', 'BH03', 'Klinik Hati Terpadu');
 
 create table pasien_ird(
 	no_cm					varchar(11),
@@ -62,13 +64,15 @@ create table pasien_ird(
 	tanggal_lahir			date,
 	telp					varchar(15),
 	hp						varchar(15),
-	kode_dok				varchar(11),
-	nama_dok				varchar(30),
-	diagnosa				varchar(50)
+	id_dokter				varchar(11),
+	dokter				varchar(30),
+	diagnosa				varchar(50),
+	id_poli				varchar(10),
+	poliasal				varchar(50)
 );
-insert into pasien_ird values('0000000001', 'RD00000001', 'Asep Mulyadi', 'L', '1993-08-24', '(021)234567', '085624652525', 'DK00000001', 'Mila Pradini', 'Penyakit Maag!');
-insert into pasien_ird values('0000000002', 'RD00000002', 'Aksan Maulana', 'L', '1993-03-24', '(021)234568', '085624652536', 'DK00000002', 'Ahmad Ramdani', 'Penyakit Kulit!');
-insert into pasien_ird values('0000000003', 'RD00000003', 'Iip', 'L', '1993-05-24', '(021)234569', '085624652547', 'DK00000003', 'Tommy Putra', 'Penyakit Flu!');
+insert into pasien_ird values('0000000001', 'RD00000001', 'Asep Mulyadi', 'L', '1993-08-24', '(021) 234567', '085624652525', 'DK00000001', 'Mila Pradini', 'Penyakit Maag!', 'BH01', 'Klinik Mata Terpadu');
+insert into pasien_ird values('0000000002', 'RD00000002', 'Aksan Maulana', 'L', '1993-03-24', '(021) 234568', '085624652536', 'DK00000002', 'Ahmad Ramdani', 'Penyakit Kulit!', 'BH01', 'Klinik Mata Terpadu');
+insert into pasien_ird values('0000000003', 'RD00000003', 'Iip', 'L', '1993-05-24', '(021) 234569', '085624652547', 'DK00000003', 'Tommy Putra', 'Penyakit Flu!', 'BH01', 'Klinik Mata Terpadu');
 
 $coba=strtotime('02/15/2016');
 $date=date('d/m/Y', $coba);

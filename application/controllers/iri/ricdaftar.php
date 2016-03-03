@@ -44,6 +44,10 @@ class ricdaftar extends CI_Controller {
 		$result=$this->rimdaftar->select_irna_antrian_all($kode_ruang, $kelas);
 		$totalDataQuery=count($result);
 		
+		if($totalDataQuery==0){
+			$data=Array();
+		}
+		
 		for($i=0;$i<$totalDataQuery;$i++){
 			$data[$i]['0']=$result[$i]['noreservasi']; // No Reservasi
 			$data[$i]['1']=$result[$i]['no_cm']; // No. CM
@@ -68,9 +72,9 @@ class ricdaftar extends CI_Controller {
 		}
 		
 		$json_data=array(
-			"data"=>$data,   // total data array
+			"data"=>$data // total data array
 		);
-		echo json_encode($json_data);  // send data as json format
+		echo json_encode($json_data); // send data as json format
 	}
 	public function data_ruang() {
 		// 1. Folder - 2. Nama controller - 3. nama fungsinya - 4. formnya

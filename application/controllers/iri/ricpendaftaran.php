@@ -7,8 +7,7 @@ class ricpendaftaran extends CI_Controller {
 	}
 	public function index($noreservasi=''){
 		$data['reservasi']='';
-		$data['daftar']='';
-		$data['pendaftaran']='active';
+		$data['daftar']='active';
 		$data['pasien']='';
 		$data['mutasi']='';
 		$data['status']='';

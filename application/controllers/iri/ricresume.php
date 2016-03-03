@@ -8,7 +8,6 @@ class ricresume extends CI_Controller {
 	public function index(){
 		$data['reservasi']='';
 		$data['daftar']='';
-		$data['pendaftaran']='';
 		$data['pasien']='';
 		$data['mutasi']='';
 		$data['status']='';

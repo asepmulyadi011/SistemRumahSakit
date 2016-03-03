@@ -28,45 +28,45 @@
 											<div class="form-group">
 												<div class="col-sm-3 control-label">No. Reg. IRJ/IRD</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm" value="<?php echo $irna_reservasi[0]['noreservasi']; ?>" readonly>
+													<input type="text" class="form-control input-sm" name="noregasal" value="<?php echo $irna_reservasi[0]['noreservasi']; ?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">No. CM</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm" value="<?php echo $irna_reservasi[0]['no_cm']; ?>" readonly>
+													<input type="text" class="form-control input-sm" name="no_cm" value="<?php echo $irna_reservasi[0]['no_cm']; ?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Tgl. Daftar</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm" value="<?php echo $irna_reservasi[0]['tglreserv']; ?>" readonly>
+													<input type="text" class="form-control input-sm" name="tgldaftarri" value="<?php echo $irna_reservasi[0]['tglreserv']; ?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Cara Bayar</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" name="carabayar">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">SMF</div>
 												<div class="col-sm-9" align="left">
-													<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm"></div>
-													<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm"></div>
+													<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="id_smf"></div>
+													<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" name="nmsmf"></div>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Cara Masuk</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" name="caramasuk">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Dokter</div>
 												<div class="col-sm-9" align="left">
-													<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm"></div>
-													<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm"></div>
+													<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="id_dokter"></div>
+													<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" name="nmdokter"></div>
 												</div>
 											</div>
 										</div>
@@ -76,54 +76,54 @@
 											<div class="form-group">
 												<div class="col-sm-3 control-label">No. Register IPD</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" name="no_ipd">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">No. Reg. Lama</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" name="noipdlama">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Nama</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" name="nama">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Tgl. Lahir</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm" id="calendar-tgl-lahir">
+													<input type="text" class="form-control input-sm" id="calendar-tgl-lahir" name="tgllahirri">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Jenis Kelamin</div>
 												<div class="col-sm-4">
-													<select class="form-control input-sm">
-														<option>Laki-Laki</option>
-														<option>Perempuan</option>
+													<select class="form-control input-sm" name="sex">
+														<option value="L">Laki-Laki</option>
+														<option value="P">Perempuan</option>
 													</select>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Gol. Darah</div>
 												<div class="col-sm-4">
-													<select class="form-control input-sm">
-														<option>A</option>
-														<option>B</option>
-														<option>O</option>
-														<option>AB</option>
+													<select class="form-control input-sm" name="goldarah">
+														<option value="A">A</option>
+														<option value="B">B</option>
+														<option value="O">O</option>
+														<option value="AB">AB</option>
 													</select>
 												</div>
 												<div class="col-sm-5">
-													<input type="checkbox" value="Y" name="infeksi"> Bayi Baru Lahir
+													<input type="checkbox" value="Y" name="barulahir"> Bayi Baru Lahir
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">No. Register Ibu</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" name="noipdibu">
 												</div>
 											</div>
 										</div>
@@ -146,53 +146,53 @@
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Alamat</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="alamatri">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Kelurahan</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="kelurahanri">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Kecamatan</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="kecamatanri">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">RT/RW</div>
 														<div class="col-sm-9" align="left">
-															<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm"></div>
-															<div class="col-sm-3 input-right"><input type="text" class="form-control input-sm"></div>
+															<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="rtri"></div>
+															<div class="col-sm-3 input-right"><input type="text" class="form-control input-sm" name="rwri"></div>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Daerah</div>
 														<div class="col-sm-9" align="left">
-															<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm"></div>
-															<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm"></div>
+															<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="id_daerah"></div>
+															<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" name="nmdaerah"></div>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">No. Telp</div>
 														<div class="col-sm-3">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="notelp">
 														</div>
 														<div class="col-sm-2 control-label">No. HP</div>
 														<div class="col-sm-3">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="nohp">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Status</div>
 														<div class="col-sm-3">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="statusri">
 														</div>
 														<div class="col-sm-2 control-label">Agama</div>
 														<div class="col-sm-4">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="agamari">
 														</div>
 													</div>
 												</div>
@@ -202,43 +202,43 @@
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Pendidikan</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="pendidikanri">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Pekerjaan</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="pekerjaanri">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Warga Negara</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="wnegarari">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Suku Bangsa</div>
 														<div class="col-sm-9" align="left">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="sukubangsari">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Bahasa</div>
 														<div class="col-sm-9" align="left">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="bahasari">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Nama Ibu/Istri</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="nm_ibu_istri">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Nama Ayah/Suami</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="nm_ayah_suami">
 														</div>
 													</div>
 												</div>
@@ -256,37 +256,46 @@
 														<div class="form-group">
 															<div class="col-sm-3 control-label">No.SJP / No.Surat</div>
 															<div class="col-sm-9" align="left">
-																<input type="text" class="form-control input-sm">
+																<input type="text" class="form-control input-sm" name="nosjp">
 															</div>
 														</div>
 														<div class="form-group">
 															<div class="col-sm-3 control-label">No.Askes / No.Peserta</div>
 															<div class="col-sm-9" align="left">
-																<input type="text" class="form-control input-sm">
+																<input type="text" class="form-control input-sm" name="nopembayranri">
 															</div>
 														</div>
 														<div class="form-group">
 															<div class="col-sm-3 control-label">Perusahaan</div>
 															<div class="col-sm-9" align="left">
-																<input type="text" class="form-control input-sm">
+																<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="id_kontraktor"></div>
+																<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" name="nmkontraktor"></div>
 															</div>
 														</div>
 														<div class="form-group">
 															<div class="col-sm-3 control-label">P/I/S/A</div>
 															<div class="col-sm-9" align="left">
-																<input type="text" class="form-control input-sm">
+																<select class="form-control input-sm" name="ketpembayarri">
+																	<option value="Pembayaran">Pembayaran</option>
+																</select>
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-sm-3 control-label">Nama Peserta</div>
+															<div class="col-sm-9" align="left">
+																<input type="text" class="form-control input-sm" name="nmpembayarri">
 															</div>
 														</div>
 														<div class="form-group">
 															<div class="col-sm-3 control-label">Golongan</div>
 															<div class="col-sm-9" align="left">
-																<input type="text" class="form-control input-sm">
+																<input type="text" class="form-control input-sm" name="golpembayarri">
 															</div>
 														</div>
 														<div class="form-group">
 															<div class="col-sm-3 control-label">Jatah Kelas</div>
 															<div class="col-sm-9" align="left">
-																<input type="text" class="form-control input-sm">
+																<input type="text" class="form-control input-sm" name="jatahkls">
 															</div>
 														</div>
 													</div>
@@ -301,37 +310,37 @@
 														<div class="form-group">
 															<div class="col-sm-3 control-label">Nama</div>
 															<div class="col-sm-9" align="left">
-																<input type="text" class="form-control input-sm">
+																<input type="text" class="form-control input-sm" name="nmpjawabri">
 															</div>
 														</div>
 														<div class="form-group">
 															<div class="col-sm-3 control-label">Alamat</div>
 															<div class="col-sm-9" align="left">
-																<input type="text" class="form-control input-sm">
+																<input type="text" class="form-control input-sm" name="alamatpjawabri">
 															</div>
 														</div>
 														<div class="form-group">
 															<div class="col-sm-3 control-label">No.Telp / HP</div>
 															<div class="col-sm-9" align="left">
-																<input type="text" class="form-control input-sm">
+																<input type="text" class="form-control input-sm" name="notlppjawab">
 															</div>
 														</div>
 														<div class="form-group">
 															<div class="col-sm-3 control-label">Kartu Identitas</div>
 															<div class="col-sm-9" align="left">
 																<div class="col-sm-4 input-left">
-																	<select class="form-control input-sm" name="kartu_identitas">
-																		<option value="identitas">Identitas</option>
+																	<select class="form-control input-sm" name="kartuidp">
+																		<option value="kartuidp">Kartu IDP</option>
 																	</select>
 																</div>
-																<div class="col-sm-8 input-right"><input type="text" class="form-control input-sm"></div>
+																<div class="col-sm-8 input-right"><input type="text" class="form-control input-sm" name="noidpjawab"></div>
 															</div>
 														</div>
 														<div class="form-group">
 															<div class="col-sm-3 control-label">Hub.Keluarga</div>
 															<div class="col-sm-3" align="left">
-																<select class="form-control input-sm" name="hub_keluarga">
-																	<option value="hubungan">Hubungan</option>
+																<select class="form-control input-sm" name="hubjawabri">
+																	<option value="hubjawabri">Hubjawabri</option>
 																</select>
 															</div>
 														</div>
@@ -347,32 +356,32 @@
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Bed</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="bed">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Ruang</div>
 														<div class="col-sm-9" align="left">
-															<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm"></div>
-															<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm"></div>
+															<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="idrg"></div>
+															<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" name="nmruang"></div>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Kelas</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="kelas">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Tgl. Masuk</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm" id="calendar-tgl-masuk">
+															<input type="text" class="form-control input-sm" id="calendar-tgl-masuk" name="tglmasukrg">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Status</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm">
+															<input type="text" class="form-control input-sm" name="statmasukrg">
 														</div>
 													</div>
 												</div>

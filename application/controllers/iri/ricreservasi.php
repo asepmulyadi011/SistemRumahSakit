@@ -9,16 +9,15 @@ class ricreservasi extends CI_Controller {
 		// MENU
 		$data['reservasi']='active';
 		$data['daftar']='';
-		$data['pendaftaran']='';
 		$data['pasien']='';
 		$data['mutasi']='';
 		$data['status']='';
 		$data['resume']='';
 		$data['kontrol']='';
 		
-		$date_now=date('Ymd');
-		$no_reservasi=count($this->rimreservasi->select_irna_antrian_by_noreservasi($date_now))+1;
-		$data['no_reservasi']=$date_now.'-'.$no_reservasi;
+		$datenow=date('Ymd');
+		$noreservasi=count($this->rimreservasi->select_irna_antrian_by_noreservasi($datenow))+1;
+		$data['noreservasi']=$datenow.'-'.$noreservasi;
 		
 		$this->load->view('iri/rivlink');
 		$this->load->view('iri/rivheader');
@@ -28,25 +27,30 @@ class ricreservasi extends CI_Controller {
 	}
 	public function insert_reservasi(){
 		// RESRVASI
-		$data_reservasi['tppri']=$this->input->post('asal'); // No. Antrian
-		$data_reservasi['noreservasi']=$this->input->post('no_reservasi'); // No. Antrian
+		$data_reservasi['tppri']=$this->input->post('tppri'); // No. Antrian
+		$data_reservasi['noreservasi']=$this->input->post('noreservasi'); // No. Antrian
 		$data_reservasi['rujukan']=$this->input->post('rujukan'); // Rujukan
 		if($data_reservasi['tppri']=='rawatjalan'){
-			$data_reservasi['no_cm']=$this->input->post('no_cm_rawat_jalan'); // No. CM
+			$data_reservasi['no_cm']=$this->input->post('no_cm_rawatjalan'); // No. CM
 		}else if($data_reservasi['tppri']=='ruangrawat'){
-			$data_reservasi['no_cm']=$this->input->post('no_cm_ruang_rawat'); // No. CM
+			$data_reservasi['no_cm']=$this->input->post('no_cm_ruangrawat'); // No. CM
 		}else{
-			$data_reservasi['no_cm']=$this->input->post('no_cm_rawat_darurat'); // No. CM
+			$data_reservasi['no_cm']=$this->input->post('no_cm_rawatdarurat'); // No. CM
 		}
-		$data_reservasi['no_register_asal']=$this->input->post('kode_reg_asal'); // Kode Reg. Asal
+		$data_reservasi['no_register_asal']=$this->input->post('no_register_asal'); // Kode Reg. Asal
 		$data_reservasi['tglreserv']=date('Y-m-d'); // Tanggal Reservasi
 		$data_reservasi['telp']=$this->input->post('telp'); // Telp
 		$data_reservasi['hp']=$this->input->post('hp'); // HP
+		$data_reservasi['id_poli']=$this->input->post('id_poli'); // Id Poli
+		$data_reservasi['poliasal']=$this->input->post('poliasal'); // Poli Asal
+		$data_reservasi['id_dokter']=$this->input->post('id_dokter'); // Poli Asal
+		$data_reservasi['dokter']=$this->input->post('dokter'); // Poli Asal
+		$data_reservasi['diagnosa']=$this->input->post('diagnosa'); // Poli Asal
 		
 		//  RENCANA MASUK
-		$data_reservasi['tglrencanamasuk']=$this->input->post('rencana_masuk'); // Rencana masuk
-		$data_reservasi['tglsprawat']=$this->input->post('tgl_sp_rawat'); // Tgl. SP. Rawat
-		$data_reservasi['ruangpilih']=$this->input->post('kode_ruang'); // Kode ruang pilih
+		$data_reservasi['tglrencanamasuk']=$this->input->post('tglrencanamasuk'); // Rencana masuk
+		$data_reservasi['tglsprawat']=$this->input->post('tglsprawat'); // Tgl. SP. Rawat
+		$data_reservasi['ruangpilih']=$this->input->post('ruang'); // Kode ruang pilih
 		$data_reservasi['kelas']=$this->input->post('kelas'); // Kelas
 		$data_reservasi['pilihan_prioritas']=$this->input->post('pilihan_prioritas'); // Kelas
 		$data_reservasi['prioritas']=$this->input->post('prioritas'); // Kelas
@@ -62,7 +66,6 @@ class ricreservasi extends CI_Controller {
 		// MENU
 		$data['reservasi']='active';
 		$data['daftar']='';
-		$data['pendaftaran']='';
 		$data['pasien']='';
 		$data['mutasi']='';
 		$data['status']='';
@@ -94,21 +97,23 @@ class ricreservasi extends CI_Controller {
 		}
 	}
 	public function validation_reservasi($asal){ // Form validasi untuk reservasi
-		$this->form_validation->set_rules('no_reservasi', 'No. Reservasi', 'required');
+		$this->form_validation->set_rules('noreservasi', 'No. Reservasi', 'required');
 		if($asal=='rawatjalan'){
-			$this->form_validation->set_rules('no_cm_rawat_jalan', 'No. CM', 'required');
+			$this->form_validation->set_rules('no_cm_rawatjalan', 'No. CM', 'required');
 		}else if($asal=='ruangrawat'){
-			$this->form_validation->set_rules('no_cm_ruang_rawat', 'No. CM', 'required');
+			$this->form_validation->set_rules('no_cm_ruangrawat', 'No. CM', 'required');
 		}else{
-			$this->form_validation->set_rules('no_cm_rawat_darurat', 'No. CM', 'required');
+			$this->form_validation->set_rules('no_cm_rawatdarurat', 'No. CM', 'required');
 		}
-		$this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
+		$this->form_validation->set_rules('nama', 'Nama', 'required');
+		$this->form_validation->set_rules('tgllahir', 'Tanggal Lahir', 'required');
 		$this->form_validation->set_rules('telp', 'Telp', 'required');
 		$this->form_validation->set_rules('hp', 'HP', 'required');
+		$this->form_validation->set_rules('poliasal', 'Poli/Ruang Asal', 'required');
 		
-		$this->form_validation->set_rules('rencana_masuk', 'Rencana Masuk', 'required');
-		$this->form_validation->set_rules('tgl_sp_rawat', 'Tgl. SP. Rawat', 'required');
-		$this->form_validation->set_rules('kode_ruang', 'Kode Ruang', 'required');
+		$this->form_validation->set_rules('tglrencanamasuk', 'Rencana Masuk', 'required');
+		$this->form_validation->set_rules('tglsprawat', 'Tgl. SP. Rawat', 'required');
+		$this->form_validation->set_rules('nm_ruang', 'Kode Ruang', 'required');
 		$this->form_validation->set_rules('kelas', 'Kelas', 'required');
 		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
 	}
@@ -144,8 +149,10 @@ class ricreservasi extends CI_Controller {
 				'tanggal_lahir'		=>$date,
 				'telp'				=>$row['telp'],
 				'hp'				=>$row['hp'],
-				'kode_dok'			=>$row['kode_dok'],
-				'nama_dok'			=>$row['nama_dok'],
+				'id_poli'			=>$row['id_poli'],
+				'poliasal'			=>$row['poliasal'],
+				'id_dokter'			=>$row['id_dokter'],
+				'dokter'			=>$row['dokter'],
 				'diagnosa'			=>$row['diagnosa']
 			);
 		}
@@ -169,8 +176,10 @@ class ricreservasi extends CI_Controller {
 				'tanggal_lahir'		=>$date,
 				'telp'				=>$row['telp'],
 				'hp'				=>$row['hp'],
-				'kode_dok'			=>$row['kode_dok'],
-				'nama_dok'			=>$row['nama_dok'],
+				'id_poli'			=>$row['id_poli'],
+				'poliasal'			=>$row['poliasal'],
+				'id_dokter'			=>$row['id_dokter'],
+				'dokter'			=>$row['dokter'],
 				'diagnosa'			=>$row['diagnosa']
 			);
 		}
