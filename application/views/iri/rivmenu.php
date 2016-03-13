@@ -19,12 +19,11 @@
 			<li class="<?php echo $reservasi; ?>" ><a href="<?php echo site_url('iri/ricreservasi'); ?>"><i class="fa fa-book"></i> <span>Reservasi</span></a></li>
 			<li class="<?php echo $daftar; ?>" ><a href="<?php echo site_url('iri/ricdaftar'); ?>"><i class="fa fa-list"></i> <span>Daftar</span></a></li>
 			<li class="<?php echo $pasien; ?>" ><a href="<?php echo site_url('iri/ricpasien'); ?>"><i class="fa fa-users"></i> <span>Pasien</span></a></li>
-			<li class="<?php echo $mutasi; ?>" ><a href="<?php echo site_url('iri/ricmutasi'); ?>"><i class="fa fa-medkit"></i> <span>Mutasi</span></a></li>
 			<li class="<?php echo $status; ?>" ><a href="<?php echo site_url('iri/ricstatus'); ?>"><i class="fa fa-wheelchair"></i> <span>Status</span></a></li>
 			<li class="<?php echo $resume; ?>" ><a href="<?php echo site_url('iri/ricresume'); ?>"><i class="fa fa-tags"></i> <span>Resume</span></a></li>
 		</ul>
-		</section>
-		<!-- /Sidebar Menu -->
+	</section>
+	<!-- /Sidebar Menu -->
 		
 </aside>
 <!-- /Menu -->

@@ -1,21 +1,10 @@
 <script>
 var site = "<?php echo site_url(); ?>";
 $(function(){
-	$('.auto_ruang').autocomplete({
-		serviceUrl: site+'/iri/ricreservasi/data_ruang',
-		onSelect: function (suggestion) {
-			$('#ruang').val(''+suggestion.idrg);
-			$('#nm_ruang').val(''+suggestion.nmruang);
-		}
-	});
-});
-
-var site = "<?php echo site_url(); ?>";
-$(function(){
-	$('.auto_no_cm_rawatjalan').autocomplete({
+	$('.auto_no_register_rawatjalan').autocomplete({
 		serviceUrl: site+'/iri/ricreservasi/data_pasien_irj',
 		onSelect: function (suggestion) {
-			$('#no_register_asal').val(''+suggestion.no_reg);
+			$('#no_cm').val(''+suggestion.no_cm);
 			$('#nama').val(''+suggestion.nama);
 			$('.tanggal_lahir').val(''+suggestion.tanggal_lahir);
 			if(suggestion.jenis_kelamin=='L'){
@@ -38,10 +27,31 @@ $(function(){
 
 var site = "<?php echo site_url(); ?>";
 $(function(){
-	$('.auto_no_cm_rawatdarurat').autocomplete({
+	$('.auto_no_register_ruangrawat').autocomplete({
+		serviceUrl: site+'/iri/ricreservasi/data_pasien_iri',
+		onSelect: function (suggestion) {
+			$('#no_cm').val(''+suggestion.no_cm);
+			$('#nama').val(''+suggestion.nama);
+			$('.tanggal_lahir').val('-');
+			$('#laki_laki').attr('selected', 'selected');
+			$('#perempuan').removeAttr('selected', 'selected');
+			$('#telp').val('-');
+			$('#hp').val('-');
+			$('#id_poli').val('-');
+			$('#poliasal').val('-');
+			$('#id_dokter').val('-');
+			$('#dokter').val('-');
+			$('#diagnosa').val('-');
+		}
+	});
+});
+
+var site = "<?php echo site_url(); ?>";
+$(function(){
+	$('.auto_no_register_rawatdarurat').autocomplete({
 		serviceUrl: site+'/iri/ricreservasi/data_pasien_ird',
 		onSelect: function (suggestion) {
-			$('#no_register_asal').val(''+suggestion.no_reg);
+			$('#no_cm').val(''+suggestion.no_cm);
 			$('#nama').val(''+suggestion.nama);
 			$('.tanggal_lahir').val(''+suggestion.tanggal_lahir);
 			if(suggestion.jenis_kelamin=='L'){
@@ -53,30 +63,34 @@ $(function(){
 			}
 			$('#telp').val(''+suggestion.telp);
 			$('#hp').val(''+suggestion.hp);
-			$('#id-poli').val(''+suggestion.id_poli);
+			$('#id_poli').val(''+suggestion.id_poli);
 			$('#poliasal').val(''+suggestion.poliasal);
-			$('#kode-dokter').val(''+suggestion.kode_dok);
-			$('#name-dokter').val(''+suggestion.nama_dok);
+			$('#id_dokter').val(''+suggestion.id_dokter);
+			$('#dokter').val(''+suggestion.dokter);
 			$('#diagnosa').val(''+suggestion.diagnosa);
 		}
 	});
 });
 
 $(function(){
-	$('#no_cm_rawatjalan').show();
-	$('#no_cm_ruangrawat').hide();
-	$('#no_cm_rawatdarurat').hide();
+	$('#no_register_rawatjalan').show();
+	$('#no_register_ruangrawat').hide();
+	$('#no_register_rawatdarurat').hide();
 });
 
-$(document).ready(function() {
+var site = "<?php echo site_url(); ?>";
+$(function(){
 	$('.auto_ruang').autocomplete({
 		serviceUrl: site+'/iri/ricreservasi/data_ruang',
 		onSelect: function (suggestion) {
 			$('#ruang').val(''+suggestion.idrg);
 			$('#nm_ruang').val(''+suggestion.nmruang);
+			$('#kelas').val(''+suggestion.kelas);
 		}
 	});
-	
+});
+
+$(document).ready(function() {
 	$("#form_reservasi").validate({ 
 		rules: { 
 			noreservasi: "required",
@@ -110,17 +124,17 @@ $(document).ready(function() {
 	$('#tppri').change(function(){
 		var tppri = $('#tppri').val();
 		if(tppri=='rawatjalan'){
-			$('#no_cm_rawatjalan').show();
-			$('#no_cm_ruangrawat').hide();
-			$('#no_cm_rawatdarurat').hide();
+			$('#no_register_rawatjalan').show();
+			$('#no_register_ruangrawat').hide();
+			$('#no_register_rawatdarurat').hide();
 		}else if(tppri=='ruangrawat'){
-			$('#no_cm_rawatjalan').hide();
-			$('#no_cm_ruangrawat').show();
-			$('#no_cm_rawatdarurat').hide();
+			$('#no_register_rawatjalan').hide();
+			$('#no_register_ruangrawat').show();
+			$('#no_register_rawatdarurat').hide();
 		}else{
-			$('#no_cm_rawatjalan').hide();
-			$('#no_cm_ruangrawat').hide();
-			$('#no_cm_rawatdarurat').show();
+			$('#no_register_rawatjalan').hide();
+			$('#no_register_ruangrawat').hide();
+			$('#no_register_rawatdarurat').show();
 		}
 	});
 });
@@ -169,13 +183,6 @@ $(document).ready(function() {
 													</div>
 												</div>
 												<div class="form-group">
-													<div class="col-sm-3 control-label">No. Antrian *</div>
-													<div class="col-sm-9">
-														<span class="label-form-validation"></span>
-														<input type="text" class="form-control input-sm" name="noreservasi" value="<?php echo $noreservasi; ?>" readonly>
-													</div>
-												</div>
-												<div class="form-group">
 													<div class="col-sm-3 control-label">Rujukan</div>
 													<div class="col-sm-4">
 														<select class="form-control input-sm" name="rujukan">
@@ -186,20 +193,22 @@ $(document).ready(function() {
 													</div>
 												</div>
 												<div class="form-group">
-													<div class="col-sm-3 control-label">No. Medrec *</div>
+													<div class="col-sm-3 control-label">No. Medrec</div>
 													<div class="col-sm-9">
 														<span class="label-form-validation"></span>
-														<input type="text" class="form-control input-sm auto_no_cm_rawatjalan" name="no_cm_rawatjalan" id="no_cm_rawatjalan">
-														<input type="text" class="form-control input-sm auto_no_cm_rawatjalan" name="no_cm_ruangrawat" id="no_cm_ruangrawat">
-														<input type="text" class="form-control input-sm auto_no_cm_rawatjalan" name="no_cm_rawatdarurat" id="no_cm_rawatdarurat">
+														<input type="text" class="form-control input-sm" name="no_cm" id="no_cm" readonly>
 													</div>
 												</div>
 												<div class="form-group">
-													<div class="col-sm-3 control-label">Reg. Asal</div>
+													<div class="col-sm-3 control-label">Reg. Asal *</div>
 													<div class="col-sm-9" align="left">
 														<span class="label-form-validation"></span>
-														<div class="col-sm-4 input-left"><input type="text" class="form-control input-sm" name="no_register_asal" id="no_register_asal" readonly></div>
-														<div class="col-sm-8 input-right"><input type="text" class="form-control input-sm" name="nama" id="nama" readonly></div>
+														<div class="col-sm-4 input-left">
+															<input type="text" class="form-control input-sm auto_no_register_rawatjalan" name="no_register_rawatjalan" id="no_register_rawatjalan">
+															<input type="text" class="form-control input-sm auto_no_register_ruangrawat" name="no_register_ruangrawat" id="no_register_ruangrawat">
+															<input type="text" class="form-control input-sm auto_no_register_rawatdarurat" name="no_register_rawatdarurat" id="no_register_rawatdarurat">
+														</div>
+														<div class="col-sm-8 input-right"><input type="text" class="form-control input-sm" name="nama" id="nama"></div>
 													</div>
 												</div>
 												<div class="form-group">
@@ -212,7 +221,7 @@ $(document).ready(function() {
 													</div>
 												</div>
 												<div class="form-group">
-													<div class="col-sm-3 control-label">Tanggal Lahir *</div>
+													<div class="col-sm-3 control-label">Tanggal Lahir</div>
 													<div class="col-sm-9">
 														<span class="label-form-validation"></span>
 														<input type="text" class="form-control input-sm tanggal_lahir" id="calendar-tgl-lahir" name="tgllahir">
@@ -280,21 +289,17 @@ $(document).ready(function() {
 												</div>
 												<div class="form-group">
 													<div class="col-sm-3 control-label">Ruang Pilih *</div>
-													<div class="col-sm-9" align="left">
+													<div class="col-sm-9">
 														<span class="label-form-validation"></span>
-														<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm auto_ruang" id="ruang" name="ruang"></div>
-														<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" id="nm_ruang" name="nm_ruang" readonly></div>
+														<input type="text" class="form-control input-sm auto_ruang" id="ruang" name="ruang">
 													</div>
 												</div>
 												<div class="form-group">
-													<div class="col-sm-3 control-label">Kelas *</div>
-													<div class="col-sm-2">
+													<div class="col-sm-3 control-label"></div>
+													<div class="col-sm-9">
 														<span class="label-form-validation"></span>
-														<select class="form-control input-sm" name="kelas">
-															<option value="I">I</option>
-															<option value="II">II</option>
-															<option value="III">III</option>
-														</select>
+														<div class="col-sm-8 input-left"><input type="text" class="form-control input-sm" id="nm_ruang" name="nm_ruang" readonly></div>
+														<div class="col-sm-4 input-right"><input type="text" class="form-control input-sm" id="kelas" name="kelas" readonly></div>
 													</div>
 												</div>
 												<div class="form-group">
@@ -336,7 +341,7 @@ $(document).ready(function() {
 										<div class="col-sm-12">
 											<div class="button-reservasi">
 												<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> Simpan</button>
-												<button type="button" class="btn btn-danger btn-sm"><i class="fa fa-remove"></i> Batal</button>
+												<a href="<?php echo site_url('iri/ricreservasi'); ?>"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-remove"></i> Batal</button></a>
 											</div>							
 										</div>
 									</div>

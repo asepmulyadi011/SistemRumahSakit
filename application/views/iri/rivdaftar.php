@@ -34,19 +34,23 @@ $(function(){
 						<div class="row">
 							<form class="form-horizontal" action="<?php echo site_url('iri/ricdaftar'); ?>" method="POST">
 								<div class="col-sm-3"></div>
-								<div class="col-sm-6">
+								<div class="col-sm-5">
 									<div class="box-body">
 										<div class="form-group">
 											<div class="col-sm-3 control-label">Ruangan</div>
 											<div class="col-sm-9" align="left">
-												<span class="label-form-validation"></span>
-												<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm auto-ruang" id="kode-ruang-pilih" name="kode_ruang"></div>
-												<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" id="nama-ruang-pilih" name="name_ruang" readonly></div>
+												<input type="text" class="form-control input-sm auto-ruang" id="kode-ruang-pilih" name="kode_ruang">
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-3 control-label"></div>
+											<div class="col-sm-9" align="left">
+												<input type="text" class="form-control input-sm" id="nama-ruang-pilih" name="name_ruang" readonly>
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="col-sm-3 control-label">Kelas</div>
-											<div class="col-sm-2">
+											<div class="col-sm-3">
 												<select class="form-control input-sm" name="kelas">
 													<option value="-">-</option>
 													<option value="I">I</option>
@@ -58,7 +62,7 @@ $(function(){
 										<div class="form-group">
 											<div class="col-sm-3"></div>
 											<div class="col-sm-9">
-												<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Lihat</button>
+												<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Cari</button>
 											</div>
 										</div>
 									</div>
@@ -97,7 +101,7 @@ $(function(){
 		<!-- /Main content -->
 		
 		<!-- Modal -->
-		<div class="modal fade bs-example-modal-sm" id="modal-approve" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal fade bs-example-modal-sm" id="modal-batal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">

@@ -7,9 +7,9 @@ class ricmutasi extends CI_Controller {
 	}
 	public function index(){
 		$data['reservasi']='';
-		$data['daftar']='';
+		$data['daftar']='active';
 		$data['pasien']='';
-		$data['mutasi']='active';
+		$data['mutasi']='';
 		$data['status']='';
 		$data['resume']='';
 		$data['kontrol']='';

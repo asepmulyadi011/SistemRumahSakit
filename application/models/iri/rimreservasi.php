@@ -8,6 +8,10 @@ class rimreservasi extends CI_Model {
 		$data=$this->db->query("select *from pasien_irj where no_cm like '%$value%'");
 		return $data->result_array();
 	}
+	public function select_pasien_iri_like($value){
+		$data=$this->db->query("select *from pasien_iri join ruang_iri on pasien_iri.no_ipd=ruang_iri.no_ipd where pasien_iri.no_cm like '%$value%'");
+		return $data->result_array();
+	}
 	public function select_pasien_ird_like($value){
 		$data=$this->db->query("select *from pasien_ird where no_cm like '%$value%'");
 		return $data->result_array();

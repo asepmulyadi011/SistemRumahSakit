@@ -15,10 +15,6 @@ class ricreservasi extends CI_Controller {
 		$data['resume']='';
 		$data['kontrol']='';
 		
-		$datenow=date('Ymd');
-		$noreservasi=count($this->rimreservasi->select_irna_antrian_by_noreservasi($datenow))+1;
-		$data['noreservasi']=$datenow.'-'.$noreservasi;
-		
 		$this->load->view('iri/rivlink');
 		$this->load->view('iri/rivheader');
 		$this->load->view('iri/rivmenu', $data);
@@ -27,17 +23,19 @@ class ricreservasi extends CI_Controller {
 	}
 	public function insert_reservasi(){
 		// RESRVASI
-		$data_reservasi['tppri']=$this->input->post('tppri'); // No. Antrian
-		$data_reservasi['noreservasi']=$this->input->post('noreservasi'); // No. Antrian
+		$data_reservasi['tppri']=$this->input->post('tppri'); // Asal
+		$datenow=date('Ymd');
+		$noreservasi=count($this->rimreservasi->select_irna_antrian_by_noreservasi($datenow))+1;
+		$data_reservasi['noreservasi']=$datenow.'-'.$noreservasi; // No. Antrian
 		$data_reservasi['rujukan']=$this->input->post('rujukan'); // Rujukan
+		$data_reservasi['no_cm']=$this->input->post('no_cm'); // No. CM
 		if($data_reservasi['tppri']=='rawatjalan'){
-			$data_reservasi['no_cm']=$this->input->post('no_cm_rawatjalan'); // No. CM
+			$data_reservasi['no_register_asal']=$this->input->post('no_register_rawatjalan'); // Kode Reg. Asal
 		}else if($data_reservasi['tppri']=='ruangrawat'){
-			$data_reservasi['no_cm']=$this->input->post('no_cm_ruangrawat'); // No. CM
+			$data_reservasi['no_register_asal']=$this->input->post('no_register_ruangrawat'); // Kode Reg. Asal
 		}else{
-			$data_reservasi['no_cm']=$this->input->post('no_cm_rawatdarurat'); // No. CM
+			$data_reservasi['no_register_asal']=$this->input->post('no_register_rawatdarurat'); // Kode Reg. Asal
 		}
-		$data_reservasi['no_register_asal']=$this->input->post('no_register_asal'); // Kode Reg. Asal
 		$data_reservasi['tglreserv']=date('Y-m-d'); // Tanggal Reservasi
 		$data_reservasi['telp']=$this->input->post('telp'); // Telp
 		$data_reservasi['hp']=$this->input->post('hp'); // HP
@@ -97,19 +95,21 @@ class ricreservasi extends CI_Controller {
 		}
 	}
 	public function validation_reservasi($asal){ // Form validasi untuk reservasi
-		$this->form_validation->set_rules('noreservasi', 'No. Reservasi', 'required');
+		$this->form_validation->set_rules('no_cm', 'No. CM', 'required');
 		if($asal=='rawatjalan'){
-			$this->form_validation->set_rules('no_cm_rawatjalan', 'No. CM', 'required');
+			$this->form_validation->set_rules('no_register_rawatjalan', 'No. Register', 'required');
 		}else if($asal=='ruangrawat'){
-			$this->form_validation->set_rules('no_cm_ruangrawat', 'No. CM', 'required');
+			$this->form_validation->set_rules('no_register_ruangrawat', 'No. Register', 'required');
 		}else{
-			$this->form_validation->set_rules('no_cm_rawatdarurat', 'No. CM', 'required');
+			$this->form_validation->set_rules('no_register_rawatdarurat', 'No. Register', 'required');
 		}
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
 		$this->form_validation->set_rules('tgllahir', 'Tanggal Lahir', 'required');
 		$this->form_validation->set_rules('telp', 'Telp', 'required');
 		$this->form_validation->set_rules('hp', 'HP', 'required');
 		$this->form_validation->set_rules('poliasal', 'Poli/Ruang Asal', 'required');
+		$this->form_validation->set_rules('dokter', 'Dokter', 'required');
+		$this->form_validation->set_rules('diagnosa', 'Diagnosa', 'required');
 		
 		$this->form_validation->set_rules('tglrencanamasuk', 'Rencana Masuk', 'required');
 		$this->form_validation->set_rules('tglsprawat', 'Tgl. SP. Rawat', 'required');
@@ -124,9 +124,10 @@ class ricreservasi extends CI_Controller {
 		foreach($data as $row){
 			$arr['query'] = $keyword;
 			$arr['suggestions'][] 	= array(
-				'value'				=>$row['idrg'],
+				'value'				=>$row['idrg'].' - '.$row['nmruang'].' - '.$row['koderg'],
 				'idrg'				=>$row['idrg'],
-				'nmruang'			=>$row['nmruang']
+				'nmruang'			=>$row['nmruang'],
+				'kelas'				=>$row['koderg']
 			);
 		}
 		echo json_encode($arr);
@@ -141,7 +142,7 @@ class ricreservasi extends CI_Controller {
 			
 			$arr['query'] = $keyword;
 			$arr['suggestions'][] 	= array(
-				'value'				=>$row['no_cm'],
+				'value'				=>$row['no_reg'],
 				'no_cm'				=>$row['no_cm'],
 				'no_reg'			=>$row['no_reg'],
 				'nama'				=>$row['nama'],
@@ -158,6 +159,21 @@ class ricreservasi extends CI_Controller {
 		}
 		echo json_encode($arr);
     }
+	public function data_pasien_iri() {
+		// 1. Folder - 2. Nama controller - 3. nama fungsinya - 4. formnya
+		$keyword = $this->uri->segment(4);
+		$data = $this->rimreservasi->select_pasien_iri_like($keyword);
+		foreach($data as $row){
+			$arr['query'] = $keyword;
+			$arr['suggestions'][] 	= array(
+				'value'				=>$row['no_ipd'],
+				'no_cm'				=>$row['no_cm'],
+				'no_ipd'			=>$row['no_ipd'],
+				'nama'			=>$row['nama']
+			);
+		}
+		echo json_encode($arr);
+    }
 	public function data_pasien_ird() {
 		// 1. Folder - 2. Nama controller - 3. nama fungsinya - 4. formnya
 		$keyword = $this->uri->segment(4);
@@ -168,7 +184,7 @@ class ricreservasi extends CI_Controller {
 			
 			$arr['query'] = $keyword;
 			$arr['suggestions'][] 	= array(
-				'value'				=>$row['no_cm'],
+				'value'				=>$row['no_reg'],
 				'no_cm'				=>$row['no_cm'],
 				'no_reg'			=>$row['no_reg'],
 				'nama'				=>$row['nama'],

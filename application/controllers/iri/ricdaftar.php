@@ -56,19 +56,24 @@ class ricdaftar extends CI_Controller {
 			if($tppri=='rawatjalan'){
 				$pasien_irj=$this->rimdaftar->select_pasien_irj_by_no_register_asal($data[$i]['2']);
 				$data[$i]['3']=$pasien_irj[0]['nama']; // Nama
+				$link='ricpendaftaran/index/'.$data[$i]['0'];
 			}else if($tppri=='rawatdarurat'){
 				$pasien_ird=$this->rimdaftar->select_pasien_ird_by_no_register_asal($data[$i]['2']);
 				$data[$i]['3']=$pasien_ird[0]['nama']; // Nama
+				$link='ricpendaftaran/index/'.$data[$i]['0'];
 			}else{
-				$data[$i]['3']=''; // Nama
+				$pasien_iri=$this->rimdaftar->select_pasien_iri_by_no_register_asal($data[$i]['2']);
+				$data[$i]['3']=$pasien_iri[0]['nama']; // Nama
+				$link='ricmutasi/index';
 			}
+			// $data[$i]['3']=$result[$i]['nama']; // Ruang pilih
 			$data[$i]['4']=$result[$i]['ruangpilih']; // Ruang pilih
 			$data[$i]['5']=$result[$i]['kelas']; // Kelas
 			$data[$i]['6']=$result[$i]['infeksi']; // Infeksi
 			$data[$i]['7']=$result[$i]['hp']; // HP
 			$data[$i]['8']=$result[$i]['prioritas']; // Prioritas
 			$data[$i]['9']=$result[$i]['tglrencanamasuk'];// Tanggal Rencana Masuk
-			$data[$i]['10']='<a href="ricpendaftaran/index/'.$data[$i]['0'].'"><button type="button" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Approve</button></a> <a href="ricdaftar/batal_reservasi/'.$data[$i]['0'].'"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i> Batal</button></a>';
+			$data[$i]['10']='<a href="'.$link.'"><button type="button" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Approve</button></a> <a href="ricdaftar/batal_reservasi/'.$data[$i]['0'].'"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i> Batal</button></a>';
 		}
 		
 		$json_data=array(

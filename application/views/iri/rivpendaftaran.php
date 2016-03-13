@@ -1,3 +1,26 @@
+<script>
+$(function(){
+<?php if($pasien[0]['jenis_kelamin']=='L'){ ?>
+	$('#laki_laki').attr('selected', 'selected');
+	$('#perempuan').removeAttr('selected', 'selected');
+<?php }else{ ?>
+	$('#laki_laki').removeAttr('selected', 'selected');
+	$('#perempuan').attr('selected', 'selected');
+<?php } ?>
+});
+
+var site = "<?php echo site_url(); ?>";
+$(function(){
+	$('.auto_ruang').autocomplete({
+		serviceUrl: site+'/iri/ricpendaftaran/data_ruang',
+		onSelect: function (suggestion) {
+			$('#ruang').val(''+suggestion.idrg);
+			$('#nm_ruang').val(''+suggestion.nmruang);
+			$('#kelas').val(''+suggestion.kelas);
+		}
+	});
+});
+</script>
 <div class="wrapper">
 	<div class="content-wrapper">
 		
@@ -20,7 +43,7 @@
 						<br/>
 						
 						<!-- Form Pendaftaran -->
-						<form class="form-horizontal" action="<?php echo site_url('iri/ricpendaftaran/insert_pendaftaran'); ?>">
+						<form class="form-horizontal" action="<?php echo site_url('iri/ricpendaftaran/insert_pendaftaran'); ?>" method="post">
 							<div class="box-body">
 								<div class="row">
 									<div class="col-sm-6">
@@ -28,7 +51,7 @@
 											<div class="form-group">
 												<div class="col-sm-3 control-label">No. Reg. IRJ/IRD</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm" name="noregasal" value="<?php echo $irna_reservasi[0]['noreservasi']; ?>" readonly>
+													<input type="text" class="form-control input-sm" name="noregasal" value="<?php echo $irna_reservasi[0]['no_register_asal']; ?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
@@ -65,8 +88,8 @@
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Dokter</div>
 												<div class="col-sm-9" align="left">
-													<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="id_dokter"></div>
-													<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" name="nmdokter"></div>
+													<div class="col-sm-4 input-left"><input type="text" class="form-control input-sm" name="id_dokter" value="<?php echo $irna_reservasi[0]['id_dokter']; ?>" readonly></div>
+													<div class="col-sm-8 input-right"><input type="text" class="form-control input-sm" name="nmdokter" value="<?php echo $irna_reservasi[0]['dokter']; ?>" readonly></div>
 												</div>
 											</div>
 										</div>
@@ -74,35 +97,29 @@
 									<div class="col-sm-6 form-right">
 										<div class="box-body">
 											<div class="form-group">
-												<div class="col-sm-3 control-label">No. Register IPD</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm" name="no_ipd">
-												</div>
-											</div>
-											<div class="form-group">
 												<div class="col-sm-3 control-label">No. Reg. Lama</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm" name="noipdlama">
+													<input type="text" class="form-control input-sm" name="noipdlama" value="<?php echo $irna_reservasi[0]['noreservasi']; ?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Nama</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm" name="nama">
+													<input type="text" class="form-control input-sm" name="nama" value="<?php echo $pasien[0]['nama']; ?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Tgl. Lahir</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm" id="calendar-tgl-lahir" name="tgllahirri">
+													<input type="text" class="form-control input-sm" id="calendar-tgl-lahir" name="tgllahirri" value="<?php echo $pasien[0]['tanggal_lahir']; ?>">
 												</div>
 											</div>
 											<div class="form-group">
-												<div class="col-sm-3 control-label">Jenis Kelamin</div>
+												<div class="col-sm-3 control-label">Jenis Kelamin <?php echo $pasien[0]['jenis_kelamin']; ?></div>
 												<div class="col-sm-4">
 													<select class="form-control input-sm" name="sex">
-														<option value="L">Laki-Laki</option>
-														<option value="P">Perempuan</option>
+														<option id="laki_laki" value="L">Laki-Laki</option>
+														<option id="perempuan" value="P">Perempuan</option>
 													</select>
 												</div>
 											</div>
@@ -361,27 +378,23 @@
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Ruang</div>
-														<div class="col-sm-9" align="left">
-															<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="idrg"></div>
-															<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" name="nmruang"></div>
+														<div class="col-sm-9">
+															<span class="label-form-validation"></span>
+															<input type="text" class="form-control input-sm auto_ruang" id="ruang" name="ruang">
 														</div>
 													</div>
 													<div class="form-group">
-														<div class="col-sm-3 control-label">Kelas</div>
+														<div class="col-sm-3 control-label"></div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm" name="kelas">
+															<span class="label-form-validation"></span>
+															<div class="col-sm-8 input-left"><input type="text" class="form-control input-sm" id="nm_ruang" name="nm_ruang" readonly></div>
+															<div class="col-sm-4 input-right"><input type="text" class="form-control input-sm" id="kelas" name="kelas" readonly></div>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Tgl. Masuk</div>
 														<div class="col-sm-9">
 															<input type="text" class="form-control input-sm" id="calendar-tgl-masuk" name="tglmasukrg">
-														</div>
-													</div>
-													<div class="form-group">
-														<div class="col-sm-3 control-label">Status</div>
-														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm" name="statmasukrg">
 														</div>
 													</div>
 												</div>
@@ -396,7 +409,7 @@
 							<div class="row">
 								<div class="col-sm-8">
 									<div class="button-pendaftaran">
-										<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-pendaftaran"><i class="fa fa-save"></i> Simpan</button>
+										<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> Simpan</button>
 									</div>							
 								</div>
 							</div>
@@ -434,7 +447,13 @@
 	</div>
 </div>
 <script>
-	$('#calendar-tgl-daftar').datepicker();
-	$('#calendar-tgl-lahir').datepicker();
-	$('#calendar-tgl-masuk').datepicker();
+	$('#calendar-tgl-daftar').datepicker({
+		format: 'yyyy-mm-dd'
+	});
+	$('#calendar-tgl-lahir').datepicker({
+		format: 'yyyy-mm-dd'
+	});
+	$('#calendar-tgl-masuk').datepicker({
+		format: 'yyyy-mm-dd'
+	});
 </script>
