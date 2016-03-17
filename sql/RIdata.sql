@@ -1,3 +1,29 @@
+create table ruang(
+	idrg					varchar(3) primary key,
+	
+	nmruang					varchar(30),
+	pokruang				varchar(20),
+	pokrgtarif				varchar(25),
+	tipebt					char(1),
+	kodebt					varchar(10),
+	id_dept					varchar(4),
+	koderg					varchar(5),
+	idf						varchar(6)
+);
+insert into ruang(idrg, nmruang, koderg) values
+	('104', 'Pav. Lematang Indah 1', 'II'),
+	('105', 'Pav. Lematang Indah 2', 'II'),
+	('106', 'Pav. Musi Elok (Lantai 2)', 'II'),
+	('107', 'Non Aktif-Pav.Melati (MJD 511)', 'II'),
+	('201', 'Obgyn B (Anggrek Lt. 1)', 'II'),
+	('202', 'Bayi (Anggrek Lt.1 & 2)', 'II'),
+	('203', 'Obgyn C (Anggrek Lt. 2)', 'II'),
+	('301', 'Neonatus (Kemuning Lt.2)', 'II'),
+	('303', 'Non Aktif-NICU (MJD 603)', 'II'),
+	('304', 'Non Aktif PICU (MJD 604)', 'II'),
+	('401', 'Kenanga A (RKB A)', 'II'),
+	('108', 'Intermediate', 'II');
+
 create table irna_antrian (
 	noreservasi				varchar(20) primary key,
 	ruangpilih				varchar(10),
@@ -41,50 +67,60 @@ create table irna_antrian (
 	CONSTRAINT fk_ruangpilih FOREIGN KEY (ruangpilih) REFERENCES ruang(idrg) ON DELETE CASCADE
 );
 
-create table pasien_irj(
-	no_reg					varchar(11) primary key,
+create table data_pasien (
+	no_medrec 				varchar(10) primary key,
 	
-	no_cm					varchar(11),
-	nama					varchar(30),
-	jenis_kelamin			char(1),
-	tanggal_lahir			date,
-	telp					varchar(15),
-	hp						varchar(15),
-	id_dokter				varchar(11),
-	dokter					varchar(30),
-	diagnosa				varchar(50),
-	id_poli					varchar(10),
-	poliasal				varchar(50)
+	jenis_identitas 		varchar(10),
+	no_identitas 			varchar(20),
+	jenis_kartu 			varchar(10),
+	no_kartu 				varchar(20),
+	tgl_daftar 				timestamp DEFAULT CURRENT_TIMESTAMP,
+	nama 					varchar(100),
+	sex 					char(1),
+	tmpt_lahir				varchar(100),
+	tgl_lahir				date,
+	agama					varchar(10),
+	wnegara					varchar(10),
+	status					char(1),
+	alamat					varchar(100),
+	rt						varchar(5),
+	rw						varchar(5),
+	id_kelurahandesa 		varchar(10),
+	kelurahandesa 			varchar(100),
+	id_kecamatan 			varchar(7),
+	kecamatan 				varchar(100),
+	id_kotakabupaten 		varchar(4),
+	kotakabupaten 			varchar(100),
+	id_provinsi 			varchar(2),
+	provinsi 				varchar(100),
+	kodepos 				varchar(10),
+	pendidikan 				varchar(20),
+	pekerjaan 				varchar(100),
+	no_telp 				varchar(20),
+	no_hp					varchar(20),
+	no_telp_kantor			varchar(20),
+	email 					varchar(100),
+	goldarah 				varchar(2),
+	bahasa 					varchar(50),
+	sukubangsa 				varchar(50),
+	nm_ayah_suami			varchar(100),
+	pekerjaan_ayah_suami 	varchar(100),
+	nm_ibu_istri 			varchar(100),
+	pekerjaan_ibu_istri		varchar(100),
+	kartusdhdicetak			char(1) DEFAULT '0',
+	tglcetakkartu			date,
+	foto					varchar(255),
+	xupdate					timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	xuser					varchar(100),
+	xterminal				varchar(100)
 );
-insert into pasien_irj values('RJ00000001', '0000000001', 'Asep Mulyadi', 'L', '1993-08-24', '(021) 234567', '085624652525', 'DK00000001', 'Mila Pradini', 'Penyakit Maag!', 'BH01', 'Klinik Mata Terpadu');
-insert into pasien_irj values('RJ00000002', '0000000002', 'Aksan Maulana', 'L', '1993-03-24', '(021) 234568', '085624652536', 'DK00000002', 'Ahmad Ramdani', 'Penyakit Kulit!', 'BH02', 'Klini Kaki Terpadu');
-insert into pasien_irj values('RJ00000003', '0000000003', 'Iip', 'L', '1993-05-24', '(021) 234569', '085624652547', 'DK00000003', 'Tommy Putra', 'Penyakit Flu!', 'BH03', 'Klinik Hati Terpadu');
-
-create table pasien_ird(
-	no_reg					varchar(11) primary key,
-	
-	no_cm					varchar(11),
-	nama					varchar(30),
-	jenis_kelamin			char(1),
-	tanggal_lahir			date,
-	telp					varchar(15),
-	hp						varchar(15),
-	id_dokter				varchar(11),
-	dokter					varchar(30),
-	diagnosa				varchar(50),
-	id_poli					varchar(10),
-	poliasal				varchar(50)
-);
-insert into pasien_ird values('RD00000001', '0000000001', 'Asep Mulyadi', 'L', '1993-08-24', '(021) 234567', '085624652525', 'DK00000001', 'Mila Pradini', 'Penyakit Maag!', 'BH01', 'Klinik Mata Terpadu');
-insert into pasien_ird values('RD00000002', '0000000002', 'Aksan Maulana', 'L', '1993-03-24', '(021) 234568', '085624652536', 'DK00000002', 'Ahmad Ramdani', 'Penyakit Kulit!', 'BH01', 'Klinik Mata Terpadu');
-insert into pasien_ird values('RD00000003', '0000000003', 'Iip', 'L', '1993-05-24', '(021) 234569', '085624652547', 'DK00000003', 'Tommy Putra', 'Penyakit Flu!', 'BH01', 'Klinik Mata Terpadu');
 
 create table pasien_iri(
 	no_ipd					varchar(10) primary key,
 	idrg					varchar(3),
+	no_cm					varchar(10),
 	
 	tgldaftarri				date,
-	no_cm					varchar(10),
 	noregasal				varchar(10),
 	id_smf					varchar(4),
 	procmasuk				varchar(3),
@@ -242,16 +278,17 @@ create table pasien_iri(
 	ruang_reservasi			varchar(10),
 	klas_reservasi			varchar(10),
 	
-	CONSTRAINT fk_idrg_pasien_iri FOREIGN KEY (idrg) REFERENCES ruang(idrg) ON DELETE CASCADE
+	CONSTRAINT fk_idrg_pasien_iri FOREIGN KEY (idrg) REFERENCES ruang(idrg) ON DELETE CASCADE,
+	CONSTRAINT fk_no_cm_pasien_iri FOREIGN KEY (no_cm) REFERENCES data_pasien(no_medrec) ON DELETE CASCADE
 );
 
 create table ruang_iri(
 	idrgiri					int auto_increment primary key,
 	no_ipd					char(10),
 	idrg					varchar(3),
+	
 	kelas					varchar(7),
 	tglmasukrg				date,
-	
 	bed						varchar(9),
 	nomederec				char(10),
 	statmasukrg				varchar(8),
@@ -295,6 +332,8 @@ create table ruang_iri(
 
 create table irna_sliptindakan(
 	noslipt					varchar(12) primary key,
+	no_ipd					char(10),
+	idrg					char(3),
 	
 	tglslipt				date,
 	tglrealt				date,
@@ -304,21 +343,19 @@ create table irna_sliptindakan(
 	bypaket					int(14),
 	kelompok				varchar(5),
 	dokter					varchar(11),
-	no_ipd					char(10),
-	idrg					char(3),
 	
 	CONSTRAINT fk_idrg_irna_sliptindakan FOREIGN KEY (idrg) REFERENCES ruang(idrg) ON DELETE CASCADE,
 	CONSTRAINT fk_no_ipd_irna_sliptindakan FOREIGN KEY (no_ipd) REFERENCES pasien_iri(no_ipd) ON DELETE CASCADE
 );
 
 create table pelayanan_iri(
-	tgl_layanan				date,
-	id_jns_layanan			char(6),
+	id_jns_layanan			char(6) primary key,
 	no_ipd					char(10),
-	idrg					varchar(3),
-	kelas					varchar(7),
 	noslipt					varchar(12),
+	idrg					varchar(3),
 	
+	tgl_layanan				date,
+	kelas					varchar(7),
 	nomederec				char(10),
 	qtyyanri				int(3),
 	jasarinap				int(4),
@@ -364,27 +401,94 @@ create table pelayanan_iri(
 	CONSTRAINT fk_noslipt_pelayanan_iri FOREIGN KEY (noslipt) REFERENCES irna_sliptindakan(noslipt) ON DELETE CASCADE
 );
 
-create table ruang(
-	idrg					varchar(3) primary key,
+create table cara_bayar(
+	no_urut					int(11) primary key,
 	
-	nmruang					varchar(30),
-	pokruang				varchar(20),
-	pokrgtarif				varchar(25),
-	tipebt					char(1),
-	kodebt					varchar(10),
-	id_dept					varchar(4),
-	koderg					varchar(5),
-	idf						varchar(6)
+	cara_bayar				varchar(50),
+	klsrawatjalan			varchar(10),
+	kode					varchar(5)
 );
-insert into ruang(idrg, nmruang, koderg) value('104', 'Pav. Lematang Indah 1', 'II');
-insert into ruang(idrg, nmruang, koderg) value('105', 'Pav. Lematang Indah 2', 'II');
-insert into ruang(idrg, nmruang, koderg) value('106', 'Pav. Musi Elok (Lantai 2)', 'II');
-insert into ruang(idrg, nmruang, koderg) value('107', 'Non Aktif-Pav.Melati (MJD 511)', 'II');
-insert into ruang(idrg, nmruang, koderg) value('201', 'Obgyn B (Anggrek Lt. 1)', 'II');
-insert into ruang(idrg, nmruang, koderg) value('202', 'Bayi (Anggrek Lt.1 & 2)', 'II');
-insert into ruang(idrg, nmruang, koderg) value('203', 'Obgyn C (Anggrek Lt. 2)', 'II');
-insert into ruang(idrg, nmruang, koderg) value('301', 'Neonatus (Kemuning Lt.2)', 'II');
-insert into ruang(idrg, nmruang, koderg) value('303', 'Non Aktif-NICU (MJD 603)', 'II');
-insert into ruang(idrg, nmruang, koderg) value('304', 'Non Aktif PICU (MJD 604)', 'II');
-insert into ruang(idrg, nmruang, koderg) value('401', 'Kenanga A (RKB A)', 'II');
-insert into ruang(idrg, nmruang, koderg) value('108', 'Intermediate', 'II');
+insert into cara_bayar(cara_bayar, klsrawatjalan, no_urut, kode) values
+	('ASKES', 'II', 2, '1131'),
+	('ASKES KARYAWAN', 'III', 5, '1131'),
+	('ASKES MANDIRI', 'II', 8, '1132'),
+	('ASKIN', 'III', 3, '1134'),
+	('BPJS', '', 0, ''),
+	('KARYAWAN HONOR', 'III', 6, '1133'),
+	('KEL KARYAWAN', 'III', 7, '1133'),
+	('PERUSAHAAN', 'II', 4, '1132'),
+	('UMUM', 'II', 1, '1133'),
+	('UMUM LUAR', 'II', 9, '1133');
+
+create table daftar_ulang_ird(
+	no_register 				varchar(10),
+	no_medrec 					varchar(10),
+  
+	tgl_kunjungan 				timestamp DEFAULT CURRENT_TIMESTAMP,
+	ublnrj 						int(11) DEFAULT '0',
+	uharirj						int(11) DEFAULT '0',
+	umurrj						int(11) DEFAULT '0',
+	datang_dengan 				varchar(50),
+	alasan_berobat 				varchar(40),
+	asal_rujukan				varchar(100),
+	no_rujukan 					varchar(20),
+	kecelakaan 					varchar(50),
+	diagnosa 					varchar(50),
+	kelas_pasien 				varchar(10),
+	cara_bayar 					varchar(50),
+	id_poli 					varchar(5),
+	kd_ruang 					varchar(10),
+	biayadaftar 				int(11) DEFAULT '0',
+	nama_penjamin 				varchar(100),
+	hubungan 					varchar(100),
+	vtot 						int(11) DEFAULT '0',
+	status 						char(1) DEFAULT '0',
+	tgl_pulang					date,
+	ket_pulang 					varchar(50),
+	no_sep 						varchar(20),
+	xupdate 					timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	xuser 						varchar(100),
+	xterminal 					varchar(100),
+	karcis_bebas				varchar(30),
+	lunas_karcis				date DEFAULT '0000-00-00'
+);
+
+/*
+create table pasien_irj(
+	no_reg					varchar(11) primary key,
+	
+	no_cm					varchar(11),
+	nama					varchar(30),
+	jenis_kelamin			char(1),
+	tanggal_lahir			date,
+	telp					varchar(15),
+	hp						varchar(15),
+	id_dokter				varchar(11),
+	dokter					varchar(30),
+	diagnosa				varchar(50),
+	id_poli					varchar(10),
+	poliasal				varchar(50)
+);
+insert into pasien_irj values('RJ00000001', '0000000001', 'Asep Mulyadi', 'L', '1993-08-24', '(021) 234567', '085624652525', 'DK00000001', 'Mila Pradini', 'Penyakit Maag!', 'BH01', 'Klinik Mata Terpadu');
+insert into pasien_irj values('RJ00000002', '0000000002', 'Aksan Maulana', 'L', '1993-03-24', '(021) 234568', '085624652536', 'DK00000002', 'Ahmad Ramdani', 'Penyakit Kulit!', 'BH02', 'Klini Kaki Terpadu');
+insert into pasien_irj values('RJ00000003', '0000000003', 'Iip', 'L', '1993-05-24', '(021) 234569', '085624652547', 'DK00000003', 'Tommy Putra', 'Penyakit Flu!', 'BH03', 'Klinik Hati Terpadu');
+
+create table pasien_ird(
+	no_reg					varchar(11) primary key,
+	
+	no_cm					varchar(11),
+	nama					varchar(30),
+	jenis_kelamin			char(1),
+	tanggal_lahir			date,
+	telp					varchar(15),
+	hp						varchar(15),
+	id_dokter				varchar(11),
+	dokter					varchar(30),
+	diagnosa				varchar(50),
+	id_poli					varchar(10),
+	poliasal				varchar(50)
+);
+insert into pasien_ird values('RD00000001', '0000000001', 'Asep Mulyadi', 'L', '1993-08-24', '(021) 234567', '085624652525', 'DK00000001', 'Mila Pradini', 'Penyakit Maag!', 'BH01', 'Klinik Mata Terpadu');
+insert into pasien_ird values('RD00000002', '0000000002', 'Aksan Maulana', 'L', '1993-03-24', '(021) 234568', '085624652536', 'DK00000002', 'Ahmad Ramdani', 'Penyakit Kulit!', 'BH01', 'Klinik Mata Terpadu');
+insert into pasien_ird values('RD00000003', '0000000003', 'Iip', 'L', '1993-05-24', '(021) 234569', '085624652547', 'DK00000003', 'Tommy Putra', 'Penyakit Flu!', 'BH01', 'Klinik Mata Terpadu');
+*/
