@@ -24,69 +24,96 @@
 							<div class="box-body">
 								<div class="row">
 									<div class="col-sm-6">
-										<div class="box-body">
+										<div class="box-body form-left">
 											<div class="form-group">
 												<div class="col-sm-3 control-label">No. Register IPD</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" value="<?php echo $pasien_iri[0]['no_ipd']; ?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">No. CM</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="col-sm-3 control-label">Penjamin</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="col-sm-3 control-label">No. Peserta</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-6 form-right">
-										<div class="box-body">
-											<div class="form-group">
-												<div class="col-sm-3 control-label">Ruang</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="col-sm-3 control-label">Kelas</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" value="<?php echo $irna_antrian[0]['no_medrec']; ?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Nama</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" value="<?php echo $irna_antrian[0]['nama']; ?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Alamat</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" value="<?php echo $irna_antrian[0]['alamat']; ?>">
 												</div>
 											</div>
 											<div class="form-group">
-												<div class="col-sm-3 control-label">Tanggal</div>
+												<div class="col-sm-3 control-label">Penjamin</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm" id="calendar-tgl">
+													<input type="text" class="form-control input-sm" value="<?php echo $pasien_iri[0]['nmpembayarri']; ?>">
+												</div>
+											</div>
+											<br/>
+											<h4 class="title-form">ASAL RUANGAN</h4>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Bed</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm" name="bed" value="<?php echo $pasien_iri[0]['bed']; ?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
-												<div class="col-sm-3 control-label">Jatah Kelas</div>
+												<div class="col-sm-3 control-label">Ruang</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<span class="label-form-validation"></span>
+													<input type="text" class="form-control input-sm auto_ruang" id="ruang" name="ruang" value="<?php echo $pasien_iri[0]['idrg']; ?>" readonly>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label"></div>
+												<div class="col-sm-9">
+													<span class="label-form-validation"></span>
+													<div class="col-sm-8 input-left"><input type="text" class="form-control input-sm" id="nm_ruang" name="nm_ruang" value="<?php echo $pasien_iri[0]['nmruang']; ?>" readonly></div>
+													<div class="col-sm-4 input-right"><input type="text" class="form-control input-sm" id="kelas" name="kelas" value="<?php echo $pasien_iri[0]['kelas']; ?>" readonly></div>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Tgl. Masuk</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm" name="tglmasukrg" value="<?php echo $pasien_iri[0]['tgl_masuk']; ?>" readonly>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="box-body">
+											<h4 class="title-form">TUJUAN RUANGAN</h4>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Bed</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm" name="bed">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Ruang</div>
+												<div class="col-sm-9">
+													<span class="label-form-validation"></span>
+													<input type="text" class="form-control input-sm auto_ruang" id="ruang" name="ruang" value="<?php echo $irna_antrian[0]['ruangpilih']; ?>" readonly>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label"></div>
+												<div class="col-sm-9">
+													<span class="label-form-validation"></span>
+													<div class="col-sm-8 input-left"><input type="text" class="form-control input-sm" id="nm_ruang" name="nm_ruang" value="<?php echo $irna_antrian[0]['nmruang']; ?>" readonly></div>
+													<div class="col-sm-4 input-right"><input type="text" class="form-control input-sm" id="kelas" name="kelas" value="<?php echo $irna_antrian[0]['koderg']; ?>" readonly></div>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Tgl. Masuk</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm" name="tglmasukrg" value="<?php echo $irna_antrian[0]['tglrencanamasuk']; ?>" readonly>
 												</div>
 											</div>
 										</div>
@@ -95,7 +122,7 @@
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="button-reservasi">
-											<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-mutasi"><i class="fa fa-save"></i> Simpan</button>
+											<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> Simpan</button>
 										</div>
 									</div>
 								</div>

@@ -31,46 +31,6 @@ $(function(){
 					
 					<!-- Table -->
 					<div class="box box-success">
-						<div class="row">
-							<form class="form-horizontal" action="<?php echo site_url('iri/ricdaftar'); ?>" method="POST">
-								<div class="col-sm-3"></div>
-								<div class="col-sm-5">
-									<div class="box-body">
-										<div class="form-group">
-											<div class="col-sm-3 control-label">Ruangan</div>
-											<div class="col-sm-9" align="left">
-												<input type="text" class="form-control input-sm auto-ruang" id="kode-ruang-pilih" name="kode_ruang">
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="col-sm-3 control-label"></div>
-											<div class="col-sm-9" align="left">
-												<input type="text" class="form-control input-sm" id="nama-ruang-pilih" name="name_ruang" readonly>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="col-sm-3 control-label">Kelas</div>
-											<div class="col-sm-3">
-												<select class="form-control input-sm" name="kelas">
-													<option value="-">-</option>
-													<option value="I">I</option>
-													<option value="II">II</option>
-													<option value="III">III</option>
-												</select>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="col-sm-3"></div>
-											<div class="col-sm-9">
-												<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Cari</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-						
-						<br/>
 						<div class="box-body">
 							<table id="dataTables-example" class="table table-bordered table-striped data-table">
 								<thead>

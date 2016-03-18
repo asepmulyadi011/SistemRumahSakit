@@ -18,9 +18,9 @@ $(function(){
 			$('#hp').val(''+suggestion.hp);
 			$('#id_poli').val(''+suggestion.id_poli);
 			$('#poliasal').val(''+suggestion.poliasal);
-			$('#id_dokter').val(''+suggestion.id_dokter);
-			$('#dokter').val(''+suggestion.dokter);
-			$('#diagnosa').val(''+suggestion.diagnosa);
+			$('#id_dokter').val('-');
+			$('#dokter').val('-');
+			$('#diagnosa').val('-');
 		}
 	});
 });
@@ -32,11 +32,16 @@ $(function(){
 		onSelect: function (suggestion) {
 			$('#no_cm').val(''+suggestion.no_cm);
 			$('#nama').val(''+suggestion.nama);
-			$('.tanggal_lahir').val('-');
-			$('#laki_laki').attr('selected', 'selected');
-			$('#perempuan').removeAttr('selected', 'selected');
-			$('#telp').val('-');
-			$('#hp').val('-');
+			$('.tanggal_lahir').val(''+suggestion.tanggal_lahir);
+			if(suggestion.jenis_kelamin=='L'){
+				$('#laki_laki').attr('selected', 'selected');
+				$('#perempuan').removeAttr('selected', 'selected');
+			}else{
+				$('#laki_laki').removeAttr('selected', 'selected');
+				$('#perempuan').attr('selected', 'selected');
+			}
+			$('#telp').val(''+suggestion.telp);
+			$('#hp').val(''+suggestion.hp);
 			$('#id_poli').val('-');
 			$('#poliasal').val('-');
 			$('#id_dokter').val('-');
@@ -65,9 +70,9 @@ $(function(){
 			$('#hp').val(''+suggestion.hp);
 			$('#id_poli').val(''+suggestion.id_poli);
 			$('#poliasal').val(''+suggestion.poliasal);
-			$('#id_dokter').val(''+suggestion.id_dokter);
-			$('#dokter').val(''+suggestion.dokter);
-			$('#diagnosa').val(''+suggestion.diagnosa);
+			$('#id_dokter').val('-');
+			$('#dokter').val('-');
+			$('#diagnosa').val('-');
 		}
 	});
 });

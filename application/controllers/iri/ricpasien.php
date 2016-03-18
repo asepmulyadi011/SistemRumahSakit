@@ -34,7 +34,7 @@ class ricpasien extends CI_Controller {
 			$data[$i]['2']=$result[$i]['nama']; // Nama
 			$data[$i]['3']=$result[$i]['kelas']; // Kelas
 			$data[$i]['4']=$result[$i]['bed']; // No. Bed
-			$data[$i]['5']='-'; // Penjamin
+			$data[$i]['5']=$result[$i]['nmpembayarri']; // Penjamin
 			$data[$i]['6']='-'; // Dokter Yang Merawat
 			$data[$i]['7']='-'; // LOS
 			$data[$i]['8']='-'; // Total Biaya

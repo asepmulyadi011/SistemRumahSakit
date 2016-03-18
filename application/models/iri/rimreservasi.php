@@ -5,15 +5,15 @@ class rimreservasi extends CI_Model {
 		return $data->result_array();
 	}
 	public function select_pasien_irj_like($value){
-		$data=$this->db->query("select *from pasien_irj where no_cm like '%$value%'");
+		$data=$this->db->query("select *from daftar_ulang_irj join data_pasien join poliklinik on daftar_ulang_irj.no_medrec=data_pasien.no_medrec and daftar_ulang_irj.id_poli=poliklinik.id_poli where daftar_ulang_irj.no_register like '%$value%'");
 		return $data->result_array();
 	}
 	public function select_pasien_iri_like($value){
-		$data=$this->db->query("select *from pasien_iri join ruang_iri on pasien_iri.no_ipd=ruang_iri.no_ipd where pasien_iri.no_cm like '%$value%'");
+		$data=$this->db->query("select *from pasien_iri join data_pasien on pasien_iri.no_cm=data_pasien.no_medrec where pasien_iri.no_ipd like '%$value%'");
 		return $data->result_array();
 	}
 	public function select_pasien_ird_like($value){
-		$data=$this->db->query("select *from pasien_ird where no_cm like '%$value%'");
+		$data=$this->db->query("select *from daftar_ulang_ird join data_pasien join poliklinik on daftar_ulang_ird.no_medrec=data_pasien.no_medrec and daftar_ulang_ird.id_poli=poliklinik.id_poli where daftar_ulang_ird.no_register like '%$value%'");
 		return $data->result_array();
 	}
 	public function select_ruang_like($value){

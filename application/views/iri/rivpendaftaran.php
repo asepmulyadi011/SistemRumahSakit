@@ -1,11 +1,35 @@
 <script>
 $(function(){
-<?php if($pasien[0]['jenis_kelamin']=='L'){ ?>
+<?php if($pasien[0]['sex']=='L'){ ?>
 	$('#laki_laki').attr('selected', 'selected');
 	$('#perempuan').removeAttr('selected', 'selected');
 <?php }else{ ?>
 	$('#laki_laki').removeAttr('selected', 'selected');
 	$('#perempuan').attr('selected', 'selected');
+<?php } ?>
+});
+
+$(function(){
+<?php if($pasien[0]['goldarah']=='A'){ ?>
+	$('#A').attr('selected', 'selected');
+	$('#B').removeAttr('selected', 'selected');
+	$('#O').removeAttr('selected', 'selected');
+	$('#AB').removeAttr('selected', 'selected');
+<?php }else if($pasien[0]['goldarah']=='B'){ ?>
+	$('#A').removeAttr('selected', 'selected');
+	$('#B').attr('selected', 'selected');
+	$('#O').removeAttr('selected', 'selected');
+	$('#AB').removeAttr('selected', 'selected');
+<?php }else if($pasien[0]['goldarah']=='O'){ ?>
+	$('#A').removeAttr('selected', 'selected');
+	$('#B').removeAttr('selected', 'selected');
+	$('#O').attr('selected', 'selected');
+	$('#AB').removeAttr('selected', 'selected');
+<?php }else{ ?>
+	$('#A').removeAttr('selected', 'selected');
+	$('#B').removeAttr('selected', 'selected');
+	$('#O').removeAttr('selected', 'selected');
+	$('#AB').attr('selected', 'selected');
 <?php } ?>
 });
 
@@ -17,6 +41,27 @@ $(function(){
 			$('#ruang').val(''+suggestion.idrg);
 			$('#nm_ruang').val(''+suggestion.nmruang);
 			$('#kelas').val(''+suggestion.kelas);
+		}
+	});
+});
+
+var site = "<?php echo site_url(); ?>";
+$(function(){
+	$('.auto_carabayar').autocomplete({
+		serviceUrl: site+'/iri/ricpendaftaran/data_cara_bayar',
+		onSelect: function (suggestion) {
+			$('#carabayar').val(''+suggestion.carabayar);
+		}
+	});
+});
+
+var site = "<?php echo site_url(); ?>";
+$(function(){
+	$('.auto_kontraktor').autocomplete({
+		serviceUrl: site+'/iri/ricpendaftaran/data_kontraktor',
+		onSelect: function (suggestion) {
+			$('#id_kontraktor').val(''+suggestion.id_kontraktor);
+			$('#nmkontraktor').val(''+suggestion.nmkontraktor);
 		}
 	});
 });
@@ -69,7 +114,7 @@ $(function(){
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Cara Bayar</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm" name="carabayar">
+													<input type="text" class="form-control input-sm auto_carabayar" id="carabayar" name="carabayar">
 												</div>
 											</div>
 											<div class="form-group">
@@ -111,11 +156,11 @@ $(function(){
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Tgl. Lahir</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm" id="calendar-tgl-lahir" name="tgllahirri" value="<?php echo $pasien[0]['tanggal_lahir']; ?>">
+													<input type="text" class="form-control input-sm" id="calendar-tgl-lahir" name="tgllahirri" value="<?php echo $pasien[0]['tgl_lahir']; ?>">
 												</div>
 											</div>
 											<div class="form-group">
-												<div class="col-sm-3 control-label">Jenis Kelamin <?php echo $pasien[0]['jenis_kelamin']; ?></div>
+												<div class="col-sm-3 control-label">Jenis Kelamin</div>
 												<div class="col-sm-4">
 													<select class="form-control input-sm" name="sex">
 														<option id="laki_laki" value="L">Laki-Laki</option>
@@ -127,10 +172,10 @@ $(function(){
 												<div class="col-sm-3 control-label">Gol. Darah</div>
 												<div class="col-sm-4">
 													<select class="form-control input-sm" name="goldarah">
-														<option value="A">A</option>
-														<option value="B">B</option>
-														<option value="O">O</option>
-														<option value="AB">AB</option>
+														<option id="A" value="A">A</option>
+														<option id="B" value="B">B</option>
+														<option id="O" value="O">O</option>
+														<option id="AB" value="AB">AB</option>
 													</select>
 												</div>
 												<div class="col-sm-5">
@@ -163,53 +208,53 @@ $(function(){
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Alamat</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm" name="alamatri">
+															<input type="text" class="form-control input-sm" name="alamatri" value="<?php echo $pasien[0]['alamat']; ?>" readonly>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Kelurahan</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm" name="kelurahanri">
+															<input type="text" class="form-control input-sm" name="kelurahanri" value="<?php echo $pasien[0]['kelurahandesa']; ?>" readonly>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Kecamatan</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm" name="kecamatanri">
+															<input type="text" class="form-control input-sm" name="kecamatanri" value="<?php echo $pasien[0]['kecamatan']; ?>" readonly>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">RT/RW</div>
 														<div class="col-sm-9" align="left">
-															<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="rtri"></div>
-															<div class="col-sm-3 input-right"><input type="text" class="form-control input-sm" name="rwri"></div>
+															<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="rtri" value="<?php echo $pasien[0]['rt']; ?>" readonly></div>
+															<div class="col-sm-3 input-right"><input type="text" class="form-control input-sm" name="rwri" value="<?php echo $pasien[0]['rw']; ?>" readonly></div>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Daerah</div>
 														<div class="col-sm-9" align="left">
-															<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="id_daerah"></div>
-															<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" name="nmdaerah"></div>
+															<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="id_daerah" value="<?php echo '-'; ?>" readonly></div>
+															<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" name="nmdaerah" value="<?php echo '-'; ?>" readonly></div>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">No. Telp</div>
 														<div class="col-sm-3">
-															<input type="text" class="form-control input-sm" name="notelp">
+															<input type="text" class="form-control input-sm" name="notelp" value="<?php echo $pasien[0]['no_telp']; ?>" readonly>
 														</div>
 														<div class="col-sm-2 control-label">No. HP</div>
-														<div class="col-sm-3">
-															<input type="text" class="form-control input-sm" name="nohp">
+														<div class="col-sm-4">
+															<input type="text" class="form-control input-sm" name="nohp" value="<?php echo $pasien[0]['no_hp']; ?>" readonly>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Status</div>
 														<div class="col-sm-3">
-															<input type="text" class="form-control input-sm" name="statusri">
+															<input type="text" class="form-control input-sm" name="statusri" value="<?php echo $pasien[0]['status']; ?>" readonly>
 														</div>
 														<div class="col-sm-2 control-label">Agama</div>
 														<div class="col-sm-4">
-															<input type="text" class="form-control input-sm" name="agamari">
+															<input type="text" class="form-control input-sm" name="agamari" value="<?php echo $pasien[0]['agama']; ?>" readonly>
 														</div>
 													</div>
 												</div>
@@ -219,43 +264,43 @@ $(function(){
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Pendidikan</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm" name="pendidikanri">
+															<input type="text" class="form-control input-sm" name="pendidikanri" value="<?php echo $pasien[0]['pendidikan']; ?>" readonly>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Pekerjaan</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm" name="pekerjaanri">
+															<input type="text" class="form-control input-sm" name="pekerjaanri" value="<?php echo $pasien[0]['pekerjaan']; ?>" readonly>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Warga Negara</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm" name="wnegarari">
+															<input type="text" class="form-control input-sm" name="wnegarari" value="<?php echo $pasien[0]['wnegara']; ?>" readonly>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Suku Bangsa</div>
 														<div class="col-sm-9" align="left">
-															<input type="text" class="form-control input-sm" name="sukubangsari">
+															<input type="text" class="form-control input-sm" name="sukubangsari" value="<?php echo $pasien[0]['sukubangsa']; ?>" readonly>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Bahasa</div>
 														<div class="col-sm-9" align="left">
-															<input type="text" class="form-control input-sm" name="bahasari">
+															<input type="text" class="form-control input-sm" name="bahasari" value="<?php echo $pasien[0]['bahasa']; ?>" readonly>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Nama Ibu/Istri</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm" name="nm_ibu_istri">
+															<input type="text" class="form-control input-sm" name="nm_ibu_istri" value="<?php echo $pasien[0]['nm_ibu_istri']; ?>" readonly>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Nama Ayah/Suami</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm" name="nm_ayah_suami">
+															<input type="text" class="form-control input-sm" name="nm_ayah_suami" value="<?php echo $pasien[0]['nm_ayah_suami']; ?>" readonly>
 														</div>
 													</div>
 												</div>
@@ -285,8 +330,8 @@ $(function(){
 														<div class="form-group">
 															<div class="col-sm-3 control-label">Perusahaan</div>
 															<div class="col-sm-9" align="left">
-																<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm" name="id_kontraktor"></div>
-																<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" name="nmkontraktor"></div>
+																<div class="col-sm-3 input-left"><input type="text" class="form-control input-sm auto_kontraktor" id="id_kontraktor" name="id_kontraktor"></div>
+																<div class="col-sm-9 input-right"><input type="text" class="form-control input-sm" id="nmkontraktor" name="nmkontraktor"></div>
 															</div>
 														</div>
 														<div class="form-group">
@@ -312,7 +357,7 @@ $(function(){
 														<div class="form-group">
 															<div class="col-sm-3 control-label">Jatah Kelas</div>
 															<div class="col-sm-9" align="left">
-																<input type="text" class="form-control input-sm" name="jatahkls">
+																<input type="text" class="form-control input-sm" name="jatahklsiri">
 															</div>
 														</div>
 													</div>
@@ -346,7 +391,7 @@ $(function(){
 															<div class="col-sm-3 control-label">Kartu Identitas</div>
 															<div class="col-sm-9" align="left">
 																<div class="col-sm-4 input-left">
-																	<select class="form-control input-sm" name="kartuidp">
+																	<select class="form-control input-sm" name="kartuidpjawab">
 																		<option value="kartuidp">Kartu IDP</option>
 																	</select>
 																</div>
@@ -356,8 +401,8 @@ $(function(){
 														<div class="form-group">
 															<div class="col-sm-3 control-label">Hub.Keluarga</div>
 															<div class="col-sm-3" align="left">
-																<select class="form-control input-sm" name="hubjawabri">
-																	<option value="hubjawabri">Hubjawabri</option>
+																<select class="form-control input-sm" name="hubpjawabri">
+																	<option value="hubpjawabri">Hubjawabri</option>
 																</select>
 															</div>
 														</div>
@@ -380,21 +425,21 @@ $(function(){
 														<div class="col-sm-3 control-label">Ruang</div>
 														<div class="col-sm-9">
 															<span class="label-form-validation"></span>
-															<input type="text" class="form-control input-sm auto_ruang" id="ruang" name="ruang">
+															<input type="text" class="form-control input-sm auto_ruang" id="ruang" name="ruang" value="<?php echo $ruang[0]['idrg']; ?>" readonly>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label"></div>
 														<div class="col-sm-9">
 															<span class="label-form-validation"></span>
-															<div class="col-sm-8 input-left"><input type="text" class="form-control input-sm" id="nm_ruang" name="nm_ruang" readonly></div>
-															<div class="col-sm-4 input-right"><input type="text" class="form-control input-sm" id="kelas" name="kelas" readonly></div>
+															<div class="col-sm-8 input-left"><input type="text" class="form-control input-sm" id="nm_ruang" name="nm_ruang" value="<?php echo $ruang[0]['nmruang']; ?>" readonly></div>
+															<div class="col-sm-4 input-right"><input type="text" class="form-control input-sm" id="kelas" name="kelas" value="<?php echo $ruang[0]['koderg']; ?>" readonly></div>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-3 control-label">Tgl. Masuk</div>
 														<div class="col-sm-9">
-															<input type="text" class="form-control input-sm" id="calendar-tgl-masuk" name="tglmasukrg">
+															<input type="text" class="form-control input-sm" name="tglmasukrg" value="<?php echo $irna_reservasi[0]['tglrencanamasuk']; ?>" readonly>
 														</div>
 													</div>
 												</div>

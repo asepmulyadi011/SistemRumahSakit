@@ -19,7 +19,8 @@ class ricpendaftaran extends CI_Controller {
 		);
 		$this->session->set_userdata($value);
 		$irna_antrian=$this->rimpendaftaran->select_irna_antrian_by_noreservasi($this->session->userdata('noreservasi'));
-		
+		$no_ruang=$irna_antrian[0]['ruangpilih'];
+		$ruang=$this->rimpendaftaran->select_ruang($no_ruang);
 		$tppri=$irna_antrian[0]['tppri'];
 		if($tppri=='rawatjalan'){
 			$pasien=$this->rimpendaftaran->select_pasien_irj_by_no_register_asal($irna_antrian[0]['no_register_asal']);
@@ -29,6 +30,7 @@ class ricpendaftaran extends CI_Controller {
 			$pasien=$this->rimpendaftaran->select_pasien_ird_by_no_register_asal($irna_antrian[0]['no_register_asal']);
 		}
 		$data_reservasi['irna_reservasi']=$irna_antrian;
+		$data_reservasi['ruang']=$ruang;
 		$data_reservasi['pasien']=$pasien;
 		
 		$this->load->view('iri/rivlink');
@@ -52,21 +54,63 @@ class ricpendaftaran extends CI_Controller {
 		}
 		echo json_encode($arr);
     }
+	public function data_cara_bayar() {
+		// 1. Folder - 2. Nama controller - 3. nama fungsinya - 4. formnya
+		$keyword = $this->uri->segment(4);
+		$data = $this->rimpendaftaran->select_cara_bayar($keyword);
+		foreach($data as $row){
+			$arr['query'] = $keyword;
+			$arr['suggestions'][] 	= array(
+				'value'				=>$row['cara_bayar'],
+				'carabayar'			=>$row['cara_bayar'],
+			);
+		}
+		echo json_encode($arr);
+    }
+	public function data_kontraktor() {
+		// 1. Folder - 2. Nama controller - 3. nama fungsinya - 4. formnya
+		$keyword = $this->uri->segment(4);
+		$data = $this->rimpendaftaran->select_kontraktor($keyword);
+		foreach($data as $row){
+			$arr['query'] = $keyword;
+			$arr['suggestions'][] 	= array(
+				'value'				=>$row['nmkontraktor'],
+				'id_kontraktor'		=>$row['id_kontraktor'],
+				'nmkontraktor'		=>$row['nmkontraktor'],
+			);
+		}
+		echo json_encode($arr);
+    }
 	public function insert_pendaftaran(){
+		// Form kiri
 		$data_pendaftaran['noregasal']=$this->input->post('noregasal');
 		$data_pendaftaran['no_cm']=$this->input->post('no_cm');
-		$data_pendaftaran['tgldaftarri']=$this->input->post('tgldaftarri');
+		$data_pendaftaran['tgldaftarri']=date('Y-m-d');
 		$data_pendaftaran['carabayar']=$this->input->post('carabayar');
 		$data_pendaftaran['id_smf']=$this->input->post('id_smf');
 		$data_pendaftaran['id_dokter']=$this->input->post('id_dokter');
 		$data_pendaftaran['dokter']=$this->input->post('nmdokter');
-		
+		// Form kanan
 		$no=count($this->rimpendaftaran->select_pasien_iri())+1;
 		$data_pendaftaran['no_ipd']='RI'.sprintf("%08d", $no);
 		$data_pendaftaran['noipdlama']=$this->input->post('noipdlama');
 		$data_pendaftaran['nama']=$this->input->post('nama');
-		$data_pendaftaran['tgl_masuk']=date('Y-m-d');
-		
+		$data_pendaftaran['tgl_masuk']=$this->input->post('tgldaftarri');
+		// Tab penanggung jawab
+		$data_pendaftaran['nosjp']=$this->input->post('nama');
+		$data_pendaftaran['nopembayarri']=$this->input->post('nopembayarri');
+		$data_pendaftaran['id_kontraktor']=$this->input->post('id_kontraktor');
+		$data_pendaftaran['ketpembayarri']=$this->input->post('ketpembayarri');
+		$data_pendaftaran['nmpembayarri']=$this->input->post('nmpembayarri');
+		$data_pendaftaran['golpembayarri']=$this->input->post('golpembayarri');
+		$data_pendaftaran['jatahklsiri']=$this->input->post('jatahklsiri');
+		$data_pendaftaran['nmpjawabri']=$this->input->post('nmpjawabri');
+		$data_pendaftaran['alamatpjawabri']=$this->input->post('alamatpjawabri');
+		$data_pendaftaran['notlppjawab']=$this->input->post('notlppjawab');
+		$data_pendaftaran['kartuidpjawab']=$this->input->post('kartuidpjawab');
+		$data_pendaftaran['noidpjawab']=$this->input->post('noidpjawab');
+		$data_pendaftaran['hubpjawabri']=$this->input->post('hubpjawabri');
+		// Tab ruangan
 		$data_ruang_iri['no_ipd']=$data_pendaftaran['no_ipd'];
 		$data_ruang_iri['idrg']=$this->input->post('ruang');
 		$data_ruang_iri['bed']=$this->input->post('bed');

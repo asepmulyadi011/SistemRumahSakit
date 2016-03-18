@@ -137,24 +137,21 @@ class ricreservasi extends CI_Controller {
 		$keyword = $this->uri->segment(4);
 		$data = $this->rimreservasi->select_pasien_irj_like($keyword);
 		foreach($data as $row){
-			$coba=strtotime($row['tanggal_lahir']);
-			$date=date('d/m/Y', $coba);
+			$coba=strtotime($row['tgl_lahir']);
+			$date=date('Y-m-d', $coba);
 			
 			$arr['query'] = $keyword;
 			$arr['suggestions'][] 	= array(
-				'value'				=>$row['no_reg'],
-				'no_cm'				=>$row['no_cm'],
-				'no_reg'			=>$row['no_reg'],
+				'value'				=>$row['no_register'],
+				'no_cm'				=>$row['no_medrec'],
+				'no_reg'			=>$row['no_register'],
 				'nama'				=>$row['nama'],
-				'jenis_kelamin'		=>$row['jenis_kelamin'],
+				'jenis_kelamin'		=>$row['sex'],
 				'tanggal_lahir'		=>$date,
-				'telp'				=>$row['telp'],
-				'hp'				=>$row['hp'],
+				'telp'				=>$row['no_telp'],
+				'hp'				=>$row['no_hp'],
 				'id_poli'			=>$row['id_poli'],
-				'poliasal'			=>$row['poliasal'],
-				'id_dokter'			=>$row['id_dokter'],
-				'dokter'			=>$row['dokter'],
-				'diagnosa'			=>$row['diagnosa']
+				'poliasal'			=>$row['nm_poli'],
 			);
 		}
 		echo json_encode($arr);
@@ -164,12 +161,19 @@ class ricreservasi extends CI_Controller {
 		$keyword = $this->uri->segment(4);
 		$data = $this->rimreservasi->select_pasien_iri_like($keyword);
 		foreach($data as $row){
+			$coba=strtotime($row['tgl_lahir']);
+			$date=date('Y-m-d', $coba);
+			
 			$arr['query'] = $keyword;
 			$arr['suggestions'][] 	= array(
 				'value'				=>$row['no_ipd'],
 				'no_cm'				=>$row['no_cm'],
 				'no_ipd'			=>$row['no_ipd'],
-				'nama'			=>$row['nama']
+				'nama'				=>$row['nama'],
+				'jenis_kelamin'		=>$row['sex'],
+				'tanggal_lahir'		=>$date,
+				'telp'				=>$row['no_telp'],
+				'hp'				=>$row['no_hp'],
 			);
 		}
 		echo json_encode($arr);
@@ -179,24 +183,21 @@ class ricreservasi extends CI_Controller {
 		$keyword = $this->uri->segment(4);
 		$data = $this->rimreservasi->select_pasien_ird_like($keyword);
 		foreach($data as $row){
-			$coba=strtotime($row['tanggal_lahir']);
-			$date=date('d/m/Y', $coba);
+			$coba=strtotime($row['tgl_lahir']);
+			$date=date('Y-m-d', $coba);
 			
 			$arr['query'] = $keyword;
 			$arr['suggestions'][] 	= array(
-				'value'				=>$row['no_reg'],
-				'no_cm'				=>$row['no_cm'],
-				'no_reg'			=>$row['no_reg'],
+				'value'				=>$row['no_register'],
+				'no_cm'				=>$row['no_medrec'],
+				'no_reg'			=>$row['no_register'],
 				'nama'				=>$row['nama'],
-				'jenis_kelamin'		=>$row['jenis_kelamin'],
+				'jenis_kelamin'		=>$row['sex'],
 				'tanggal_lahir'		=>$date,
-				'telp'				=>$row['telp'],
-				'hp'				=>$row['hp'],
+				'telp'				=>$row['no_telp'],
+				'hp'				=>$row['no_hp'],
 				'id_poli'			=>$row['id_poli'],
-				'poliasal'			=>$row['poliasal'],
-				'id_dokter'			=>$row['id_dokter'],
-				'dokter'			=>$row['dokter'],
-				'diagnosa'			=>$row['diagnosa']
+				'poliasal'			=>$row['nm_poli'],
 			);
 		}
 		echo json_encode($arr);

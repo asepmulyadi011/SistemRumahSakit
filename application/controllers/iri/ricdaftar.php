@@ -64,7 +64,7 @@ class ricdaftar extends CI_Controller {
 			}else{
 				$pasien_iri=$this->rimdaftar->select_pasien_iri_by_no_register_asal($data[$i]['2']);
 				$data[$i]['3']=$pasien_iri[0]['nama']; // Nama
-				$link='ricmutasi/index';
+				$link='ricmutasi/index/'.$data[$i]['0'];
 			}
 			// $data[$i]['3']=$result[$i]['nama']; // Ruang pilih
 			$data[$i]['4']=$result[$i]['ruangpilih']; // Ruang pilih
