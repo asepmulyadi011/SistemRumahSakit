@@ -202,4 +202,19 @@ class ricreservasi extends CI_Controller {
 		}
 		echo json_encode($arr);
     }
+	// public function data_bed($ruang='') {
+		// 1. Folder - 2. Nama controller - 3. nama fungsinya - 4. formnya
+		// $keyword = $this->uri->segment(4);
+		// echo $ruang;
+		// echo $keyword;
+		// $data = $this->rimreservasi->select_bed($keyword, $ruang);
+		// foreach($data as $row){
+			// $arr['query'] = $keyword;
+			// $arr['suggestions'][] 	= array(
+				// 'value'				=>$row['bed'],
+				// 'bed'				=>$row['bed'],
+			// );
+		// }
+		// echo json_encode($arr);
+    // }
 }

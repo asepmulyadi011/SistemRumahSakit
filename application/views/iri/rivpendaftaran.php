@@ -1,71 +1,3 @@
-<script>
-$(function(){
-<?php if($pasien[0]['sex']=='L'){ ?>
-	$('#laki_laki').attr('selected', 'selected');
-	$('#perempuan').removeAttr('selected', 'selected');
-<?php }else{ ?>
-	$('#laki_laki').removeAttr('selected', 'selected');
-	$('#perempuan').attr('selected', 'selected');
-<?php } ?>
-});
-
-$(function(){
-<?php if($pasien[0]['goldarah']=='A'){ ?>
-	$('#A').attr('selected', 'selected');
-	$('#B').removeAttr('selected', 'selected');
-	$('#O').removeAttr('selected', 'selected');
-	$('#AB').removeAttr('selected', 'selected');
-<?php }else if($pasien[0]['goldarah']=='B'){ ?>
-	$('#A').removeAttr('selected', 'selected');
-	$('#B').attr('selected', 'selected');
-	$('#O').removeAttr('selected', 'selected');
-	$('#AB').removeAttr('selected', 'selected');
-<?php }else if($pasien[0]['goldarah']=='O'){ ?>
-	$('#A').removeAttr('selected', 'selected');
-	$('#B').removeAttr('selected', 'selected');
-	$('#O').attr('selected', 'selected');
-	$('#AB').removeAttr('selected', 'selected');
-<?php }else{ ?>
-	$('#A').removeAttr('selected', 'selected');
-	$('#B').removeAttr('selected', 'selected');
-	$('#O').removeAttr('selected', 'selected');
-	$('#AB').attr('selected', 'selected');
-<?php } ?>
-});
-
-var site = "<?php echo site_url(); ?>";
-$(function(){
-	$('.auto_ruang').autocomplete({
-		serviceUrl: site+'/iri/ricpendaftaran/data_ruang',
-		onSelect: function (suggestion) {
-			$('#ruang').val(''+suggestion.idrg);
-			$('#nm_ruang').val(''+suggestion.nmruang);
-			$('#kelas').val(''+suggestion.kelas);
-		}
-	});
-});
-
-var site = "<?php echo site_url(); ?>";
-$(function(){
-	$('.auto_carabayar').autocomplete({
-		serviceUrl: site+'/iri/ricpendaftaran/data_cara_bayar',
-		onSelect: function (suggestion) {
-			$('#carabayar').val(''+suggestion.carabayar);
-		}
-	});
-});
-
-var site = "<?php echo site_url(); ?>";
-$(function(){
-	$('.auto_kontraktor').autocomplete({
-		serviceUrl: site+'/iri/ricpendaftaran/data_kontraktor',
-		onSelect: function (suggestion) {
-			$('#id_kontraktor').val(''+suggestion.id_kontraktor);
-			$('#nmkontraktor').val(''+suggestion.nmkontraktor);
-		}
-	});
-});
-</script>
 <div class="wrapper">
 	<div class="content-wrapper">
 		
@@ -163,8 +95,8 @@ $(function(){
 												<div class="col-sm-3 control-label">Jenis Kelamin</div>
 												<div class="col-sm-4">
 													<select class="form-control input-sm" name="sex">
-														<option id="laki_laki" value="L">Laki-Laki</option>
-														<option id="perempuan" value="P">Perempuan</option>
+														<option id="laki_laki" value="L" <?php if($pasien[0]['sex']=='L') echo "selected" ?>>Laki-Laki</option>
+														<option id="perempuan" value="P" <?php if($pasien[0]['sex']=='P') echo "selected" ?>>Perempuan</option>
 													</select>
 												</div>
 											</div>
@@ -172,17 +104,17 @@ $(function(){
 												<div class="col-sm-3 control-label">Gol. Darah</div>
 												<div class="col-sm-4">
 													<select class="form-control input-sm" name="goldarah">
-														<option id="A" value="A">A</option>
-														<option id="B" value="B">B</option>
-														<option id="O" value="O">O</option>
-														<option id="AB" value="AB">AB</option>
+														<option id="A" value="A" <?php if($pasien[0]['goldarah']=='A') echo "selected" ?>>A</option>
+														<option id="B" value="B" <?php if($pasien[0]['goldarah']=='B') echo "selected"?>>B</option>
+														<option id="O" value="O" <?php if($pasien[0]['goldarah']=='O') echo "selected"?>>O</option>
+														<option id="AB" value="AB" <?php if($pasien[0]['goldarah']=='AB') echo "selected"?>>AB</option>
 													</select>
 												</div>
 												<div class="col-sm-5">
-													<input type="checkbox" value="Y" name="barulahir"> Bayi Baru Lahir
+													<input type="checkbox" id="statusbayi" value="Y" name="barulahir"> Bayi Baru Lahir
 												</div>
 											</div>
-											<div class="form-group">
+											<div class="form-group" id="noipdibu" style="display: none;">
 												<div class="col-sm-3 control-label">No. Register Ibu</div>
 												<div class="col-sm-9">
 													<input type="text" class="form-control input-sm" name="noipdibu">
@@ -492,12 +424,59 @@ $(function(){
 	</div>
 </div>
 <script>
+	var site = "<?php echo site_url(); ?>";
+	$(function(){
+		$('.auto_ruang').autocomplete({
+			serviceUrl: site+'/iri/ricpendaftaran/data_ruang',
+			onSelect: function (suggestion) {
+				$('#ruang').val(''+suggestion.idrg);
+				$('#nm_ruang').val(''+suggestion.nmruang);
+				$('#kelas').val(''+suggestion.kelas);
+			}
+		});
+	});
+
+	var site = "<?php echo site_url(); ?>";
+	$(function(){
+		$('.auto_carabayar').autocomplete({
+			serviceUrl: site+'/iri/ricpendaftaran/data_cara_bayar',
+			onSelect: function (suggestion) {
+				$('#carabayar').val(''+suggestion.carabayar);
+			}
+		});
+	});
+
+	var site = "<?php echo site_url(); ?>";
+	$(function(){
+		$('.auto_kontraktor').autocomplete({
+			serviceUrl: site+'/iri/ricpendaftaran/data_kontraktor',
+			onSelect: function (suggestion) {
+				$('#id_kontraktor').val(''+suggestion.id_kontraktor);
+				$('#nmkontraktor').val(''+suggestion.nmkontraktor);
+			}
+		});
+	});
+
+	$(document).ready(function(){
+		$('#statusbayi').change(function(){
+			if($(this).is(':checked')){
+				$('#noipdibu > div > input').val('');
+				$('#noipdibu').fadeIn();
+			}else{
+				$('#noipdibu > div > input').val('');
+				$('#noipdibu').fadeOut();
+			}
+		});
+	});
+	
 	$('#calendar-tgl-daftar').datepicker({
 		format: 'yyyy-mm-dd'
 	});
+	
 	$('#calendar-tgl-lahir').datepicker({
 		format: 'yyyy-mm-dd'
 	});
+	
 	$('#calendar-tgl-masuk').datepicker({
 		format: 'yyyy-mm-dd'
 	});

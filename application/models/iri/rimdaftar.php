@@ -1,6 +1,6 @@
 <?php
 class rimdaftar extends CI_Model {
-	public function select_irna_antrian_all($kode_ruang, $kelas){
+	public function select_irna_antrian_all(){
 		$data=$this->db->query("select *from irna_antrian where batal='N' and statusantrian='N'");
 		return $data->result_array();
 	}

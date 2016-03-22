@@ -120,7 +120,6 @@ $(function(){
 </div>
 <script>
 $(document).ready(function() {
-	//console.log('masuk');
 	var dataTable = $('#dataTables-example').DataTable( {
 		"processing": true,
 		"serverSide": true,
@@ -131,9 +130,9 @@ $(document).ready(function() {
 		"bInfo": true,
 		"bAutoWidth": true,
 		"ajax":{
-			url :"<?php echo site_url('iri/ricdaftar/get_irna_antrian/'.$kode_ruang.'/'.$kelas.'/'); ?>", // json datasource
+			url :"<?php echo site_url('iri/ricdaftar/get_irna_antrian/'.$kode_ruang.'/'.$kelas.'/'); ?>",
 			type: "post",
-			error: function(){  // error handling
+			error: function(){
 				$(".employee-grid-error").html("");
 				$("#dataTables-example").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
 				$("#employee-grid_processing").css("display","none");

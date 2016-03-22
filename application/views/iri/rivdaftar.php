@@ -1,15 +1,3 @@
-<script>
-var site = "<?php echo site_url(); ?>";
-$(function(){
-	$('.auto-ruang').autocomplete({
-		serviceUrl: site+'/iri/ricreservasi/data_ruang',
-		onSelect: function (suggestion) {
-			$('#kode-ruang-pilih').val(''+suggestion.idrg);
-			$('#nama-ruang-pilih').val(''+suggestion.nmruang);
-		}
-	});
-});
-</script>
 <div class="wrapper">
 	<div class="content-wrapper">
 		
@@ -83,17 +71,27 @@ $(function(){
 	</div>
 </div>
 <script>
-$(document).ready(function() {
-	var dataTable = $('#dataTables-example').DataTable( {
-		"ajax":{
-			url :"<?php echo site_url('iri/ricdaftar/get_irna_antrian/'.$kode_ruang.'/'.$kelas.'/'); ?>", // json datasource
-			type: "post",
-			error: function(){
-				$(".employee-grid-error").html("");
-				$("#dataTables-example").append('<tbody class="employee-grid-error"><tr><th colspan="3">Tidak ada data</th></tr></tbody>');
-				$("#employee-grid_processing").css("display","none");
+	var site = "<?php echo site_url(); ?>";
+	$(function(){
+		$('.auto-ruang').autocomplete({
+			serviceUrl: site+'/iri/ricreservasi/data_ruang',
+			onSelect: function (suggestion) {
+				$('#kode-ruang-pilih').val(''+suggestion.idrg);
+				$('#nama-ruang-pilih').val(''+suggestion.nmruang);
 			}
-		}
+		});
 	});
-});
+	$(document).ready(function() {
+		var dataTable = $('#dataTables-example').DataTable( {
+			"ajax":{
+				url :"<?php echo site_url('iri/ricdaftar/get_irna_antrian'); ?>", // json datasource
+				type: "post",
+				error: function(){
+					$(".employee-grid-error").html("");
+					$("#dataTables-example").append('<tbody class="employee-grid-error"><tr><th colspan="3">Tidak ada data</th></tr></tbody>');
+					$("#employee-grid_processing").css("display","none");
+				}
+			}
+		});
+	});
 </script>

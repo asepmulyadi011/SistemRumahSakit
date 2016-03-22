@@ -1,149 +1,3 @@
-<script>
-var site = "<?php echo site_url(); ?>";
-$(function(){
-	$('.auto_no_register_rawatjalan').autocomplete({
-		serviceUrl: site+'/iri/ricreservasi/data_pasien_irj',
-		onSelect: function (suggestion) {
-			$('#no_cm').val(''+suggestion.no_cm);
-			$('#nama').val(''+suggestion.nama);
-			$('.tanggal_lahir').val(''+suggestion.tanggal_lahir);
-			if(suggestion.jenis_kelamin=='L'){
-				$('#laki_laki').attr('selected', 'selected');
-				$('#perempuan').removeAttr('selected', 'selected');
-			}else{
-				$('#laki_laki').removeAttr('selected', 'selected');
-				$('#perempuan').attr('selected', 'selected');
-			}
-			$('#telp').val(''+suggestion.telp);
-			$('#hp').val(''+suggestion.hp);
-			$('#id_poli').val(''+suggestion.id_poli);
-			$('#poliasal').val(''+suggestion.poliasal);
-			$('#id_dokter').val('-');
-			$('#dokter').val('-');
-			$('#diagnosa').val('-');
-		}
-	});
-});
-
-var site = "<?php echo site_url(); ?>";
-$(function(){
-	$('.auto_no_register_ruangrawat').autocomplete({
-		serviceUrl: site+'/iri/ricreservasi/data_pasien_iri',
-		onSelect: function (suggestion) {
-			$('#no_cm').val(''+suggestion.no_cm);
-			$('#nama').val(''+suggestion.nama);
-			$('.tanggal_lahir').val(''+suggestion.tanggal_lahir);
-			if(suggestion.jenis_kelamin=='L'){
-				$('#laki_laki').attr('selected', 'selected');
-				$('#perempuan').removeAttr('selected', 'selected');
-			}else{
-				$('#laki_laki').removeAttr('selected', 'selected');
-				$('#perempuan').attr('selected', 'selected');
-			}
-			$('#telp').val(''+suggestion.telp);
-			$('#hp').val(''+suggestion.hp);
-			$('#id_poli').val('-');
-			$('#poliasal').val('-');
-			$('#id_dokter').val('-');
-			$('#dokter').val('-');
-			$('#diagnosa').val('-');
-		}
-	});
-});
-
-var site = "<?php echo site_url(); ?>";
-$(function(){
-	$('.auto_no_register_rawatdarurat').autocomplete({
-		serviceUrl: site+'/iri/ricreservasi/data_pasien_ird',
-		onSelect: function (suggestion) {
-			$('#no_cm').val(''+suggestion.no_cm);
-			$('#nama').val(''+suggestion.nama);
-			$('.tanggal_lahir').val(''+suggestion.tanggal_lahir);
-			if(suggestion.jenis_kelamin=='L'){
-				$('#laki_laki').attr('selected', 'selected');
-				$('#perempuan').removeAttr('selected', 'selected');
-			}else{
-				$('#laki_laki').removeAttr('selected', 'selected');
-				$('#perempuan').attr('selected', 'selected');
-			}
-			$('#telp').val(''+suggestion.telp);
-			$('#hp').val(''+suggestion.hp);
-			$('#id_poli').val(''+suggestion.id_poli);
-			$('#poliasal').val(''+suggestion.poliasal);
-			$('#id_dokter').val('-');
-			$('#dokter').val('-');
-			$('#diagnosa').val('-');
-		}
-	});
-});
-
-$(function(){
-	$('#no_register_rawatjalan').show();
-	$('#no_register_ruangrawat').hide();
-	$('#no_register_rawatdarurat').hide();
-});
-
-var site = "<?php echo site_url(); ?>";
-$(function(){
-	$('.auto_ruang').autocomplete({
-		serviceUrl: site+'/iri/ricreservasi/data_ruang',
-		onSelect: function (suggestion) {
-			$('#ruang').val(''+suggestion.idrg);
-			$('#nm_ruang').val(''+suggestion.nmruang);
-			$('#kelas').val(''+suggestion.kelas);
-		}
-	});
-});
-
-$(document).ready(function() {
-	$("#form_reservasi").validate({ 
-		rules: { 
-			noreservasi: "required",
-			no_cm: "required",
-			nama: "required",
-			tgllahir: "required",
-			telp: "required",
-			poliasal: "required",
-			dokter: "required",
-			diagnosa: "required",
-			
-			tglrencanamasuk: "required",
-			tglsprawat: "required",
-			nm_ruang: "required",
-			kelas: "required",
-			keterangan: "required"
-		}
-	}); 
-	
-	$('#pilihan_prioritas').change(function(){
-		var kasus = $('#pilihan_prioritas').val();
-		if(kasus=='-'){
-			$('#normal').attr('selected', 'selected');
-			$('#high').removeAttr('selected', 'selected');
-		}else{
-			$('#normal').removeAttr('selected', 'selected');
-			$('#high').attr('selected', 'selected');
-		}
-	});
-	
-	$('#tppri').change(function(){
-		var tppri = $('#tppri').val();
-		if(tppri=='rawatjalan'){
-			$('#no_register_rawatjalan').show();
-			$('#no_register_ruangrawat').hide();
-			$('#no_register_rawatdarurat').hide();
-		}else if(tppri=='ruangrawat'){
-			$('#no_register_rawatjalan').hide();
-			$('#no_register_ruangrawat').show();
-			$('#no_register_rawatdarurat').hide();
-		}else{
-			$('#no_register_rawatjalan').hide();
-			$('#no_register_ruangrawat').hide();
-			$('#no_register_rawatdarurat').show();
-		}
-	});
-});
-</script>
 <div class="wrapper">
 	<div class="content-wrapper">
 		
@@ -307,6 +161,13 @@ $(document).ready(function() {
 														<div class="col-sm-4 input-right"><input type="text" class="form-control input-sm" id="kelas" name="kelas" readonly></div>
 													</div>
 												</div>
+												<!-- <div class="form-group">
+													<div class="col-sm-3 control-label">Bed *</div>
+													<div class="col-sm-9">
+														<span class="label-form-validation"></span>
+														<input type="text" class="form-control input-sm auto_bed" id="bed" name="bed" readonly>
+													</div>
+												</div> -->
 												<div class="form-group">
 													<div class="col-sm-3 control-label">Kasus</div>
 													<div class="col-sm-4">
@@ -444,12 +305,172 @@ $(document).ready(function() {
 	</div>
 </div>
 <script>
+	var site = "<?php echo site_url(); ?>";
+	$(function(){
+		$('.auto_no_register_rawatjalan').autocomplete({
+			serviceUrl: site+'/iri/ricreservasi/data_pasien_irj',
+			onSelect: function (suggestion) {
+				$('#no_cm').val(''+suggestion.no_cm);
+				$('#nama').val(''+suggestion.nama);
+				$('.tanggal_lahir').val(''+suggestion.tanggal_lahir);
+				if(suggestion.jenis_kelamin=='L'){
+					$('#laki_laki').attr('selected', 'selected');
+					$('#perempuan').removeAttr('selected', 'selected');
+				}else{
+					$('#laki_laki').removeAttr('selected', 'selected');
+					$('#perempuan').attr('selected', 'selected');
+				}
+				$('#telp').val(''+suggestion.telp);
+				$('#hp').val(''+suggestion.hp);
+				$('#id_poli').val(''+suggestion.id_poli);
+				$('#poliasal').val(''+suggestion.poliasal);
+				$('#id_dokter').val('-');
+				$('#dokter').val('-');
+				$('#diagnosa').val('-');
+			}
+		});
+	});
+
+	var site = "<?php echo site_url(); ?>";
+	$(function(){
+		$('.auto_no_register_ruangrawat').autocomplete({
+			serviceUrl: site+'/iri/ricreservasi/data_pasien_iri',
+			onSelect: function (suggestion) {
+				$('#no_cm').val(''+suggestion.no_cm);
+				$('#nama').val(''+suggestion.nama);
+				$('.tanggal_lahir').val(''+suggestion.tanggal_lahir);
+				if(suggestion.jenis_kelamin=='L'){
+					$('#laki_laki').attr('selected', 'selected');
+					$('#perempuan').removeAttr('selected', 'selected');
+				}else{
+					$('#laki_laki').removeAttr('selected', 'selected');
+					$('#perempuan').attr('selected', 'selected');
+				}
+				$('#telp').val(''+suggestion.telp);
+				$('#hp').val(''+suggestion.hp);
+				$('#id_poli').val('-');
+				$('#poliasal').val('-');
+				$('#id_dokter').val('-');
+				$('#dokter').val('-');
+				$('#diagnosa').val('-');
+			}
+		});
+	});
+
+	var site = "<?php echo site_url(); ?>";
+	$(function(){
+		$('.auto_no_register_rawatdarurat').autocomplete({
+			serviceUrl: site+'/iri/ricreservasi/data_pasien_ird',
+			onSelect: function (suggestion) {
+				$('#no_cm').val(''+suggestion.no_cm);
+				$('#nama').val(''+suggestion.nama);
+				$('.tanggal_lahir').val(''+suggestion.tanggal_lahir);
+				if(suggestion.jenis_kelamin=='L'){
+					$('#laki_laki').attr('selected', 'selected');
+					$('#perempuan').removeAttr('selected', 'selected');
+				}else{
+					$('#laki_laki').removeAttr('selected', 'selected');
+					$('#perempuan').attr('selected', 'selected');
+				}
+				$('#telp').val(''+suggestion.telp);
+				$('#hp').val(''+suggestion.hp);
+				$('#id_poli').val(''+suggestion.id_poli);
+				$('#poliasal').val(''+suggestion.poliasal);
+				$('#id_dokter').val('-');
+				$('#dokter').val('-');
+				$('#diagnosa').val('-');
+			}
+		});
+	});
+
+	$(function(){
+		$('#no_register_rawatjalan').show();
+		$('#no_register_ruangrawat').hide();
+		$('#no_register_rawatdarurat').hide();
+	});
+
+	var site = "<?php echo site_url(); ?>";
+	$(function(){
+		$('.auto_ruang').autocomplete({
+			serviceUrl: site+'/iri/ricreservasi/data_ruang',
+			onSelect: function (suggestion) {
+				$('#ruang').val(''+suggestion.idrg);
+				$('#nm_ruang').val(''+suggestion.nmruang);
+				$('#kelas').val(''+suggestion.kelas);
+				$('#bed').removeAttr('readonly', 'readonly');
+			}
+		});
+	});
+	
+	$(document).ready(function() {
+		// var site = "<?php echo site_url(); ?>";
+		// var ruang = $('#ruang').val();
+		// $(function(){
+			// $('.auto_bed').autocomplete({
+				// serviceUrl: site+'/iri/ricreservasi/data_bed/'+ruang,
+				// onSelect: function (suggestion) {
+					// $('#bed').val(''+suggestion.bed);
+				// }
+			// });
+		// });
+		
+		$("#form_reservasi").validate({
+			rules: { 
+				noreservasi: "required",
+				no_cm: "required",
+				nama: "required",
+				tgllahir: "required",
+				telp: "required",
+				poliasal: "required",
+				dokter: "required",
+				diagnosa: "required",
+				
+				tglrencanamasuk: "required",
+				tglsprawat: "required",
+				nm_ruang: "required",
+				kelas: "required",
+				bed: "required",
+				keterangan: "required"
+			}
+		}); 
+		
+		$('#pilihan_prioritas').change(function(){
+			var kasus = $('#pilihan_prioritas').val();
+			if(kasus=='-'){
+				$('#normal').attr('selected', 'selected');
+				$('#high').removeAttr('selected', 'selected');
+			}else{
+				$('#normal').removeAttr('selected', 'selected');
+				$('#high').attr('selected', 'selected');
+			}
+		});
+		
+		$('#tppri').change(function(){
+			var tppri = $('#tppri').val();
+			if(tppri=='rawatjalan'){
+				$('#no_register_rawatjalan').show();
+				$('#no_register_ruangrawat').hide();
+				$('#no_register_rawatdarurat').hide();
+			}else if(tppri=='ruangrawat'){
+				$('#no_register_rawatjalan').hide();
+				$('#no_register_ruangrawat').show();
+				$('#no_register_rawatdarurat').hide();
+			}else{
+				$('#no_register_rawatjalan').hide();
+				$('#no_register_ruangrawat').hide();
+				$('#no_register_rawatdarurat').show();
+			}
+		});
+	});
+	
 	$('#calendar-tgl-lahir').datepicker({
 		format: 'yyyy-mm-dd'
 	});
+	
 	$('#calendar-tgl-sp-rawat').datepicker({
 		format: 'yyyy-mm-dd'
 	});
+	
 	$('#calendar-tgl-rencana-masuk').datepicker({
 		format: 'yyyy-mm-dd'
 	});

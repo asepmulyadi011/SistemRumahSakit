@@ -51,16 +51,45 @@
 <script>
 	$(document).ready(function() {
 		var dataTable = $('#dataTables-example').DataTable( {
+			"processing": true,
+			"serverSide": true,
+			"bPaginate": true,
+			"bLengthChange": true,
+			"bFilter": true,
+			"bSort": true,
+			"bInfo": true,
+			"bAutoWidth": true,
 			"ajax":{
-				url :"<?php echo site_url('iri/ricpasien/get_pasien_iri/'); ?>", // json datasource
+				url :"<?php echo site_url('iri/ricpasien/get_pasien_iri'); ?>",
 				type: "post",
 				error: function(){
 					$(".employee-grid-error").html("");
-					$("#dataTables-example").append('<tbody class="employee-grid-error"><tr><th colspan="3">Tidak ada data</th></tr></tbody>');
+					$("#dataTables-example").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
 					$("#employee-grid_processing").css("display","none");
 				}
 			}
 		});
+		$('<button type="button" id="filter" class="btn btn-primary btn-sm"><i class="fa fa-search"></i></button>').appendTo('div.dataTables_filter');
+		$("div.dataTables_filter input").unbind();
+		$('#filter').click(function(e){
+			var value = $('.dataTables_filter input').val();
+			dataTable.columns(0).search(value).draw();
+		});
 	});
+	
+	// $(document).ready(function() {
+		// var dataTable = $('#dataTables-example').DataTable( {
+			// "ajax":{
+				// url :"<?php echo site_url('iri/ricpasien/get_pasien_iri'); ?>", // json datasource
+				// type: "post",
+				// error: function(){
+					// $(".employee-grid-error").html("");
+					// $("#dataTables-example").append('<tbody class="employee-grid-error"><tr><th colspan="3">Tidak ada data</th></tr></tbody>');
+					// $("#employee-grid_processing").css("display","none");
+				// }
+			// }
+		// });
+	// });
+	
 	$('#calendar-tgl').datepicker();
 </script>

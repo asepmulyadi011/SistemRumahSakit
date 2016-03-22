@@ -40,8 +40,8 @@ class ricdaftar extends CI_Controller {
 		$this->load->view('iri/rivdaftar', $data_daftar);
 		$this->load->view('iri/rivfooter');
 	}
-	public function get_irna_antrian($kode_ruang='-', $kelas='-'){
-		$result=$this->rimdaftar->select_irna_antrian_all($kode_ruang, $kelas);
+	public function get_irna_antrian(){
+		$result=$this->rimdaftar->select_irna_antrian_all();
 		$totalDataQuery=count($result);
 		
 		if($totalDataQuery==0){

@@ -20,6 +20,10 @@ class rimreservasi extends CI_Model {
 		$data=$this->db->query("select *from ruang where idrg like '%$value%'");
 		return $data->result_array();
 	}
+	// public function select_bed($value, $ruang){
+		// $data=$this->db->query("select *from bed where bed like '%$value%' and idrg='$ruang'");
+		// return $data->result_array();
+	// }
 	
 	public function insert_reservasi($data){
 		$this->db->insert('irna_antrian', $data);
