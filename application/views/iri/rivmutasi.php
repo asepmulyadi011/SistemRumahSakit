@@ -24,84 +24,105 @@
 							<div class="box-body">
 								<div class="row">
 									<div class="col-sm-6">
-										<div class="box-body">
-											<div class="form-group">
-												<div class="col-sm-3 control-label">Cari No. IPD</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
-												</div>
-											</div>
+										<div class="box-body form-left">
 											<div class="form-group">
 												<div class="col-sm-3 control-label">No. Register IPD</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" value="<?php echo $pasien_iri[0]['no_ipd']; ?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">No. CM</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="col-sm-3 control-label">Penjamin</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="col-sm-3 control-label">No. Peserta</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-6 form-right">
-										<div class="box-body">
-											<div class="form-group">
-												<div class="col-sm-3 control-label">Ruang</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="col-sm-3 control-label">Kelas</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" value="<?php echo $irna_antrian[0]['no_medrec']; ?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Nama</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" value="<?php echo $irna_antrian[0]['nama']; ?>">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-3 control-label">Alamat</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<input type="text" class="form-control input-sm" value="<?php echo $irna_antrian[0]['alamat']; ?>">
 												</div>
 											</div>
 											<div class="form-group">
-												<div class="col-sm-3 control-label">Tanggal</div>
+												<div class="col-sm-3 control-label">Penjamin</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm" id="calendar-tgl">
+													<input type="text" class="form-control input-sm" value="<?php echo $pasien_iri[0]['nmpembayarri']; ?>">
+												</div>
+											</div>
+											<br/>
+											<h4 class="title-form">ASAL RUANGAN</h4>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Bed</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm" name="bed" value="<?php echo $pasien_iri[0]['bed']; ?>" readonly>
 												</div>
 											</div>
 											<div class="form-group">
-												<div class="col-sm-3 control-label">Jatah Kelas</div>
+												<div class="col-sm-3 control-label">Ruang</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control input-sm">
+													<span class="label-form-validation"></span>
+													<input type="text" class="form-control input-sm auto_ruang" id="ruang" name="ruang" value="<?php echo $pasien_iri[0]['idrg']; ?>" readonly>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label"></div>
+												<div class="col-sm-9">
+													<span class="label-form-validation"></span>
+													<div class="col-sm-8 input-left"><input type="text" class="form-control input-sm" id="nm_ruang" name="nm_ruang" value="<?php echo $pasien_iri[0]['nmruang']; ?>" readonly></div>
+													<div class="col-sm-4 input-right"><input type="text" class="form-control input-sm" id="kelas" name="kelas" value="<?php echo $pasien_iri[0]['kelas']; ?>" readonly></div>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Tgl. Masuk</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm" name="tglmasukrg" value="<?php echo $pasien_iri[0]['tgl_masuk']; ?>" readonly>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="box-body">
+											<h4 class="title-form">TUJUAN RUANGAN</h4>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Bed</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm" name="bed">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Ruang</div>
+												<div class="col-sm-9">
+													<span class="label-form-validation"></span>
+													<input type="text" class="form-control input-sm auto_ruang" id="ruang" name="ruang" value="<?php echo $irna_antrian[0]['ruangpilih']; ?>" readonly>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label"></div>
+												<div class="col-sm-9">
+													<span class="label-form-validation"></span>
+													<div class="col-sm-8 input-left"><input type="text" class="form-control input-sm" id="nm_ruang" name="nm_ruang" value="<?php echo $irna_antrian[0]['nmruang']; ?>" readonly></div>
+													<div class="col-sm-4 input-right"><input type="text" class="form-control input-sm" id="kelas" name="kelas" value="<?php echo $irna_antrian[0]['koderg']; ?>" readonly></div>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3 control-label">Tgl. Masuk</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control input-sm" name="tglmasukrg" value="<?php echo $irna_antrian[0]['tglrencanamasuk']; ?>" readonly>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-sm-8">
+									<div class="col-sm-12">
 										<div class="button-reservasi">
-											<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-mutasi"><i class="fa fa-save"></i> Simpan</button>
+											<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> Simpan</button>
 										</div>
 									</div>
 								</div>
@@ -130,126 +151,6 @@
 						<!-- /Form Mutasi -->
 						
 					</div>
-					
-					<!-- Table -->
-					<div class="box box-success">
-						<br/>
-						<div class="box-body">
-							<table id="example1" class="table table-bordered table-striped">
-								<thead>
-									<tr>
-										<th>Rendering engine</th>
-										<th>Browser</th>
-										<th>Platform(s)</th>
-										<th>Engine version</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Trident</td>
-										<td>Internet Explorer 4.0</td>
-										<td>Win 95+</td>
-										<td>4</td>
-										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>Internet Explorer 5.0</td>
-										<td>Win 95+</td>
-										<td>5</td>
-										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>Internet Explorer 5.5</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>Internet Explorer 6</td>
-										<td>Win 98+</td>
-										<td>6</td>
-										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>Internet Explorer 7</td>
-										<td>Win XP SP2+</td>
-										<td>7</td>
-										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>AOL browser (AOL desktop)</td>
-										<td>Win XP</td>
-										<td>6</td>
-										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
-									</tr>
-									<tr>
-										<td>Gecko</td>
-										<td>Firefox 1.0</td>
-										<td>Win 98+ / OSX.2+</td>
-										<td>1.7</td>
-										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
-									</tr>
-									<tr>
-										<td>Gecko</td>
-										<td>Firefox 1.5</td>
-										<td>Win 98+ / OSX.2+</td>
-										<td>1.8</td>
-										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
-									</tr>
-									<tr>
-										<td>Gecko</td>
-										<td>Firefox 2.0</td>
-										<td>Win 98+ / OSX.2+</td>
-										<td>1.8</td>
-										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
-									</tr>
-									<tr>
-										<td>Gecko</td>
-										<td>Firefox 3.0</td>
-										<td>Win 2k+ / OSX.3+</td>
-										<td>1.9</td>
-										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
-									</tr>
-									<tr>
-										<td>Gecko</td>
-										<td>Camino 1.0</td>
-										<td>OSX.2+</td>
-										<td>1.8</td>
-										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
-									</tr>
-									<tr>
-										<td>Gecko</td>
-										<td>Camino 1.5</td>
-										<td>OSX.3+</td>
-										<td>1.8</td>
-										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
-									</tr>
-									<tr>
-										<td>Gecko</td>
-										<td>Netscape 7.2</td>
-										<td>Win 95+ / Mac OS 8.6-9.2</td>
-										<td>1.7</td>
-										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
-									</tr>
-									<tr>
-										<td>Gecko</td>
-										<td>Netscape Browser 8</td>
-										<td>Win 98SE+</td>
-										<td>1.7</td>
-										<td><button type="button" class="btn btn-primary btn-sm">Faktur</button></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<!-- /Table -->
-					
 				</div>
 			</div>
 		</section>

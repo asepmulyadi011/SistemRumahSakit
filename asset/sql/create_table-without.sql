@@ -51,7 +51,7 @@ create table data_pasien(
 	no_identitas varchar(20),
 	jenis_kartu varchar(10),
 	no_kartu varchar(20),
-	tgl_daftar timestamp DEFAULT now(),
+	tgl_daftar timestamp DEFAULT CURRENT_TIMESTAMP,
 	nama varchar(100),
 	sex char,
 	tmpt_lahir varchar(100),
@@ -87,7 +87,7 @@ create table data_pasien(
 	kartusdhdicetak char default 0,
 	tglcetakkartu date,
 	foto varchar(255),
-	xupdate timestamp DEFAULT now() ON UPDATE now(),
+	xupdate timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	xuser varchar(100),
 	xterminal varchar(100),
 	PRIMARY KEY(no_medrec)

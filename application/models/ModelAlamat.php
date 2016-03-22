@@ -16,5 +16,7 @@
 		function get_kelurahan($id_kecamatan){
 			return $this->db->query("SELECT * FROM kelurahandesa where id_kecamatan='$id_kecamatan' order by nama");
 		}
+		
+		
 	}
 ?>

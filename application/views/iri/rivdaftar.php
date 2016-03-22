@@ -15,21 +15,25 @@
         <section class="content">
 			<div class="row">
 				<div class="col-sm-12">
+					<?php echo $this->session->flashdata('pesan');?>
 					
 					<!-- Table -->
 					<div class="box box-success">
-						<br/>
 						<div class="box-body">
-							<table id="dataTables-example" class="table table-bordered table-striped">
+							<table id="dataTables-example" class="table table-bordered table-striped data-table">
 								<thead>
 									<tr>
 										<th>No. Antri</th>
 										<th>No. CM</th>
+										<th>Reg. Asal</th>
 										<th>Nama</th>
+										<th>Ruang</th>
+										<th>Kelas</th>
+										<th>Infeksi</th>
 										<th>HP</th>
 										<th>Prioritas</th>
 										<th>Ren. Masuk</th>
-										<th>Action</th>
+										<th>Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -45,7 +49,7 @@
 		<!-- /Main content -->
 		
 		<!-- Modal -->
-		<div class="modal fade bs-example-modal-sm" id="modal-approve" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal fade bs-example-modal-sm" id="modal-batal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -67,33 +71,27 @@
 	</div>
 </div>
 <script>
-$(document).ready(function() {
-	//console.log('masuk');
-	var dataTable = $('#dataTables-example').DataTable( {
-
-		"processing": true,
-		"serverSide": true,
-		"bPaginate": true,
-		"bLengthChange": true,
-		"bFilter": true,
-		"bSort": true,
-		"bInfo": true,
-		"bAutoWidth": true,
-		"ajax":{
-			url :"<?php echo site_url('iri/ricdaftar/get_irna_antrian/'); ?>", // json datasource
-			type: "post",
-			error: function(){  // error handling
-				$(".employee-grid-error").html("");
-				$("#dataTables-example").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
-				$("#employee-grid_processing").css("display","none");
+	var site = "<?php echo site_url(); ?>";
+	$(function(){
+		$('.auto-ruang').autocomplete({
+			serviceUrl: site+'/iri/ricreservasi/data_ruang',
+			onSelect: function (suggestion) {
+				$('#kode-ruang-pilih').val(''+suggestion.idrg);
+				$('#nama-ruang-pilih').val(''+suggestion.nmruang);
 			}
-		}
+		});
 	});
-	$('<button type="button" id="filter" class="btn btn-primary btn-sm"><i class="fa fa-search"></i></button>').appendTo('div.dataTables_filter');
-	$("div.dataTables_filter input").unbind();
-	$('#filter').click(function(e){
-		var value = $('.dataTables_filter input').val();
-        dataTable.columns(0).search(value).draw();
-    });
-});
+	$(document).ready(function() {
+		var dataTable = $('#dataTables-example').DataTable( {
+			"ajax":{
+				url :"<?php echo site_url('iri/ricdaftar/get_irna_antrian'); ?>", // json datasource
+				type: "post",
+				error: function(){
+					$(".employee-grid-error").html("");
+					$("#dataTables-example").append('<tbody class="employee-grid-error"><tr><th colspan="3">Tidak ada data</th></tr></tbody>');
+					$("#employee-grid_processing").css("display","none");
+				}
+			}
+		});
+	});
 </script>

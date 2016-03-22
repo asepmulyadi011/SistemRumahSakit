@@ -3,22 +3,24 @@ class ricmutasi extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		
-		$this->load->model('iri/rimreservasi');
+		$this->load->model('iri/rimmutasi');
 	}
-	public function index(){
+	public function index($noreservasi=''){
 		$data['reservasi']='';
-		$data['daftar']='';
-		$data['pendaftaran']='';
+		$data['daftar']='active';
 		$data['pasien']='';
-		$data['mutasi']='active';
+		$data['mutasi']='';
 		$data['status']='';
 		$data['resume']='';
 		$data['kontrol']='';
 		
+		$data_reservasi['irna_antrian']=$this->rimmutasi->select_irna_antrian_by_noreservasi($noreservasi);
+		$data_reservasi['pasien_iri']=$this->rimmutasi->select_pasien_iri_by_no_ipd($data_reservasi['irna_antrian'][0]['no_register_asal']);
+		
 		$this->load->view('iri/rivlink');
 		$this->load->view('iri/rivheader');
 		$this->load->view('iri/rivmenu', $data);
-		$this->load->view('iri/rivmutasi');
+		$this->load->view('iri/rivmutasi', $data_reservasi);
 		$this->load->view('iri/rivfooter');
 	}
 	public function insert_mutasi(){
